@@ -5,7 +5,11 @@ import {
   AboutIcon
 } from '@bbbottle/bbicons';
 
-const Page1 = () => <div>H</div>
+import {
+  CanvasPage
+} from './canvas';
+
+const Page1 = () => <div/>
 const Page2 = () => <div/>
 
 export const pages = [{
@@ -15,5 +19,5 @@ export const pages = [{
 }, {
   title: '画布',
   icon: RulerIcon,
-  component: Page1,
+  component: CanvasPage,
 }];
