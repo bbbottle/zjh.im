@@ -1,0 +1,29 @@
+{
+  "name": "@bbbottle/zjh.im",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "bbbundle",
+    "dev": "bbbundle dev",
+    "prepare": "bbbundle"
+  },
+  "repository": "https://github.com/bbbottle/zjh.im.git",
+  "author": "bbbottle <z@zjh.im>",
+  "license": "MIT",
+  "peerDependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "@bbbottle/bbicons": "^0.0.3"
+  },
+  "devDependencies": {
+    "@bbbottle/bbbundle": "^0.0.4"
+  }
+}

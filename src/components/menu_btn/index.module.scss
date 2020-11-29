@@ -1,0 +1,30 @@
+.MenuButton {
+  position: fixed;
+  border: none;
+  outline: none;
+  top: 50px;
+  left: 50px;
+  width: 25px;
+  height: 26px;
+  border-radius: 0;
+  opacity: 0;
+  box-shadow: #6bcba88f -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
+  background: #51c49f;;
+  z-index: 1;
+  transition: all .3s;
+  cursor: pointer;
+  pointer-events: none;
+
+  &:active {
+    bottom: 23px;
+    right: 17px;
+    box-shadow: #6bcba88f -1px -1px 0 0;
+  }
+}
+.show {
+  pointer-events: all;
+  transition-delay: .3s;
+  opacity: 1;
+  box-shadow: #6bcba88f -5px -5px 0 0, #6bcba859 -10px -10px 0 0;
+}
+
