@@ -1,0 +1,21 @@
+.about {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+
+  & > span {
+    margin-bottom: 5px;
+  }
+}
+
+.kwd {
+  color: #51c49f;
+}
+
+.normal {
+  color: #333;
+}

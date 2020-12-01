@@ -5,19 +5,23 @@ import {
   AboutIcon
 } from '@bbbottle/bbicons';
 
-import {
-  CanvasPage
-} from './canvas';
+import { CanvasPage } from './canvas';
+import { AboutPage } from './about';
 
-const Page1 = () => <div/>
-const Page2 = () => <div/>
+const pagesConfig = {
+  about: {
+    title: '关于',
+    icon: AboutIcon,
+    component: AboutPage,
+  },
+  canvas: {
+    title: '画布',
+    icon: RulerIcon,
+    component: CanvasPage,
+  }
+};
 
-export const pages = [{
-  title: 'hello world',
-  icon: AboutIcon,
-  component: Page2,
-}, {
-  title: '画布',
-  icon: RulerIcon,
-  component: CanvasPage,
-}];
+export const pages = [
+  pagesConfig.canvas,
+  pagesConfig.about,
+]
