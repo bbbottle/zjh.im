@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
+
 import { TickLoader } from '../../../components/spinner';
+import { TVNoiseLayer } from '../../../components/noise';
+import Img from '../../../components/img';
 
 import CLS from './renderer.scss';
 
@@ -11,7 +14,9 @@ export const WhiteBoard = (props) => {
     width: '100%',
     height: '100%',
     padding: props.padding || 0,
-    border: 'solid 1px #ddd'
+    border: props.disableBorder
+      ? 'unset'
+      : 'solid 1px #ddd',
   }
   return (
     <div style={style}>{props.children}</div>
@@ -44,8 +49,13 @@ ToolBar.propTypes = {
 
 export const PhotoBox = (props) => {
   return (
-    <WhiteBoard padding={10}>
+    <WhiteBoard
+      disableBorder
+    >
       <ToolBar {...props} />
+      <TVNoiseLayer
+        {...props}
+      />
     </WhiteBoard>
   );
 }
