@@ -7,6 +7,7 @@ import { TVNoiseLayer } from '../../../components/noise';
 import Img from '../../../components/img';
 
 import CLS from './renderer.scss';
+import {Photos} from '../../photos';
 
 export const WhiteBoard = (props) => {
   const style = {
@@ -53,9 +54,7 @@ export const PhotoBox = (props) => {
       disableBorder
     >
       <ToolBar {...props} />
-      <TVNoiseLayer
-        {...props}
-      />
+      <Photos Spinner={<TVNoiseLayer {...props} />} />
     </WhiteBoard>
   );
 }

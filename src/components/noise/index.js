@@ -22,6 +22,7 @@ export const TVNoiseLayer = (props) => {
   const {
     height,
     width,
+    className,
     opacity,
     style = {}
   } = props;
@@ -57,6 +58,7 @@ export const TVNoiseLayer = (props) => {
   return (
     <canvas
       ref={canvasRef}
+      className={className}
       id="tv-noise-layer"
       style={Object.assign({
         pointerEvents: 'none',

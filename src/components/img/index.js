@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { TickLoader as Spinner } from '../spinner';
@@ -17,6 +18,7 @@ class Img extends React.Component {
     onClick: PropTypes.func.isRequired,
     onLoad: PropTypes.func,
     loadingViewRenderer: PropTypes.func,
+    className: PropTypes.string.isRequired,
     style: PropTypes.shape({}),
   }
 
@@ -33,14 +35,15 @@ class Img extends React.Component {
       src,
       onClick,
       onLoad = () => {},
-      style = {}
+      style = {},
+      className = '',
     } = this.props;
 
     const { loading } = this.state;
 
     const retImg = (
       <img
-        className="custom-img-tag"
+        className={classnames("custom-img-tag", className)}
         src={src}
         key={src}
         onClick={onClick}
