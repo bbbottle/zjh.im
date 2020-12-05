@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { TickLoader as Spinner } from '../spinner';
 
+import ImgStyle from './img.scss';
+
 class Img extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +45,11 @@ class Img extends React.Component {
 
     const retImg = (
       <img
-        className={classnames("custom-img-tag", className)}
+        className={classnames(ImgStyle.customImgTag, className, {
+          [ImgStyle.fadeIn]: !loading,
+          [ImgStyle.fadeOut]: loading,
+        })}
+        alt="*]:{)"
         src={src}
         key={src}
         onClick={onClick}
@@ -54,7 +60,7 @@ class Img extends React.Component {
         }}
         style={{
           ...style,
-          display: loading ? 'none' : 'unset'
+          // display: loading ? 'none' : 'unset'
         }}
       />
     )
@@ -74,7 +80,7 @@ class Img extends React.Component {
     if (!loadingViewRenderer) {
       return <Spinner absCenter />
     }
-    return [<Spinner absCenter />, loadingViewRenderer(src)];
+    return loadingViewRenderer(src);
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Get } from '../../utils/req';
+import {Get, preloadImg} from '../../utils/req';
 import { createClickHandler } from '../../utils/evt';
 
 import { PagingStateManager as PagingManager } from '../../components/paging';
@@ -16,19 +16,7 @@ import {
 import cls from './index.scss';
 
 const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
-const toBlurryImgUrl = (src) => `${src.replace(tmpWebpUrlSuffix, '')}${tmpBlurryThumbnailUrlSuffix}`;
-
-const renderBlurryThumbnail = (originUrl) => {
-  return (
-    <img
-      className={cls.img}
-      src={toBlurryImgUrl(originUrl)}
-      style={{
-        filter: 'opacity(0.2)',
-      }}
-    />
-  );
-}
+// const toBlurryImgUrl = (src) => `${src.replace(tmpWebpUrlSuffix, '')}${tmpBlurryThumbnailUrlSuffix}`;
 
 export const Photos = (props) => {
   const {
@@ -49,17 +37,19 @@ export const Photos = (props) => {
           >
             {({
                 currentPageData,
+                nextPageData,
                 next,
                 prev,
               }) => {
               const photo = currentPageData[0];
+              const nextImgSrc = toWebpUrl(nextPageData[0].url);
+              preloadImg(nextImgSrc).then(() => {console.log('next img loaded')});
               return (
                 <div className={cls.photoGallery}>
                   <Img
                     className={cls.img}
                     src={toWebpUrl(photo.url)}
                     onClick={createClickHandler({ onRightClick: next, onLeftClick: prev })}
-                    loadingViewRenderer={renderBlurryThumbnail}
                   />
                 </div>
               )

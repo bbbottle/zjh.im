@@ -5,7 +5,7 @@ const { ajax } = ajaxMod;
 
 export const get = (url) => {
   const res$ = ajax.getJSON(url);
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     return res$.subscribe(res)
   })
 }
@@ -28,3 +28,10 @@ export const Get = (props) => {
   })
 };
 
+export const preloadImg = (imgSrc) => {
+  let img = new Image();
+  img.src = imgSrc;
+  return new Promise((resolve, reject) => {
+    img.onload = resolve;
+  })
+}

@@ -17,7 +17,7 @@ const pagesConfig = {
     component: AboutPage,
   },
   canvas: {
-    title: '画布',
+    title: '画布 [beta]',
     icon: RulerIcon,
     component: CanvasPage,
   },
@@ -29,7 +29,7 @@ const pagesConfig = {
 };
 
 export const pages = [
+  pagesConfig.photos,
   pagesConfig.canvas,
-  // pagesConfig.photos,
   pagesConfig.about
 ]
