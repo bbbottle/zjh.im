@@ -8,9 +8,9 @@ import {
 } from './renderer/';
 import CLS from './index.scss';
 
-export const CanvasPage = (props) => {
+export const CanvasPage = () => {
   return (
-    <div className={classnames(CLS.canvasPage, props.className)}>
+    <div className={classnames(CLS.canvasPage)}>
       <BoxCanvas
         attachLineGutter={4}
         clearButtonRenderer={clearButtonRenderer}

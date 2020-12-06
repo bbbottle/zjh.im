@@ -19,15 +19,21 @@ class Img extends React.Component {
     src: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     onLoad: PropTypes.func,
+    onLoadingStatusChange: PropTypes.func,
     loadingViewRenderer: PropTypes.func,
     className: PropTypes.string.isRequired,
     style: PropTypes.shape({}),
   }
 
   componentDidUpdate(prevProps) {
+    const {
+      onLoadingStatusChange = (isLoading) => null,
+    } = this.props;
     if (prevProps.src !== this.props.src) {
       this.setState({
         loading: true
+      }, () => {
+        onLoadingStatusChange(true);
       })
     }
   }
@@ -39,28 +45,34 @@ class Img extends React.Component {
       onLoad = () => {},
       style = {},
       className = '',
+      cache,
+      onLoadingStatusChange = (isLoading) => null,
     } = this.props;
 
     const { loading } = this.state;
 
+    if (cache) {
+    }
     const retImg = (
-      <Fade visible={!loading}>
-        {(fadeCls) => (
-          <img
-            className={classnames(className, fadeCls)}
-            alt="*]:{)"
-            src={src}
-            key={src}
-            onClick={onClick}
-            onLoad={() => {
-              this.setState({
-                loading: false
-              }, onLoad);
-            }}
-            style={style}
-          />
-        )}
-      </Fade>
+      <img
+        className={classnames(className)}
+        alt="*]:{)"
+        src={src}
+        key={src}
+        onClick={onClick}
+        onLoad={(evt) => {
+          const img = evt.target;
+          if (img.complete && img.height) {
+            this.setState({
+              loading: false
+            }, () => {
+              onLoad();
+              onLoadingStatusChange(false);
+            });
+          }
+        }}
+        style={style}
+      />
     )
     return (
       <>

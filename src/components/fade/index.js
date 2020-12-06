@@ -6,6 +6,11 @@ import Styles from './index.scss';
 
 export class Fade extends React.PureComponent {
   static propTypes = {
+    speed: PropTypes.oneOf([
+      'superFast',
+      'fast',
+      'slow',
+    ]),
     visible: PropTypes.bool.isRequired,
     unMountAfterFadeOut: PropTypes.bool,
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import { Get, preloadImg } from '../../utils/req';
@@ -9,7 +9,6 @@ import { TickLoader } from '../../components/spinner';
 import Img from '../../components/img';
 
 import {
-  // tmpBlurryThumbnailUrlSuffix,
   tmpWebpUrlSuffix,
   apiURL
 } from '../../constants';
@@ -17,7 +16,8 @@ import {
 import cls from './index.scss';
 
 const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
-// const toBlurryImgUrl = (src) => `${src.replace(tmpWebpUrlSuffix, '')}${tmpBlurryThumbnailUrlSuffix}`;
+
+let cachedImg = null;
 
 export const Photos = (props) => {
   const {
@@ -25,6 +25,7 @@ export const Photos = (props) => {
     className
   } = props;
 
+  const [contentLoading, setLoading] = useState(true);
   return (
     <Get url={apiURL.res}>
       {({ loading, data }) => {
@@ -45,12 +46,16 @@ export const Photos = (props) => {
               }) => {
               const photo = currentPageData[0];
               const nextImgSrc = toWebpUrl(nextPageData[0].url);
-              preloadImg(nextImgSrc).then(() => {console.log('next img loaded')});
+              preloadImg(nextImgSrc).then((next) => {cachedImg = next});
               return (
-                <div className={classnames(cls.photoGallery, className)}>
+                <div
+                  className={classnames(cls.photoGallery, className)}
+                  style={{ opacity: contentLoading ? 0 : 1 }}
+                >
                   <Img
                     className={cls.img}
                     src={toWebpUrl(photo.url)}
+                    onLoadingStatusChange={setLoading}
                     onClick={createClickHandler({ onRightClick: next, onLeftClick: prev })}
                   />
                 </div>

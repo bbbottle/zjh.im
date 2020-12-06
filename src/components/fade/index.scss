@@ -1,6 +1,11 @@
 .fadeEle {
   opacity: 1;
   transition: opacity .3s;
+  will-change: opacity;
+}
+
+.superFast {
+  transition-duration: 0s;
 }
 
 .fast {
