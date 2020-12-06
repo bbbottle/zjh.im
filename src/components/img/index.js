@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { TickLoader as Spinner } from '../spinner';
 
-import ImgStyle from './img.scss';
+import {Fade} from '../fade';
 
 class Img extends React.Component {
   constructor(props) {
@@ -44,25 +44,23 @@ class Img extends React.Component {
     const { loading } = this.state;
 
     const retImg = (
-      <img
-        className={classnames(ImgStyle.customImgTag, className, {
-          [ImgStyle.fadeIn]: !loading,
-          [ImgStyle.fadeOut]: loading,
-        })}
-        alt="*]:{)"
-        src={src}
-        key={src}
-        onClick={onClick}
-        onLoad={() => {
-          this.setState({
-            loading: false
-          }, onLoad);
-        }}
-        style={{
-          ...style,
-          // display: loading ? 'none' : 'unset'
-        }}
-      />
+      <Fade visible={!loading}>
+        {(fadeCls) => (
+          <img
+            className={classnames(className, fadeCls)}
+            alt="*]:{)"
+            src={src}
+            key={src}
+            onClick={onClick}
+            onLoad={() => {
+              this.setState({
+                loading: false
+              }, onLoad);
+            }}
+            style={style}
+          />
+        )}
+      </Fade>
     )
     return (
       <>

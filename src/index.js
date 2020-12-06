@@ -6,6 +6,7 @@ import { PageMenu, Page } from '@bbbottle/page-menu'
 import { IconText } from './components/icon_text';
 import { MenuBtn } from './components/menu_btn';
 import { pages } from './pages';
+import {Fade} from './components/fade';
 
 
 export const PageTitle = (props) => {
@@ -39,9 +40,15 @@ const App = () => {
         component: PageComp,
         icon: PageIcon,
       }, index) => {
+        const visible = index === activePageIndex;
         return (
           <Page title={ isOpen && <PageTitle icon={<PageIcon />}>{title}</PageTitle>}>
-            {index === activePageIndex && <PageComp />}
+            <Fade
+              visible={visible}
+              unMountAfterFadeOut
+            >
+              {(cls) => <PageComp className={cls} />}
+            </Fade>
           </Page>
         )
       })}

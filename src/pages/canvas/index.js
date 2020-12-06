@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { BoxCanvas } from '@bbbottle/box-canvas'
 import {
   staticBoxRenderer,
@@ -7,9 +8,9 @@ import {
 } from './renderer/';
 import CLS from './index.scss';
 
-export const CanvasPage = () => {
+export const CanvasPage = (props) => {
   return (
-    <div className={CLS.canvasPage}>
+    <div className={classnames(CLS.canvasPage, props.className)}>
       <BoxCanvas
         attachLineGutter={4}
         clearButtonRenderer={clearButtonRenderer}

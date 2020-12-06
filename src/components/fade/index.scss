@@ -1,0 +1,20 @@
+.fadeEle {
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.fast {
+  transition-duration: .3s;
+}
+
+.slow {
+  transition-duration: .5s;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
+}

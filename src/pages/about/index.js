@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import {
   GithubIcon,
   MailIcon,
@@ -23,7 +24,7 @@ const EmailAddr = () => {
 
 export const AboutPage = (props) => {
   return (
-    <div className={CLS.about}>
+    <div className={classnames(CLS.about, props.className)}>
       <IconText
         color='#333'
         icon={<GithubIcon />}

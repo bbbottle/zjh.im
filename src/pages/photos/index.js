@@ -1,6 +1,7 @@
 import React from 'react';
+import classnames from 'classnames';
 
-import {Get, preloadImg} from '../../utils/req';
+import { Get, preloadImg } from '../../utils/req';
 import { createClickHandler } from '../../utils/evt';
 
 import { PagingStateManager as PagingManager } from '../../components/paging';
@@ -8,7 +9,7 @@ import { TickLoader } from '../../components/spinner';
 import Img from '../../components/img';
 
 import {
-  tmpBlurryThumbnailUrlSuffix,
+  // tmpBlurryThumbnailUrlSuffix,
   tmpWebpUrlSuffix,
   apiURL
 } from '../../constants';
@@ -20,7 +21,8 @@ const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
 export const Photos = (props) => {
   const {
-    Spinner = <TickLoader absCenter />
+    Spinner = <TickLoader absCenter />,
+    className
   } = props;
 
   return (
@@ -45,7 +47,7 @@ export const Photos = (props) => {
               const nextImgSrc = toWebpUrl(nextPageData[0].url);
               preloadImg(nextImgSrc).then(() => {console.log('next img loaded')});
               return (
-                <div className={cls.photoGallery}>
+                <div className={classnames(cls.photoGallery, className)}>
                   <Img
                     className={cls.img}
                     src={toWebpUrl(photo.url)}
