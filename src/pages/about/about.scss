@@ -19,3 +19,30 @@
 .normal {
   color: #333;
 }
+
+$green-1: #51c49f;
+$green-2: #82d5bb;
+$green-3: #9ddec9;
+$green-4: #c2eade;
+$green-5: #f1fffa;
+
+.gridLine {
+  display: flex;
+  justify-content: space-between;
+  background: $green-5;
+}
+
+.gridLineHor {
+  flex-direction: column;
+};
+
+.vertical {
+  width: 2px;
+  height: 100%;
+  background: $green-4;
+}
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background: $green-4;
+}

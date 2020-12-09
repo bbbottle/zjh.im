@@ -43,6 +43,8 @@ export const Photos = (props) => {
                 nextPageData,
                 next,
                 prev,
+                totalPages: total,
+                currentPageIndex: current
               }) => {
               const photo = currentPageData[0];
               const nextImgSrc = toWebpUrl(nextPageData[0].url);
@@ -51,6 +53,7 @@ export const Photos = (props) => {
                 <div
                   className={classnames(cls.photoGallery, className)}
                   style={{ opacity: contentLoading ? 0 : 1 }}
+                  data-progress={`${current}/${total}`}
                 >
                   <Img
                     className={cls.img}
