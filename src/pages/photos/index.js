@@ -25,7 +25,6 @@ export const Photos = (props) => {
     className
   } = props;
 
-  const [contentLoading, setLoading] = useState(true);
   return (
     <Get url={apiURL.res}>
       {({ loading, data }) => {
@@ -43,22 +42,17 @@ export const Photos = (props) => {
                 nextPageData,
                 next,
                 prev,
-                totalPages: total,
-                currentPageIndex: current
               }) => {
               const photo = currentPageData[0];
               const nextImgSrc = toWebpUrl(nextPageData[0].url);
               preloadImg(nextImgSrc).then((next) => {cachedImg = next});
               return (
                 <div
-                  className={classnames(cls.photoGallery, className)}
-                  style={{ opacity: contentLoading ? 0 : 1 }}
-                  data-progress={`${current}/${total}`}
+                  className={classnames(cls.photoGallery)}
                 >
                   <Img
                     className={cls.img}
                     src={toWebpUrl(photo.url)}
-                    onLoadingStatusChange={setLoading}
                     onClick={createClickHandler({ onRightClick: next, onLeftClick: prev })}
                   />
                 </div>
