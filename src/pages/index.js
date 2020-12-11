@@ -30,6 +30,6 @@ const pagesConfig = {
 
 export const pages = [
   pagesConfig.photos,
-  pagesConfig.canvas,
+  // pagesConfig.canvas,
   pagesConfig.about
 ]
