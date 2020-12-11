@@ -8,7 +8,6 @@ import {
 import { IconText } from '../../components/icon_text';
 import pkgJSON from '../../../package.json';
 import CLS from './about.scss';
-import {TVNoiseLayer} from '../../components/noise';
 
 const EmailAddr = () => {
   return (
@@ -60,12 +59,6 @@ export const AboutPage = () => {
   return (
     <>
       <GridLine />
-      <TVNoiseLayer
-        height={480}
-        width={480}
-        className="center"
-        opacity={.2}
-      />
       <div className={CLS.about}>
         <IconText
           color='#333'
