@@ -45,14 +45,11 @@ class Img extends React.Component {
       onLoad = () => {},
       style = {},
       className = '',
-      cache,
       onLoadingStatusChange = (isLoading) => null,
     } = this.props;
 
     const { loading } = this.state;
 
-    if (cache) {
-    }
     const retImg = (
       <img
         className={classnames(className)}
