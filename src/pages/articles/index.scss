@@ -1,0 +1,23 @@
+.articles {
+  display: flex;
+  padding: 100px 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.article {
+  width: 50%;
+  &:before {
+    content: attr(data-title);
+    margin-bottom: 40px;
+    display: block;
+    color: #51c49f;
+  }
+  margin-bottom: 100px;
+}
