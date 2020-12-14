@@ -24,14 +24,12 @@ export const PageTitle = (props) => {
 }
 
 const App = () => {
-  const [isOpen, setOpen] = useState(false)
   const [activePageIndex, setActivePage] = useState(pages.length - 1)
   return (
     <PageMenu
-      defaultOpen={isOpen}
-      onOpenStatusChange={setOpen}
+      defaultOpen={false}
       onSelect={setActivePage}
-      menuIconRenderer={({ open }) => {
+      menuIconRenderer={({ open, isOpen }) => {
         return <MenuBtn onClick={open} hidden={isOpen} />
       }}
     >
@@ -42,7 +40,7 @@ const App = () => {
       }, index) => {
         const visible = index === activePageIndex;
         return (
-          <Page title={ isOpen && <PageTitle icon={<PageIcon />}>{title}</PageTitle>}>
+          <Page>
             <Fade
               visible={visible}
               unMountAfterFadeOut
