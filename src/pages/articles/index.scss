@@ -23,5 +23,14 @@
     font-weight: 700;
     color: #262626;
   }
+
+  &:after {
+    content: attr(data-time);
+    font-weight: 400;
+    color: #bfbfbf;
+    font-family: Consolas,Menlo,Courier,monospace;
+    font-size: 12px;
+    margin-top: 50px;
+  }
   margin-bottom: 100px;
 }

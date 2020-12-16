@@ -11,6 +11,7 @@ export const Article = (props) => {
     <div
       className={CLS.article}
       dangerouslySetInnerHTML={{__html: props.content}}
+      data-time={new Date(props.updateTime).toLocaleDateString()}
       data-title={props.title}
     />
   )
