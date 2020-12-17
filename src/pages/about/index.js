@@ -8,6 +8,8 @@ import {
 import { IconText } from '../../components/icon_text';
 import pkgJSON from '../../../package.json';
 import CLS from './about.scss';
+import Img from '../../components/img';
+import {coverImgSrc} from '../../constants';
 
 const EmailAddr = () => {
   return (
@@ -56,9 +58,17 @@ const GridLine = (props) => {
 }
 
 export const AboutPage = () => {
+  const imgSize = 500;
   return (
     <>
-      <GridLine />
+      <Img
+        className="center"
+        src={coverImgSrc}
+        style={{
+          width: imgSize,
+          height: imgSize
+        }}
+      />
       <div className={CLS.about}>
         <IconText
           color='#333'
