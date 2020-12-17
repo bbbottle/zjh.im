@@ -63,7 +63,7 @@ export const AboutPage = (props) => {
   return (
     <>
       <Img
-        className={classnames('center', props.className)}
+        className={classnames('center', CLS.coverImg, props.className)}
         src={coverImgSrc}
         style={{
           width: imgSize,
@@ -73,7 +73,7 @@ export const AboutPage = (props) => {
       <TVNoiseLayer
         width={imgSize}
         height={imgSize}
-        className="center"
+        className={classnames('center', CLS.coverImg)}
         opacity={.2}
       />
       <div className={CLS.about}>

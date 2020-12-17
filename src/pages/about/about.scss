@@ -48,3 +48,13 @@ $green-5: #f1fffa;
   height: 1px;
   background: $green-4;
 }
+
+@media (max-width: 500px) {
+  .coverImg {
+    display: none;
+  }
+
+  .about {
+    left: 50px;
+  }
+}

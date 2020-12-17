@@ -35,3 +35,11 @@
   }
   margin-bottom: 100px;
 }
+
+@media (max-width: 500px) {
+  .article {
+    width: unset;
+    margin: 100px 25px;
+  }
+}
+
