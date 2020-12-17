@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import { animationFrameScheduler } from 'rxjs';
 
 /**
  * source: https://codepen.io/wifi/pen/novqA
@@ -29,6 +28,13 @@ export const TVNoiseLayer = (props) => {
   const canvasRef = useRef(null);
   let canvas, ctx;
 
+  const requestRef = React.useRef();
+
+  const animate = time => {
+    noise(ctx);
+    requestRef.current = requestAnimationFrame(animate);
+  }
+
   useEffect(() => {
     canvas = canvasRef.current;
     ctx = canvas.getContext('2d')
@@ -49,10 +55,8 @@ export const TVNoiseLayer = (props) => {
   }, [])
 
   useEffect(() => {
-    animationFrameScheduler.schedule(function(frame) {
-      noise(ctx);
-      this.schedule(frame + 1);
-    }, 0, 0);
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current);
   }, [])
 
   return (

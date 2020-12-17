@@ -10,6 +10,7 @@ import pkgJSON from '../../../package.json';
 import CLS from './about.scss';
 import Img from '../../components/img';
 import {coverImgSrc} from '../../constants';
+import {TVNoiseLayer} from '../../components/noise';
 
 const EmailAddr = () => {
   return (
@@ -57,17 +58,23 @@ const GridLine = (props) => {
   )
 }
 
-export const AboutPage = () => {
+export const AboutPage = (props) => {
   const imgSize = 500;
   return (
     <>
       <Img
-        className="center"
+        className={classnames('center', props.className)}
         src={coverImgSrc}
         style={{
           width: imgSize,
           height: imgSize
         }}
+      />
+      <TVNoiseLayer
+        width={imgSize}
+        height={imgSize}
+        className="center"
+        opacity={.2}
       />
       <div className={CLS.about}>
         <IconText
