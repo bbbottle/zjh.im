@@ -7,6 +7,7 @@ import { IconText } from './components/icon_text';
 import { MenuBtn } from './components/menu_btn';
 import { pages } from './pages';
 import {Fade} from './components/fade';
+import useScrollDirection from './hooks/use_scroll_dir';
 
 
 export const PageTitle = (props) => {
@@ -23,6 +24,13 @@ export const PageTitle = (props) => {
   )
 }
 
+export const Logo = (props) => {
+  const { visible, onClick } = props;
+  const [dir] = useScrollDirection(document);
+  const isScrollingDown = dir === 'DOWN';
+  return <MenuBtn onClick={onClick} hidden={!visible || isScrollingDown} />
+};
+
 const App = () => {
   const [activePageIndex, setActivePage] = useState(pages.length - 1)
   return (
@@ -30,7 +38,7 @@ const App = () => {
       defaultOpen={false}
       onSelect={setActivePage}
       menuIconRenderer={({ open, isOpen }) => {
-        return <MenuBtn onClick={open} hidden={isOpen} />
+        return <Logo onClick={open} visible={!isOpen} />
       }}
     >
       {pages.map(({
