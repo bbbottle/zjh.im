@@ -11,6 +11,7 @@ import CLS from './about.scss';
 import Img from '../../components/img';
 import {coverImgSrc} from '../../constants';
 import {TVNoiseLayer} from '../../components/noise';
+import {PcOnly} from '../../components/pc_only';
 
 const EmailAddr = () => {
   return (
@@ -62,20 +63,22 @@ export const AboutPage = (props) => {
   const imgSize = 500;
   return (
     <>
-      <Img
-        className={classnames('center', CLS.coverImg, props.className)}
-        src={coverImgSrc}
-        style={{
-          width: imgSize,
-          height: imgSize
-        }}
-      />
-      <TVNoiseLayer
-        width={imgSize}
-        height={imgSize}
-        className={classnames('center', CLS.coverImg)}
-        opacity={.2}
-      />
+      <PcOnly>
+        <Img
+          className={classnames('center', props.className)}
+          src={coverImgSrc}
+          style={{
+            width: imgSize,
+            height: imgSize
+          }}
+        />
+        <TVNoiseLayer
+          width={imgSize}
+          height={imgSize}
+          className={classnames('center')}
+          opacity={.2}
+        />
+      </PcOnly>
       <div className={CLS.about}>
         <IconText
           color='#333'
