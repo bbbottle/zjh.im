@@ -72,12 +72,6 @@ export const AboutPage = (props) => {
             height: imgSize
           }}
         />
-        <TVNoiseLayer
-          width={imgSize}
-          height={imgSize}
-          className={classnames('center')}
-          opacity={.2}
-        />
       </PcOnly>
       <div className={CLS.about}>
         <IconText
