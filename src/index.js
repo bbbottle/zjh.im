@@ -46,7 +46,8 @@ const App = () => {
         component: PageComp,
         icon: PageIcon,
       }, index) => {
-        const visible = index === activePageIndex;
+        const visible = index === activePageIndex
+          || index === pages.length - 1;
         return (
           <Page>
             <Fade
