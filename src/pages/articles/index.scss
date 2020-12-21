@@ -38,7 +38,7 @@
 
 @media (max-width: 500px) {
   .article {
-    width: unset;
+    width: calc(100% - 50px);
     margin: 100px 25px;
   }
 }
