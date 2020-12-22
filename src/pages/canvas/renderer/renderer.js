@@ -15,6 +15,7 @@ export const WhiteBoard = (props) => {
     width: '100%',
     height: '100%',
     padding: props.padding || 0,
+    cursor: 'default',
     border: props.disableBorder
       ? 'unset'
       : 'solid 1px #ddd',
@@ -50,9 +51,7 @@ ToolBar.propTypes = {
 
 export const PhotoBox = (props) => {
   return (
-    <WhiteBoard
-      disableBorder
-    >
+    <WhiteBoard>
       <ToolBar {...props} />
       <Photos Spinner={<TVNoiseLayer {...props} />} />
     </WhiteBoard>

@@ -11,6 +11,7 @@ import { Photos } from './photos';
 import { CanvasPage } from './canvas';
 import { AboutPage } from './about';
 import { Articles } from './articles';
+import { IS_PC } from '../utils/device_detect';
 
 const pagesConfig = {
   about: {
@@ -35,8 +36,17 @@ const pagesConfig = {
   }
 };
 
-export const pages = [
+const MOBILE_PAGES = [
   pagesConfig.photos,
   pagesConfig.articles,
   pagesConfig.about,
-]
+];
+
+const PC_PAGES = [
+  pagesConfig.canvas,
+  pagesConfig.photos,
+  pagesConfig.articles,
+  pagesConfig.about,
+];
+
+export const pages = IS_PC ? PC_PAGES : MOBILE_PAGES;

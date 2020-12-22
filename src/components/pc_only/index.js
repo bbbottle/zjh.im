@@ -1,6 +1,6 @@
 import React from 'react';
+import { IS_PC } from '../../utils/device_detect';
 
 export const PcOnly = (props) => {
-  const { matches: isPc } = matchMedia('(min-width: 500px)'); // Not sure about that~
-  return isPc ? props.children : null;
+  return IS_PC ? props.children : null;
 };

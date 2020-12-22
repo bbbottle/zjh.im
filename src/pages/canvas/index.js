@@ -12,7 +12,6 @@ export const CanvasPage = () => {
   return (
     <div className={classnames(CLS.canvasPage)}>
       <BoxCanvas
-        attachLineGutter={4}
         clearButtonRenderer={clearButtonRenderer}
         staticBoxRenderer={staticBoxRenderer}
         previewBoxRenderer={previewBoxRenderer}

@@ -38,12 +38,26 @@ export const previewBoxRenderer = (style) => {
     || showPhotoBox(style);
 
   const sizeStr = `${style.width}px ${style.height}px`;
+  const offset = 100;
   return (
-    <div
-      style={style}
-      className={cn(CLS.previewBox, { [CLS.active]: active })}
-      data-size={sizeStr}
-    />
+    <>
+      <div
+        style={{
+          ...style,
+          width: style.width + 2 * offset,
+          height: style.height + 2 * offset,
+          left: style.left - offset,
+          top: style.top - offset,
+          cursor: 'grabbing',
+          zIndex: 1,
+        }}
+      />
+      <div
+        style={style}
+        className={cn(CLS.previewBox, { [CLS.active]: active })}
+        data-size={sizeStr}
+      />
+    </>
   );
 };
 
