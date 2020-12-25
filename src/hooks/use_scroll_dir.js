@@ -19,11 +19,11 @@ const useScrollDirection = ($dom = document) => {
   });
   const scrollDirChanged$ = scroll$.pipe(
     map(e => e.target.scrollTop),
+    throttle(() => interval(300)),
     bufferCount(2),
     filter(([pre, nxt]) => Math.abs(pre - nxt) > 50),
     map(([pre, nxt]) => pre - nxt > 0 ? 'UP' : 'DOWN'),
-    distinctUntilChanged(),
-    throttle(() => interval(300))
+    distinctUntilChanged()
 );
 
   useEffect(() => {
