@@ -6,7 +6,8 @@ import { PageMenu, Page } from '@bbbottle/page-menu'
 import { IconText } from './components/icon_text';
 import { MenuBtn } from './components/menu_btn';
 import { pages } from './pages';
-import {Fade} from './components/fade';
+import { Fade } from './components/fade';
+import { IS_PC } from './utils/device_detect';
 import useScrollDirection from './hooks/use_scroll_dir';
 
 
@@ -26,6 +27,10 @@ export const PageTitle = (props) => {
 
 export const Logo = (props) => {
   const { visible, onClick } = props;
+  if (IS_PC) {
+    return <MenuBtn onClick={onClick} hidden={!visible} />
+  }
+
   const [dir] = useScrollDirection(document);
   const isScrollingDown = dir === 'DOWN';
   return <MenuBtn onClick={onClick} hidden={!visible || isScrollingDown} />
