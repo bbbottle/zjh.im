@@ -1,6 +1,6 @@
 {
   "name": "@bbbottle/zjh.im",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
@@ -25,6 +25,6 @@
     "@bbbottle/page-menu": "^0.2.0"
   },
   "devDependencies": {
-    "@bbbottle/bbbundle": "^0.0.4"
+    "@bbbottle/bbbundle": "0.0.7"
   }
 }
