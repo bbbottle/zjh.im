@@ -944,10 +944,15 @@
     rollup-plugin-postcss "^3.1.8"
     rollup-plugin-terser "^7.0.2"
 
-"@bbbottle/bbicons@^0.0.3":
-  version "0.0.3"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.3/306b57d730ef65010453960ce840825b2073ee4fa714f5108487c791eee22c8f#aa70d219d935f6dcb816358c54f28b7aa0faa76f"
-  integrity sha512-UrA5FcflwkS9/vrOyJjRL2YWzWfm/oLPHx8tvDuV0zkr3wUrhiDNP4KN0bZnQnpjgUt2pU27L8FMgDdLbJJM0A==
+"@bbbottle/bbicons@0.0.4":
+  version "0.0.4"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.4/ba5a1c1ba516674f0fc08fff550cb03d468d3fe89984e1f620cec762960ca30e#cede1a1b083da641d00217fde980356e14f3763e"
+  integrity sha512-3dCJRnaPhdKU1JW5k+gI8GmcQ4MZqSNuB0gIxbioepTVNEkcIC6YM9UDtcsIES/vdEl3diKDj2iBKbn7wkGfBA==
+
+"@bbbottle/box-canvas@0.2.13":
+  version "0.2.13"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/box-canvas/0.2.13/39d5ff2433f7e75585cac166bbfd3fb552a0369b6e87e936471ac062b12ca3b6#658acb58867d1253136d7fb0c94bfe84329a15da"
+  integrity sha512-oWHPWhRMNpuAYw/V5yiXeVczI/Ki2C7aRvrL0eDUm7fxxdq5EfrN3Z6/W9q87P0OZebi6/8VkzZo3vAOSdDIkQ==
 
 "@bbbottle/page-menu@^0.2.0":
   version "0.2.1"

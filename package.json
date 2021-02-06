@@ -1,6 +1,6 @@
 {
   "name": "@bbbottle/zjh.im",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
@@ -21,8 +21,9 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@bbbottle/bbicons": "^0.0.3",
-    "@bbbottle/page-menu": "^0.2.0"
+    "@bbbottle/bbicons": "0.0.4",
+    "@bbbottle/page-menu": "^0.2.0",
+    "@bbbottle/box-canvas": "0.2.13"
   },
   "devDependencies": {
     "@bbbottle/bbbundle": "0.0.7"
