@@ -13,6 +13,8 @@
 
 .article {
   width: 50%;
+  max-width: 752px;
+
   &:before {
     content: attr(data-title);
     margin-bottom: 40px;

@@ -947,6 +947,11 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.3/306b57d730ef65010453960ce840825b2073ee4fa714f5108487c791eee22c8f#aa70d219d935f6dcb816358c54f28b7aa0faa76f"
   integrity sha512-UrA5FcflwkS9/vrOyJjRL2YWzWfm/oLPHx8tvDuV0zkr3wUrhiDNP4KN0bZnQnpjgUt2pU27L8FMgDdLbJJM0A==
 
+"@bbbottle/page-menu@^0.2.0":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.1/dad215f309a91c0859c0fb74ebb028746bf6885feffa5b66200f53381969c945#63554ebdf433d298f869324ce7f365fe7dd32db1"
+  integrity sha512-UwN1QOwzpL3sXv31YOFx0g0Ytml74WDnp/gtZyV8cRKSSwvqO4DLXD+li/uwqDtaqCsc23WU7PE4DUWvY/xonw==
+
 "@svgr/babel-plugin-add-jsx-attribute@^5.4.0":
   version "5.4.0"
   resolved "https://registry.npmjs.org/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-5.4.0.tgz#81ef61947bb268eb9d50523446f9c638fb355906"
