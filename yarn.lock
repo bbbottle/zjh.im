@@ -954,10 +954,10 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/box-canvas/0.2.13/39d5ff2433f7e75585cac166bbfd3fb552a0369b6e87e936471ac062b12ca3b6#658acb58867d1253136d7fb0c94bfe84329a15da"
   integrity sha512-oWHPWhRMNpuAYw/V5yiXeVczI/Ki2C7aRvrL0eDUm7fxxdq5EfrN3Z6/W9q87P0OZebi6/8VkzZo3vAOSdDIkQ==
 
-"@bbbottle/page-menu@^0.2.0":
-  version "0.2.1"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.1/dad215f309a91c0859c0fb74ebb028746bf6885feffa5b66200f53381969c945#63554ebdf433d298f869324ce7f365fe7dd32db1"
-  integrity sha512-UwN1QOwzpL3sXv31YOFx0g0Ytml74WDnp/gtZyV8cRKSSwvqO4DLXD+li/uwqDtaqCsc23WU7PE4DUWvY/xonw==
+"@bbbottle/page-menu@0.2.2":
+  version "0.2.2"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.2/0130e81286f2c76d4dba36c29ed6a9af3981e461eac5c914e50c6bf97a8e236b#f081a7d4a63db09b53487a3a97e1ddf9f5c16f38"
+  integrity sha512-gH24TT8x+4w5qY1Qo6SXrcv8fbgBXuBmSMkMsvJP5HbBuobW2B8G24oFVe9xyjH1QGqccqtqoGK8GM82nMu5TA==
 
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
