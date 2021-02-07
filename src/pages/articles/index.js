@@ -26,8 +26,11 @@ const scrollToArticle = (articleTitle) => {
 }
 
 const LatestArticleTitles = (props) => {
-  const { articles = [] } = props;
-  const titles = articles.slice(0, 10).map(a => a.title);
+  const {
+    articles = [],
+    count = 3,
+  } = props;
+  const titles = articles.slice(0, count).map(a => a.title);
   return (
     <PcOnly>
       <ul className={CLS.latestArticlesTitles}>
