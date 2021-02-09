@@ -13,7 +13,9 @@ export const Article = (props) => {
 
   const [isShowDetail, showDetail] = useState(isDetailVisible)
   const detailURL = isShowDetail ? `${apiURL.article}?slug=${slug}` : null;
-  const { data: detailInfo, error } = useSWR(detailURL);
+  const { data: detailInfo, error } = useSWR(detailURL, {
+    revalidateOnFocus: false,
+  });
   const articleContentEle = useRef(null);
 
   // did mount
