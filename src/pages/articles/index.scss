@@ -1,3 +1,55 @@
+$gray-1: #333333;
+$gray-2: #4f4f4f;
+$gray-3: #828282;
+$gray-4: #bdbdbd;
+$gray-5: #bfbfbf;
+$gray-6: #ccc;
+
+@-webkit-keyframes colorChange {
+  0% {
+    color: $gray-1;
+  }
+
+  10% {
+    color: $gray-2;
+  }
+
+  20% {
+    color: $gray-3;
+  }
+
+  30% {
+    color: $gray-4;
+  }
+
+  40% {
+    color: $gray-5;
+  }
+
+  50% {
+    color: $gray-6;
+  }
+
+  60% {
+    color: $gray-5;
+  }
+
+  70% {
+    color: $gray-4;
+  }
+  80% {
+    color: $gray-3;
+  }
+
+  90% {
+    color: $gray-2;
+  }
+
+  100% {
+    color: $gray-1;
+  }
+}
+
 .articles {
   display: flex;
   padding: 0 0 100px;
@@ -40,6 +92,35 @@
   }
 }
 
+.blurCover {
+  position: relative;
+  letter-spacing: .05em;
+  line-height: 1.74;
+  font-size: 14px;
+  -webkit-animation: colorChange 2s ease-in-out alternate infinite;
+}
+
+.clickable {
+  color: #bfbfbf;
+  cursor: pointer;
+  &:hover {
+    color: $gray-1;
+  }
+}
+
+.description {
+  line-height: 1.74;
+  font-size: 14px;
+  color: #bfbfbf;
+  letter-spacing: .05em;
+}
+
+.contentWrapper {
+  transition: all .3s;
+  position: relative;
+  opacity: 1;
+}
+
 .article {
   width: 50%;
   max-width: 752px;
@@ -50,6 +131,7 @@
     display: block;
 
     font-size: 36px;
+    letter-spacing: .05em;
     line-height: 1.389;
     font-weight: 700;
     color: #262626;
@@ -61,12 +143,12 @@
     font-weight: 400;
     color: #bfbfbf;
     font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    letter-spacing: .05em;
     display: block;
     font-size: 12px;
     margin-top: 50px;
   }
   padding-top: 200px;
-  margin-bottom: 100px;
 }
 
 @media (max-width: 500px) {

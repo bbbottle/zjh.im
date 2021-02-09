@@ -954,10 +954,10 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/box-canvas/0.2.13/39d5ff2433f7e75585cac166bbfd3fb552a0369b6e87e936471ac062b12ca3b6#658acb58867d1253136d7fb0c94bfe84329a15da"
   integrity sha512-oWHPWhRMNpuAYw/V5yiXeVczI/Ki2C7aRvrL0eDUm7fxxdq5EfrN3Z6/W9q87P0OZebi6/8VkzZo3vAOSdDIkQ==
 
-"@bbbottle/page-menu@0.2.2":
-  version "0.2.2"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.2/0130e81286f2c76d4dba36c29ed6a9af3981e461eac5c914e50c6bf97a8e236b#f081a7d4a63db09b53487a3a97e1ddf9f5c16f38"
-  integrity sha512-gH24TT8x+4w5qY1Qo6SXrcv8fbgBXuBmSMkMsvJP5HbBuobW2B8G24oFVe9xyjH1QGqccqtqoGK8GM82nMu5TA==
+"@bbbottle/page-menu@0.2.3":
+  version "0.2.3"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.3/f2b6b87dc18201250a3bdecd34d8b4690119f42960f693724a7ff4c684a69dbb#a4bacede107e8133ae3343202c41589bb5fecf28"
+  integrity sha512-RKO8334uirgMgZmRViQojLjZjnS9qLArRpFBIVHL8LhXYGTKvJDMa4DuPU0i1aAikAIuA+Nsk8Rz+hW0Rp/+2w==
 
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
@@ -1740,6 +1740,11 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
+
+dequal@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
 
 dom-serializer@0:
   version "0.2.2"
@@ -3890,6 +3895,13 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+swr@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-0.4.2.tgz#4a9ed5e9948088af145c79d716d294cb99712a29"
+  integrity sha512-SKGxcAfyijj/lE5ja5zVMDqJNudASH3WZPRUakDVOePTM18FnsXgugndjl9BSRwj+jokFCulMDe7F2pQL+VhEw==
+  dependencies:
+    dequal "2.0.2"
 
 tar@^6.0.2:
   version "6.0.5"

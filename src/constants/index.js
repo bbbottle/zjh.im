@@ -1,9 +1,14 @@
-export const apiEndPoint = 'https://api.zjh.im';
+const productionApiEndPoint = 'https://api.zjh.im';
+// const developmentApiEndPoint = 'https://api-grocery.zjh-im.vercel.app';
+
+export const apiEndPoint = productionApiEndPoint; // developmentApiEndPoint;
 export const OSSEndPoint = 'https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com';
 
 export const apiURL = {
   res: `${apiEndPoint}/res`,
-  articles: `${apiEndPoint}/articles`,
+  articles: `${apiEndPoint}/blog/articles`,
+  article: `${apiEndPoint}/blog/article`,
+  photos: `${apiEndPoint}/photo/gallery`,
 };
 
 export const coverImgSrc = 'https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/5e3ffe8bdcaaca180c846aa2-%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200209204106.jpg?x-oss-process=style/webp';
