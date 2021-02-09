@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import useSWR from 'swr'
 import cn from 'classnames';
 
-import { ErrorIcon } from "@bbbottle/bbicons";
-
 import { TickLoader } from "../../components/spinner";
 import { apiURL } from '../../constants';
 import { PcOnly } from "../../components/pc_only";
@@ -28,7 +26,7 @@ export const Article = (props) => {
   }, []);
 
   const content = error
-    ? <ErrorIcon />
+    ? "REQUEST ERROR :("
     : (
     <div
       className={cn(CLS.contentWrapper, {
@@ -91,7 +89,7 @@ const LatestArticleTitles = (props) => {
 export const Articles = (props) => {
   const { data, error } = useSWR(apiURL.articles);
   if (error) {
-    return <ErrorIcon />
+    return null
   }
 
   if (!data) {
