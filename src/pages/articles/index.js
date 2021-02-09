@@ -4,7 +4,7 @@ import useSWR from 'swr'
 
 import { TickLoader } from "../../components/spinner";
 import { apiURL } from '../../constants';
-import { useSafeState } from "../../utils/custom_hooks";
+import { useSafeState } from "../../hooks/use_safe_state";
 import { createArticleIntersectionObserver } from "./article_intersection_observer";
 import { LatestArticleTitles } from "./latest_article_titles";
 import { Article } from "./article";
