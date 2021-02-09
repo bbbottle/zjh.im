@@ -43,6 +43,19 @@ export class PagingStateManager extends React.PureComponent {
     }
   };
 
+  gotoPage = (pageIndex) => {
+    const {data, pageSize } = this.props;
+    const totalPages = Math.ceil(data.length / pageSize);
+    if (pageIndex > totalPages) {
+      return;
+    }
+
+    this.setState(() => this.getStateByPropsAndCurrentPageIndex(
+      this.props,
+      pageIndex
+    ));
+  };
+
   next = () => {
     if (!this.state.hasNextPage && !this.props.infiniteLoopMode) {
       return;
@@ -86,6 +99,7 @@ export class PagingStateManager extends React.PureComponent {
       ...this.state,
       next: this.next,
       prev: this.prev,
+      gotoPage: this.gotoPage,
     })
   }
 }

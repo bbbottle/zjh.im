@@ -7,6 +7,7 @@ import { createClickHandler } from '../../utils/evt';
 
 import { PagingStateManager as PagingManager } from '../../components/paging';
 import { TickLoader } from '../../components/spinner';
+import { TickIndicator } from "../../components/draggable_tick_indicator";
 import Img from '../../components/img';
 
 import {
@@ -15,13 +16,17 @@ import {
 } from '../../constants';
 
 import cls from './index.scss';
+import COMMON_STYLE from '../../style/common.scss';
+import {IS_PC} from "../../utils/device_detect";
 
 const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
 let cachedImg = null;
 
 export const Photos = () => {
-  const { data, error } = useSWR(apiURL.photos);
+  const { data, error } = useSWR(apiURL.photos, {
+    revalidateOnFocus: false
+  });
 
   if (error) {
     return null;
@@ -38,7 +43,9 @@ export const Photos = () => {
     >
       {({
           currentPageData,
+          currentPageIndex,
           nextPageData,
+          gotoPage,
           next,
           prev,
         }) => {
@@ -49,6 +56,16 @@ export const Photos = () => {
           <div
             className={classnames(cls.photoGallery)}
           >
+            <div className={COMMON_STYLE.fixedWidgetsUnderLogo}>
+              {IS_PC && (
+                <TickIndicator
+                  total={data.length}
+                  current={currentPageIndex}
+                  onDrop={gotoPage}
+                  onClick={(e, i) => { gotoPage(i); }}
+                />
+              )}
+            </div>
             <Img
               className={cls.img}
               src={toWebpUrl(photo.url)}
