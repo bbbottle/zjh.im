@@ -11,7 +11,7 @@ import { Article } from "./article";
 
 import CLS from './index.scss';
 
-export const Articles = (props) => {
+export const Articles = () => {
   const { data, error } = useSWR(apiURL.articles, {
     revalidateOnFocus: false,
   });
@@ -35,7 +35,7 @@ export const Articles = (props) => {
   return (
     <>
       <LatestArticleTitles articles={data.articles} />
-      <div className={cn(CLS.articles, props.className)}>
+      <div className={cn(CLS.articles)}>
         {data.articles.map((article) => (
           <Article
             showDetail={articleDetailVisibilityMap[article.id]}

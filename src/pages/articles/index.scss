@@ -5,48 +5,27 @@ $gray-4: #bdbdbd;
 $gray-5: #bfbfbf;
 $gray-6: #ccc;
 
-@-webkit-keyframes colorChange {
+@keyframes backdropBlur {
   0% {
-    color: $gray-1;
+    backdrop-filter: blur(4px);
   }
-
   10% {
-    color: $gray-2;
+    backdrop-filter: blur(3px);
   }
-
-  20% {
-    color: $gray-3;
+  25% {
+    backdrop-filter: blur(2px);
   }
-
-  30% {
-    color: $gray-4;
-  }
-
-  40% {
-    color: $gray-5;
-  }
-
   50% {
-    color: $gray-6;
+    backdrop-filter: blur(1px);
   }
-
-  60% {
-    color: $gray-5;
+  75% {
+    backdrop-filter: blur(2px);
   }
-
-  70% {
-    color: $gray-4;
+  95% {
+    backdrop-filter: blur(3px);
   }
-  80% {
-    color: $gray-3;
-  }
-
-  90% {
-    color: $gray-2;
-  }
-
   100% {
-    color: $gray-1;
+    backdrop-filter: blur(4px);
   }
 }
 
@@ -97,7 +76,18 @@ $gray-6: #ccc;
   letter-spacing: .05em;
   line-height: 1.74;
   font-size: 14px;
-  -webkit-animation: colorChange 2s ease-in-out alternate infinite;
+  // -webkit-animation: colorChange 2s ease-in-out alternate infinite;
+  &:after {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    top: -5px;
+    left: -5px;
+    content: "";
+    // backdrop-filter: blur(2px);
+    animation: backdropBlur 2s linear infinite;
+  }
 }
 
 .clickable {
@@ -116,9 +106,7 @@ $gray-6: #ccc;
 }
 
 .contentWrapper {
-  transition: all .3s;
   position: relative;
-  opacity: 1;
 }
 
 .article {
