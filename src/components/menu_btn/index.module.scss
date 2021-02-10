@@ -4,12 +4,9 @@
   outline: none;
   top: 50px;
   left: 50px;
-  width: 25px;
-  height: 26px;
   border-radius: 0;
   opacity: 0;
-  box-shadow: #6bcba88f -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
-  background: #51c49f;;
+  //box-shadow: rgba(115,202,168,0.2) -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
   z-index: 1;
   transition: all .3s;
   cursor: pointer;
@@ -18,7 +15,7 @@
   &:active {
     bottom: 23px;
     right: 17px;
-    box-shadow: #6bcba88f -1px -1px 0 0;
+    box-shadow: rgba(115,202,168,0.2) -1px -1px 0 0;
   }
 }
 
@@ -26,5 +23,5 @@
   pointer-events: all;
   transition-delay: .3s;
   opacity: 1;
-  box-shadow: #6bcba88f -0px -0px 0 0, #6bcba859 0px 0px 0 0;
+  //box-shadow: rgba(115,202,168,0.2) -0px -0px 0 0, #6bcba859 0px 0px 0 0;
 }
