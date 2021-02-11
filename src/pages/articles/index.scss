@@ -93,6 +93,8 @@ $gray-6: #ccc;
   font-size: 14px;
   color: #bfbfbf;
   letter-spacing: .05em;
+  opacity: .5;
+  filter: blur(4px);
 }
 
 .contentWrapper {
