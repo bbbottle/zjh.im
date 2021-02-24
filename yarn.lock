@@ -944,10 +944,10 @@
     rollup-plugin-postcss "^3.1.8"
     rollup-plugin-terser "^7.0.2"
 
-"@bbbottle/bbicons@0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.4/ba5a1c1ba516674f0fc08fff550cb03d468d3fe89984e1f620cec762960ca30e#cede1a1b083da641d00217fde980356e14f3763e"
-  integrity sha512-3dCJRnaPhdKU1JW5k+gI8GmcQ4MZqSNuB0gIxbioepTVNEkcIC6YM9UDtcsIES/vdEl3diKDj2iBKbn7wkGfBA==
+"@bbbottle/bbicons@0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.6/1e06b453ef932d2cbcb1ec0fa17fb01d6f71bef753a24bdb10f8ab0e6e21d5d4#d743b1977a3ca6507290f762f90cb0352eb4a4d5"
+  integrity sha1-10Oxl3o8plBykPdi+QywNS60pNU=
 
 "@bbbottle/box-canvas@0.2.13":
   version "0.2.13"

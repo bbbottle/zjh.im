@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Subject,
-  fromEvent,
-  merge,
-  operators
-} from 'rxjs';
+import Rxjs from 'rxjs';
 import classNames from 'classnames';
 
 import CLS from './style.scss';
 
+const { Subject, fromEvent, merge, operators } = Rxjs;
 const { filter, map, concatAll, takeUntil } = operators;
 
 const range = num => [...Array(num).keys()];
