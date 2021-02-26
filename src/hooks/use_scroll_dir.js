@@ -1,15 +1,14 @@
 import {
   useState, useEffect
 } from 'react';
-import { fromEvent, interval, operators } from 'rxjs';
-
-const {
+import { fromEvent, interval } from 'rxjs';
+import {
   map,
   bufferCount,
   distinctUntilChanged,
   throttle,
   filter
-} = operators;
+} from 'rxjs/operators';
 
 
 const useScrollDirection = ($dom = document) => {
