@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState, useCallback } from 'react';
-import immer from "immer"
+import { produce } from "immer"
 
-const produce = immer.produce;
 
 export const useSafeState = (s) => {
   const [state, setState] = useState(s);
