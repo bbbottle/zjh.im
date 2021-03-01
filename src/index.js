@@ -14,7 +14,7 @@ import useScrollDirection from './hooks/use_scroll_dir';
 export const PageTitle = (props) => {
   const { icon, title } = props;
   return (
-    <div style={{ position: 'absolute', top: 15, left: 15 }}>
+    <div style={{ position: 'absolute', top: 15, left: 15, zIndex: 1 }}>
       <IconText
         icon={icon}
         color="#51c49f"
@@ -54,7 +54,9 @@ const App = () => {
         const visible = index === activePageIndex
           || index === pages.length - 1;
         return (
-          <Page>
+          <Page
+            title={<PageTitle title={title} icon={<PageIcon />} />}
+          >
             <Fade
               visible={visible}
               unMountAfterFadeOut
