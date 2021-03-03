@@ -78,9 +78,9 @@ export const FigmaBoard = (props) => {
     <WhiteBoard>
       <iframe
         onLoad={handleLoad}
-        width={width}
+        width={width - 2}
         frameBorder='none'
-        height={height}
+        height={height - 2}
         style={{position: 'absolute'}}
         src={FigmaLiveAddr}
       />
