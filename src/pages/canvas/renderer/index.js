@@ -12,7 +12,6 @@ import {
   emptyRender,
   FigmaBoard,
   PhotoBox,
-  DelBtn
 } from './renderer';
 
 const rendererMatcherMatrix = [
@@ -22,7 +21,7 @@ const rendererMatcherMatrix = [
 
 const getBoxRenderer = (matrix, props) => {
   const defaultRendererMatcherPair = [emptyRender, falsyMatcher];
-  const [ renderer ] = matrix.find(([r,m]) => m(props))
+  const [ renderer ] = matrix.find(([,m]) => m(props))
   || defaultRendererMatcherPair;
 
   return renderer;
@@ -48,7 +47,6 @@ export const previewBoxRenderer = (style) => {
           height: style.height + 2 * offset,
           left: style.left - offset,
           top: style.top - offset,
-          cursor: 'grabbing',
           zIndex: 1,
         }}
       />
@@ -61,17 +59,6 @@ export const previewBoxRenderer = (style) => {
   );
 };
 
-export const clearButtonRenderer = (props) => {
+export const clearButtonRenderer = () => {
   return null;
-  // return (
-  //   <DelBtn
-  //     onClick={props.clear}
-  //     className={cn(CLS.black, CLS.big)}
-  //     style={{
-  //       position: "absolute",
-  //       right: '50%',
-  //       bottom: 50
-  //     }}
-  //   />
-  // )
 }
