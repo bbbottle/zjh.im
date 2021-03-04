@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import { TickLoader } from '../../../components/spinner';
 import { TVNoiseLayer } from '../../../components/noise';
-import Img from '../../../components/img';
 
 import CLS from './renderer.scss';
 import {Photos} from '../../photos';
@@ -53,7 +52,10 @@ export const PhotoBox = (props) => {
   return (
     <WhiteBoard>
       <ToolBar {...props} />
-      <Photos Spinner={<TVNoiseLayer {...props} />} />
+      <Photos
+        Spinner={<TVNoiseLayer {...props} />}
+        hideProgressIndicator
+      />
     </WhiteBoard>
   );
 }
@@ -90,6 +92,6 @@ export const FigmaBoard = (props) => {
   )
 }
 export const emptyRender = () => null;
-export const DesignFrame = (props) => {
+export const DesignFrame = () => {
   return null;
 }

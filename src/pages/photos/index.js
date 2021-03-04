@@ -23,7 +23,11 @@ const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
 let cachedImg = null;
 
-export const Photos = () => {
+export const Photos = (props) => {
+  const {
+    hideProgressIndicator
+  } = props;
+
   const { data, error } = useSWR(apiURL.photos, {
     revalidateOnFocus: false
   });
@@ -57,7 +61,7 @@ export const Photos = () => {
             className={classnames(cls.photoGallery)}
           >
             <div className={COMMON_STYLE.fixedWidgetsUnderLogo}>
-              {IS_PC && (
+              {(IS_PC && !hideProgressIndicator) && (
                 <TickIndicator
                   total={data.length}
                   current={currentPageIndex}
