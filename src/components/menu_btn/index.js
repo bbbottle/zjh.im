@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { MicroscopeSlide } from '@bbbottle/bbicons';
+import { LogoIcon } from '@bbbottle/bbicons';
 
 import BtnStyle from './index.module.scss';
 
@@ -12,7 +12,7 @@ export const MenuBtn = ({
   hidden,
 }) => {
   return (
-    <MicroscopeSlide
+    <LogoIcon
       style={style}
       className={cn(BtnStyle.MenuButton, className, {
         [BtnStyle.show]: !hidden

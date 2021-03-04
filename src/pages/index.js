@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {
-  RulerIcon,
   AboutIcon,
   PhotoIcon,
-  PostIcon,
+  BoxIcon,
+  TextIcon,
 } from '@bbbottle/bbicons';
 
 import { Photos } from './photos';
@@ -21,12 +21,12 @@ const pagesConfig = {
   },
   canvas: {
     title: '画布 [beta]',
-    icon: RulerIcon,
+    icon: BoxIcon,
     component: CanvasPage,
   },
   articles: {
     title: '文章',
-    icon: PostIcon,
+    icon: TextIcon,
     component: Articles,
   },
   photos: {

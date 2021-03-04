@@ -17,7 +17,7 @@ export const PageTitle = (props) => {
     <div style={{ position: 'absolute', top: 15, left: 15, zIndex: 1 }}>
       <IconText
         icon={icon}
-        color="#51c49f"
+        color="#000"
       >
         {title || props.children}
       </IconText>
