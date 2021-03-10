@@ -10,7 +10,6 @@ import { Fade } from './components/fade';
 import { IS_PC } from './utils/device_detect';
 import useScrollDirection from './hooks/use_scroll_dir';
 
-
 export const PageTitle = (props) => {
   const { icon, title } = props;
   return (

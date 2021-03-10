@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import CLS from './renderer.scss';
+import TOKEN from '../../../style/token.scss';
 
 import {
   showDesignBox,
@@ -32,9 +33,21 @@ export const staticBoxRenderer = (props) => {
   return <Renderer {...props} />
 };
 
+const getMatchedAppByBoxStyle = (style) => {
+  const availableApplications = [{
+    name: 'Design',
+    matcher: showDesignBox,
+  }, {
+    name: 'Photos',
+    matcher: showPhotoBox,
+  }];
+
+  return availableApplications.find(app => app.matcher(style));
+};
+
 export const previewBoxRenderer = (style) => {
-  const active = showDesignBox(style)
-    || showPhotoBox(style);
+  const app = getMatchedAppByBoxStyle(style);
+  const active = !!app;
 
   const sizeStr = `${style.width}px ${style.height}px`;
   const offset = 100;
@@ -48,8 +61,17 @@ export const previewBoxRenderer = (style) => {
           left: style.left - offset,
           top: style.top - offset,
           zIndex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
-      />
+      >
+        <div
+          className={cn(TOKEN.green2, TOKEN.docFont)}
+        >
+          {app ? app.name : null}
+        </div>
+      </div>
       <div
         style={style}
         className={cn(CLS.previewBox, { [CLS.active]: active })}
