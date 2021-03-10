@@ -1,5 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
+import {
+  InvalidIcon,
+  FigmaIcon,
+  PhotoIcon
+} from '@bbbottle/bbicons';
+
 import CLS from './renderer.scss';
 import TOKEN from '../../../style/token.scss';
 
@@ -14,6 +20,7 @@ import {
   FigmaBoard,
   PhotoBox,
 } from './renderer';
+import {SlotMachine} from "../../../components/slot_machine";
 
 const rendererMatcherMatrix = [
   [FigmaBoard, showDesignBox],
@@ -33,24 +40,35 @@ export const staticBoxRenderer = (props) => {
   return <Renderer {...props} />
 };
 
-const getMatchedAppByBoxStyle = (style) => {
-  const availableApplications = [{
-    name: 'Design',
-    matcher: showDesignBox,
-  }, {
-    name: 'Photos',
-    matcher: showPhotoBox,
-  }];
+const UNKNOWN = 'unknown';
+const AvailableApplicationsDescription = [{
+  id: 'design',
+  name: 'Design',
+  matcher: showDesignBox,
+  renderer: () => <FigmaIcon />,
+}, {
+  id: 'photos',
+  name: 'Photos',
+  matcher: showPhotoBox,
+  renderer: () => <PhotoIcon />,
+}, {
+  id: UNKNOWN,
+  matcher: () => true,
+  renderer: () => <InvalidIcon />,
+}];
 
-  return availableApplications.find(app => app.matcher(style));
+const getMatchedAppByBoxStyle = (style) => {
+  return AvailableApplicationsDescription.find(app => app.matcher(style));
 };
 
 export const previewBoxRenderer = (style) => {
   const app = getMatchedAppByBoxStyle(style);
-  const active = !!app;
+  const active = app.id !== UNKNOWN;
 
   const sizeStr = `${style.width}px ${style.height}px`;
   const offset = 100;
+  const slotMachineSize = 24;
+  const showSlotMachine = style.width > slotMachineSize && style.height > slotMachineSize;
   return (
     <>
       <div
@@ -69,7 +87,15 @@ export const previewBoxRenderer = (style) => {
         <div
           className={cn(TOKEN.green2, TOKEN.docFont)}
         >
-          {app ? app.name : null}
+          {
+            showSlotMachine && (
+              <SlotMachine
+                size={slotMachineSize}
+                luckyPatternId={app.id}
+                patterns={AvailableApplicationsDescription}
+              />
+            )
+          }
         </div>
       </div>
       <div
