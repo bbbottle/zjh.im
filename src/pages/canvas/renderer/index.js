@@ -27,6 +27,10 @@ const rendererMatcherMatrix = [
   [PhotoBox, showPhotoBox]
 ];
 
+export const boxValidator = (boxProps) => {
+  return showDesignBox(boxProps) || showPhotoBox(boxProps);
+};
+
 const getBoxRenderer = (matrix, props) => {
   const defaultRendererMatcherPair = [emptyRender, falsyMatcher];
   const [ renderer ] = matrix.find(([,m]) => m(props))
