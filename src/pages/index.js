@@ -20,7 +20,7 @@ const pagesConfig = {
     component: AboutPage,
   },
   canvas: {
-    title: '画布 [beta]',
+    title: '画布',
     icon: BoxIcon,
     component: CanvasPage,
   },
@@ -43,10 +43,10 @@ const MOBILE_PAGES = [
 ];
 
 const PC_PAGES = [
-  pagesConfig.canvas,
   pagesConfig.photos,
   pagesConfig.articles,
   pagesConfig.about,
+  pagesConfig.canvas,
 ];
 
 export const pages = IS_PC ? PC_PAGES : MOBILE_PAGES;
