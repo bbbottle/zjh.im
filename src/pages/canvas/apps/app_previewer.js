@@ -50,7 +50,7 @@ export const AppPreviewer = (props) => {
         {...commonTickProps}
         rectHeight={boxInfo.height}
       >
-        {boxInfo.width}
+        {boxInfo.height}
       </VerticalTick>
       <AppAxis originCoordinate={boxInfo.startPos} />
     </>
