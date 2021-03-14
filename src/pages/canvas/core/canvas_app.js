@@ -1,5 +1,6 @@
 import React from 'react';
 import {EMPTY_APP_ID} from "../const";
+import {AppLivableZoneEdge} from "../apps/app_livable_zone_edge";
 
 export class Zone {
   constructor(width, height) {
@@ -74,6 +75,16 @@ export class CanvasApp {
     const Icon = this.icon;
     return <Icon />
   };
+
+  renderLivableZoneEdge = (hostInfo, cursorQuadrant) => {
+    return (
+      <AppLivableZoneEdge
+        app={this}
+        hostInfo={hostInfo}
+        cursorQuadrant={cursorQuadrant}
+      />
+    )
+  }
 
   render = (props) => {
     const Component = this.Component;

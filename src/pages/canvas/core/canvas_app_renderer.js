@@ -18,11 +18,7 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
     return !this.availableApp(hostInfo).isEmpty();
   };
 
-  renderCursorTracker = (content, hostInfo) => {
-    const cursorQuadrant = getQuadrantByStartEndPos(
-      hostInfo.startPos,
-      hostInfo.endPos
-    );
+  renderCursorTracker = (content, hostInfo, cursorQuadrant) => {
     return (
       <AbsolutePositionedBox
         offset={10}
@@ -32,6 +28,13 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
         {content}
       </AbsolutePositionedBox>
     )
+  };
+
+  renderAvailableAppsLivableZoneEdge = (hostInfo, cursorQuadrant) => {
+    return this.allApps().map((app) => {
+      return app.renderLivableZoneEdge(hostInfo, cursorQuadrant)
+    })
+
   };
 
   renderClearButton = () => null;
@@ -53,15 +56,22 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
 
   renderAppPreviewer = (hostInfo) => {
     const availableApp = this.availableApp(hostInfo);
+    const cursorQuadrant = getQuadrantByStartEndPos(
+      hostInfo.startPos,
+      hostInfo.endPos
+    );
     return (
       <AppPreviewer
+        cursorQuadrant={cursorQuadrant}
         boxInfo={hostInfo}
         availableApp={availableApp}
       >
         {this.renderCursorTracker(
           this.renderSlotMachine(availableApp, hostInfo),
-          hostInfo
+          hostInfo,
+          cursorQuadrant
         )}
+        {this.renderAvailableAppsLivableZoneEdge(hostInfo, cursorQuadrant)}
       </AppPreviewer>
     );
   }

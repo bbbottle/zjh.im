@@ -4,21 +4,24 @@ import CLS from './style.scss';
 import TOKEN from "../../../style/token.scss";
 import {AppAxis} from "./app_axis";
 import {AbsolutePositionedBox} from "./absolute_positioned_box";
-import {getQuadrantByStartEndPos} from "../utils";
+import {HorizontalTick} from "./hrizontal_tick";
+import {VerticalTick} from "./vertial_tick";
 
 export const AppPreviewer = (props) => {
   const {
     boxInfo,
     availableApp,
+    cursorQuadrant
   } = props;
 
-  const quadrant = getQuadrantByStartEndPos(boxInfo.startPos, boxInfo.endPos)
-  const rightQuadSet = new Set([1, 4]);
-  const topQuadSet = new Set([1, 2]);
-
-  const [x0, y0] = boxInfo.startPos;
-  const x = rightQuadSet.has(quadrant) ? x0 : x0 + 1;
-  const y = topQuadSet.has(quadrant) ? y0 + 1 : y0;
+  const commonTickProps = {
+    className: TOKEN.docFont,
+    hostInfo: boxInfo,
+    offset: 25,
+    tickWidth: 50,
+    tickHeight: 20,
+    cursorQuadrant,
+  };
 
   return (
     <>
@@ -29,16 +32,26 @@ export const AppPreviewer = (props) => {
           TOKEN.docFont,
           { [CLS.active]: !availableApp.isEmpty() }
         )}
-        quadrant={quadrant}
-        fixedPointCoordinate={[x, y]}
+        quadrant={cursorQuadrant}
+        originCalibrateValue={AppAxis.thick}
+        fixedPointCoordinate={boxInfo.startPos}
         width={boxInfo.width}
         height={boxInfo.height}
       />
       {props.children}
-      <AppAxis
-        originCoordinate={boxInfo.startPos}
-        cursorCoordinate={boxInfo.endPos}
-      />
+      <HorizontalTick
+        {...commonTickProps}
+        rectWidth={boxInfo.width}
+      >
+        {boxInfo.width}
+      </HorizontalTick>
+      <VerticalTick
+        {...commonTickProps}
+        rectHeight={boxInfo.height}
+      >
+        {boxInfo.width}
+      </VerticalTick>
+      <AppAxis originCoordinate={boxInfo.startPos} />
     </>
   );
 };

@@ -8,15 +8,24 @@ const getPositionedStyleByProps = (props) => {
     width,
     height,
     offset = 0,
+    originCalibrateValue = 0,
   } = props
+
+  const rightQuadSet = new Set([1, 4]);
+  const topQuadSet = new Set([1, 2]);
+
+  const [x0, y0] = fixedPointCoordinate;
+  let [x, y] = fixedPointCoordinate;
+  if (originCalibrateValue) {
+    x = rightQuadSet.has(quadrant) ? x0 : x0 + originCalibrateValue;
+    y = topQuadSet.has(quadrant) ? y0 + originCalibrateValue : y0;
+  }
 
   const style = {
     width,
     height,
     position: 'absolute',
   };
-
-  const [x, y] = fixedPointCoordinate;
 
   if (quadrant === 1) {
     style.top = y - height - offset;
@@ -65,6 +74,7 @@ AbsolutePositionedBox.propTypes = {
   height: PropTypes.number,
   style: PropTypes.shape({}),
   fixedPointCoordinate: PropTypes.arrayOf(PropTypes.number.isRequired),
+  originCalibrateValue: PropTypes.number,
   quadrant: PropTypes.oneOf([1, 2, 3, 4]),
   size: PropTypes.number,
   offset: PropTypes.number,
@@ -75,5 +85,6 @@ AbsolutePositionedBox.defaultProps = {
   width: 24,
   style: {},
   fixedPointCoordinate: [0, 0],
+  originCalibrateValue: 0,
   offset: 0,
 }
