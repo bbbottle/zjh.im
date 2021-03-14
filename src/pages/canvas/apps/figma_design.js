@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {ToolBar, WhiteBoard} from './white_board'
 import {TickLoader} from "../../../components/spinner";
 

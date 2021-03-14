@@ -1,13 +1,22 @@
 import React from 'react';
+import {EMPTY_APP_ID} from "../const";
 
-class Zone {
+export class Zone {
   constructor(width, height) {
     this.width = width;
     this.height = height;
   }
+
+  isLargerThan = (zone) => {
+    return this.width > zone.width && this.height > zone.height;
+  }
+
+  isSmallerThan = (zone) => {
+    return this.width < zone.width && this.height < zone.height;
+  }
 }
 
-class HostZone extends Zone {
+export class HostZone extends Zone {
   constructor(left, top, width, height) {
     super(width, height);
     this.left = left;
@@ -52,7 +61,21 @@ export class CanvasApp {
     this.active = false;
   }
 
-  render(props) {
+  canLiveIn = (hostZone) => {
+    return this.livableZone.minZone.isSmallerThan(hostZone)
+      && this.livableZone.maxZone.isLargerThan(hostZone);
+  }
+
+  isEmpty = () => {
+    return this.id === EMPTY_APP_ID;
+  };
+
+  renderIcon = () => {
+    const Icon = this.icon;
+    return <Icon />
+  };
+
+  render = (props) => {
     const Component = this.Component;
     return <Component {...props} />
   }

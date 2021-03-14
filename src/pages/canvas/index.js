@@ -1,23 +1,25 @@
 import React from 'react';
 import classnames from 'classnames';
 import { BoxCanvas } from '@bbbottle/box-canvas'
-import {
-  staticBoxRenderer,
-  previewBoxRenderer,
-  clearButtonRenderer,
-  boxValidator
-} from './renderer/';
+import {CanvasAppRenderer} from "./core";
 import CLS from './index.scss';
 
-export const CanvasPage = () => {
-  return (
-    <div className={classnames(CLS.canvasPage)}>
-      <BoxCanvas
-        boxValidator={boxValidator}
-        clearButtonRenderer={clearButtonRenderer}
-        staticBoxRenderer={staticBoxRenderer}
-        previewBoxRenderer={previewBoxRenderer}
-      />
-    </div>
-  )
+export class CanvasPage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.canvasAppRenderer = new CanvasAppRenderer();
+  }
+
+  render() {
+    return (
+      <div className={classnames(CLS.canvasPage)}>
+        <BoxCanvas
+          boxValidator={this.canvasAppRenderer.canRenderApp}
+          staticBoxRenderer={this.canvasAppRenderer.renderAvailableApp}
+          clearButtonRenderer={this.canvasAppRenderer.renderClearButton}
+          previewBoxRenderer={this.canvasAppRenderer.renderAppPreviewer}
+        />
+      </div>
+    )
+  }
 }

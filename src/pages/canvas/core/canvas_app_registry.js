@@ -1,12 +1,12 @@
-import {CanvasApp, LivableZone} from "./canvas_app";
-import {CANVAS_APPLICATIONS} from "../const";
+import {CanvasApp, LivableZone, Zone} from "./canvas_app";
+import {CANVAS_APPLICATIONS, EMPTY_APP_ID} from "../const";
 
 /**
  * 画布应用注册表
  */
 export class CanvasAppRegistry {
   constructor(apps= CANVAS_APPLICATIONS) {
-    this.appById = new Map();
+    this._appById = new Map();
     this._registerApp(apps);
   }
 
@@ -22,7 +22,7 @@ export class CanvasAppRegistry {
         heightRange,
       } = appInfo;
 
-      this.appById.set(id, new CanvasApp(
+      this._appById.set(id, new CanvasApp(
         id,
         name,
         icon,
@@ -31,5 +31,16 @@ export class CanvasAppRegistry {
         LivableZone.create(widthRange, heightRange)
       ))
     })
+  }
+
+  allApps() {
+    return Array.from(this._appById.values());
+  }
+
+  availableApp(hostInfo = {}) {
+    const { width, height } = hostInfo;
+    const hostZone = new Zone(width, height);
+    return this.allApps().find(app => app.canLiveIn(hostZone))
+      || this._appById.get(EMPTY_APP_ID);
   }
 }
