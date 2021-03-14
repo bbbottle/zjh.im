@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const COLOR = '#ccc';
+const COLOR = '#ddd';
 const THICK = 1;
 
 export class AppAxis extends React.PureComponent {
@@ -19,6 +19,7 @@ export class AppAxis extends React.PureComponent {
       background: COLOR,
       left: 0,
       top: y,
+      zIndex: 0,
     }
     return (
       <div style={xStyle} />
@@ -33,6 +34,7 @@ export class AppAxis extends React.PureComponent {
       height: '100%',
       background: COLOR,
       top: 0,
+      zIndex: 0,
       left: x,
     }
     return (

@@ -20,6 +20,7 @@ export const AppPreviewer = (props) => {
     offset: 25,
     tickWidth: 50,
     tickHeight: 20,
+    style: {zIndex: 3},
     cursorQuadrant,
   };
 

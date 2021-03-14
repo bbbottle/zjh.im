@@ -11,7 +11,7 @@ export const AppLivableZoneEdge = (props) => {
   const appIconSize = 24;
 
   const edgeColor = app.isEmpty()
-    ? '#ccc'
+    ? '#ddd'
     : '#51c49f';
 
   return (
