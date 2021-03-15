@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {ToolBar, WhiteBoard} from './white_board'
 import {TickLoader} from "../../../components/spinner";
 
 export const FigmaDesignApp = (props) => {
@@ -19,17 +18,16 @@ export const FigmaDesignApp = (props) => {
   }
 
   return (
-    <WhiteBoard>
+    <>
       <iframe
         onLoad={handleLoad}
-        width={width - 2}
+        width={width}
         frameBorder='none'
-        height={height - 2}
+        height={height - 38}
         style={{position: 'absolute'}}
         src={FigmaLiveAddr}
       />
       { loading && <TickLoader absCenter /> }
-      <ToolBar {...props} />
-    </WhiteBoard>
-  )
+    </>
+  );
 }

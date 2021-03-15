@@ -1,0 +1,69 @@
+.windowTitleBar {
+  display: flex;
+}
+
+.none {
+  display: none;
+}
+
+.windowOptionButton {
+  border: none;
+  outline: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer !important;
+}
+
+.close {
+  background: #FF8888;
+  //border: 1px solid #FF7979;
+}
+
+.minimize {
+  background: #FDD587;
+  //border: 1px solid #FFCB65;
+}
+
+.zoom {
+  background: #51C49F;
+  //border: 1px solid #52BA98;
+}
+
+.windowOptionButtonGroup {
+  position: absolute;
+  margin: 13px;
+  width: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+}
+
+.windowTitle {
+  width: 100%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window {
+  position: absolute;
+  background: #FFFFFF;
+  box-shadow: 0 4px 50px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  transition: .3s;
+}
+
+.windowBody {
+  flex: 1 1 auto;
+  min-height: 0;
+}

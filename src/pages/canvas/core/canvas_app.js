@@ -1,6 +1,7 @@
 import React from 'react';
 import {EMPTY_APP_ID} from "../const";
 import {AppLivableZoneEdge} from "../apps/app_livable_zone_edge";
+import {Window} from "../widgets/window";
 
 export class Zone {
   constructor(width, height) {
@@ -59,7 +60,7 @@ export class CanvasApp {
     this.livableZone = livableZone;
     this.Component = CompClass;
 
-    this.active = false;
+    this.minimized = false;
   }
 
   canLiveIn = (hostZone) => {
@@ -69,6 +70,14 @@ export class CanvasApp {
 
   isEmpty = () => {
     return this.id === EMPTY_APP_ID;
+  };
+
+  minimize = () => {
+    this.minimized = true;
+  };
+
+  zoom = () => {
+    this.minimized = false;
   };
 
   renderIcon = () => {
@@ -88,6 +97,17 @@ export class CanvasApp {
 
   render = (props) => {
     const Component = this.Component;
-    return <Component {...props} />
+    return (
+      <Window
+        onMinimizeBtnClick={this.minimize}
+        onZoomBtnClick={this.zoom}
+        onCloseBtnClick={props.remove}
+        title={this.name}
+        icon={this.renderIcon()}
+        style={props.boxStyle}
+      >
+        <Component {...props} />
+      </Window>
+    )
   }
 }

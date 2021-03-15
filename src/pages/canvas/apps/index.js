@@ -4,11 +4,9 @@ import {WhiteBoardWithToolbar} from "./white_board";
 
 export const PhotosApp = (props) => {
   return (
-    <WhiteBoardWithToolbar {...props}>
-      <Photos
-        hideProgressIndicator
-      />
-    </WhiteBoardWithToolbar>
+    <Photos
+      hideProgressIndicator
+    />
   )
 }
 
