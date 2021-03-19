@@ -43,10 +43,10 @@ const MOBILE_PAGES = [
 ];
 
 const PC_PAGES = [
-  pagesConfig.articles,
-  pagesConfig.about,
   pagesConfig.canvas,
   pagesConfig.photos,
+  pagesConfig.articles,
+  pagesConfig.about,
 ];
 
 export const pages = IS_PC ? PC_PAGES : MOBILE_PAGES;
