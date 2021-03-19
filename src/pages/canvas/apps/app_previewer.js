@@ -25,7 +25,7 @@ export const AppPreviewer = (props) => {
   };
 
   return (
-    <>
+    <div className={cn(CLS.previewer)}>
       <AbsolutePositionedBox
         className={cn(
           CLS.previewBox,
@@ -53,7 +53,7 @@ export const AppPreviewer = (props) => {
         {boxInfo.height}
       </VerticalTick>
       <AppAxis originCoordinate={boxInfo.startPos} />
-    </>
+    </div>
   );
 };
 

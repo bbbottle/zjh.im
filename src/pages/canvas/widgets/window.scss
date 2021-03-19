@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.halfTransparent {
+  opacity: .5;
+}
+
 .none {
   display: none;
 }
@@ -13,7 +17,20 @@
   height: 12px;
   border-radius: 50%;
   box-sizing: border-box;
-  cursor: pointer !important;
+  cursor: default !important;
+}
+
+.disabledButton {
+  background: #f2f2f2 !important;
+  pointer-events: none;
+}
+
+.topLayer {
+  z-index: 1000;
+}
+
+.noPointerEvent {
+  pointer-events: none;
 }
 
 .close {

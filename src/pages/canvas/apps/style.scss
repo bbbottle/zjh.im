@@ -14,6 +14,23 @@ $red-3: #ff8888;
 $white: #fff;
 $black: #000;
 
+.cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.previewer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  backdrop-filter: blur(2px) grayscale(100%);
+}
+
 .previewBox {
   position: absolute;
   border: solid 1px $gray-4;

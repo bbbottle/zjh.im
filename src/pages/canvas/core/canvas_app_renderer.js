@@ -11,7 +11,18 @@ import {AbsolutePositionedBox} from "../apps/absolute_positioned_box";
 export class CanvasAppRenderer extends CanvasAppRegistry {
   constructor() {
     super();
-    this._slotMachinePatterns = this.allApps().map(a => ({ id: a.id, renderer: a.renderIcon }));
+  }
+
+  isDrawingPreviewer = () => {
+    return this._isPreview;
+  };
+
+  enterPreviewMode = () => {
+    this._isPreview = true;
+  };
+
+  exitPreviewMode = () => {
+    this._isPreview = false;
   }
 
   canRenderApp = (hostInfo) => {
@@ -31,25 +42,37 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
   };
 
   renderAvailableAppsLivableZoneEdge = (hostInfo, cursorQuadrant) => {
-    return this.allApps().map((app) => {
+    const apps = this.availableApps();
+    if (apps.length === 1 && apps[0].isEmpty()) {
+      return null;
+    }
+    return apps.map((app) => {
       return app.renderLivableZoneEdge(hostInfo, cursorQuadrant)
     })
-
   };
 
   renderClearButton = () => null;
 
-  renderAvailableApp = (props) => {
-    return this.availableApp(props.boxStyle).render(props);
+  renderApp = (props) => {
+    const options = {
+      isDrawingPreviewer: this.isDrawingPreviewer()
+    }
+    const app = this.getInstalledApp(props.id);
+    return app
+      ? app.render(props, options)
+      : null
   }
 
   renderSlotMachine = (app) => {
     const slotMachineSize = 24;
+    const slotMachinePatterns = this.availableApps()
+      .filter(a => !a.installed)
+      .map(a => ({ id: a.id, renderer: a.renderIcon }));
     return (
       <SlotMachine
         size={slotMachineSize}
         luckyPatternId={app.id}
-        patterns={this._slotMachinePatterns}
+        patterns={slotMachinePatterns}
       />
     )
   };

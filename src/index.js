@@ -24,6 +24,7 @@ export const PageTitle = (props) => {
   )
 }
 
+
 export const Logo = (props) => {
   const { visible, onClick } = props;
   if (IS_PC) {

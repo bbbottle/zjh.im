@@ -1,46 +1,55 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import Cls from 'classnames';
 
 import {WindowTitleBar} from "./window_title_bar";
 import Style from './window.scss';
 
-const MinStyle = {
-  width: 300,
-  height: 38,
-}
-
-const NormStyle = {
-  width: '100%',
-  height: '100%',
-};
-
 export const Window = (props) => {
-  const [isMinimized, minimize] = useState(false);
   const {
     style,
     children,
     onMinimizeBtnClick,
     onZoomBtnClick,
+    onDidMount = () => null,
+    onClick = () => null,
+    onDragStart = () => null,
+    onDragEnd = () => null,
     ...rest
   } = props;
+
+  const [isDragging, setDrag] = useState(false);
+
+  useEffect(() => {
+    onDidMount();
+  }, [])
+
   return (
     <div
-      className={Style.window}
-      style={isMinimized ? MinStyle : NormStyle}
+      className={Cls(Style.window, {
+        [Style.topLayer]: rest.active,
+      })}
+      onClick={onClick}
     >
       <WindowTitleBar
         onMinimizeBtnClick={(e) => {
-          minimize(true);
           onMinimizeBtnClick && onMinimizeBtnClick(e);
         }}
         onZoomBtnClick={(e) => {
-          minimize(false);
           onZoomBtnClick && onZoomBtnClick(e);
+        }}
+        onDragStart={(e) => {
+          setDrag(true);
+          onDragStart(e);
+        }}
+        onDragEnd={(e) => {
+          setDrag(false);
+          onDragEnd(e);
         }}
         {...rest}
       />
-      <div className={Cls(Style.windowBody)}>
+      <div className={Cls(Style.windowBody, {
+        [Style.noPointerEvent]: isDragging
+      })}>
         {children}
       </div>
     </div>

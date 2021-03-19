@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const COLOR = '#ddd';
+const COLOR = '#ccc';
 const THICK = 1;
 
 export class AppAxis extends React.PureComponent {

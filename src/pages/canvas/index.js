@@ -14,8 +14,11 @@ export class CanvasPage extends React.PureComponent {
     return (
       <div className={classnames(CLS.canvasPage)}>
         <BoxCanvas
+          onPreviewStart={this.canvasAppRenderer.enterPreviewMode}
+          onPreviewDone={this.canvasAppRenderer.exitPreviewMode}
+          onBeforeAddBox={this.canvasAppRenderer.installApp}
           boxValidator={this.canvasAppRenderer.canRenderApp}
-          staticBoxRenderer={this.canvasAppRenderer.renderAvailableApp}
+          staticBoxRenderer={this.canvasAppRenderer.renderApp}
           clearButtonRenderer={this.canvasAppRenderer.renderClearButton}
           previewBoxRenderer={this.canvasAppRenderer.renderAppPreviewer}
         />

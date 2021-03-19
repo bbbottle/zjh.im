@@ -51,7 +51,8 @@ export class CanvasApp {
     Icon,
     CompClass,
     description,
-    livableZone
+    livableZone,
+    extras = {}
   ) {
     this.id = id;
     this.name = name;
@@ -60,7 +61,9 @@ export class CanvasApp {
     this.livableZone = livableZone;
     this.Component = CompClass;
 
+    this.installed = false;
     this.minimized = false;
+    this.extras = extras;
   }
 
   canLiveIn = (hostZone) => {
@@ -72,17 +75,30 @@ export class CanvasApp {
     return this.id === EMPTY_APP_ID;
   };
 
-  minimize = () => {
-    this.minimized = true;
+  minimize = (box) => {
+    box.boxStyle.height = 38;
+    box.boxStyle.width = 300;
   };
 
-  zoom = () => {
-    this.minimized = false;
+  zoomTo = (width, height) => (box) => {
+    box.boxStyle.width = width;
+    box.boxStyle.height = height;
+  };
+
+  move = (movementX, movementY) => (box) => {
+    const dx = movementX / window.devicePixelRatio;
+    const dy = movementY / window.devicePixelRatio;
+    box.boxStyle.left += dx;
+    box.boxStyle.top += dy;
   };
 
   renderIcon = () => {
     const Icon = this.icon;
     return <Icon />
+  };
+
+  active = (box) => {
+    box.updateTime = Date.now();
   };
 
   renderLivableZoneEdge = (hostInfo, cursorQuadrant) => {
@@ -97,16 +113,43 @@ export class CanvasApp {
 
   render = (props) => {
     const Component = this.Component;
+    const isWinActive = this.extras.isActive(this);
     return (
       <Window
-        onMinimizeBtnClick={this.minimize}
-        onZoomBtnClick={this.zoom}
-        onCloseBtnClick={props.remove}
+        active={isWinActive}
+        onClick={() => {
+          this.extras.active(this);
+          props.update(this.active);
+        }}
+        onDrag={(e) => {
+          this.extras.active(this);
+          props.update(this.move(e.movementX, e.movementY));
+        }}
+        onMinimizeBtnClick={() => {
+          this.minimized = true;
+          this.originHeight = props.boxStyle.height;
+          this.originWidth = props.boxStyle.width;
+          props.update(this.minimize);
+        }}
+        onZoomBtnClick={() => {
+          if (!this.minimized) {
+            return;
+          }
+          this.minimized = false;
+          props.update(this.zoomTo(this.originWidth, this.originHeight))
+        }}
+        onCloseBtnClick={() => {
+          props.remove();
+          this.extras.uninstall(this);
+        }}
         title={this.name}
         icon={this.renderIcon()}
         style={props.boxStyle}
       >
-        <Component {...props} />
+        <Component
+          {...props}
+          active={isWinActive}
+        />
       </Window>
     )
   }

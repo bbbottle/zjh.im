@@ -1,3 +1,8 @@
+import { fromEvent } from 'rxjs';
+import {
+  filter, map, mergeAll, skip, takeUntil, windowWhen,
+} from 'rxjs/operators';
+
 export const getQuadrantByStartEndPos = (startPos, endPos) => {
   const [x1, y1] = startPos;
   const [x2, y2] = endPos;
@@ -33,4 +38,31 @@ export const quadrantHorizontalFlip = (quadrant) => {
     4: 3,
   }
   return target[quadrant];
+}
+
+export const createDragObservable = (
+  target,
+  onDragStart = () => null,
+  onDragDone = () => null
+) => {
+  const move$ = fromEvent(document, 'mousemove');
+  const originDown$ = fromEvent(target, 'mousedown');
+  const down$ = originDown$.pipe(
+    filter(e => {
+      const leftButton = 0;
+      return e.button === leftButton
+        && e.target === target;
+    })
+  )
+  const up$ = fromEvent(document, 'mouseup')
+
+  up$.subscribe(onDragDone);
+  down$.subscribe(onDragStart)
+
+  return move$.pipe(
+    windowWhen(() => down$),
+    map(win => win.pipe(takeUntil((up$)))),
+    skip(1),
+    mergeAll()
+  );
 }

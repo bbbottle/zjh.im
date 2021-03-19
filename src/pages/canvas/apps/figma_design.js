@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {TickLoader} from "../../../components/spinner";
+import Style from './style.scss';
 
 export const FigmaDesignApp = (props) => {
   const FigmaLiveAddr = "https://www.figma.com/embed?" +
@@ -8,7 +9,7 @@ export const FigmaDesignApp = (props) => {
     "chrome=DOCUMENTATION";
 
   const {
-    width, height
+    width, height, active
   } = props;
 
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ export const FigmaDesignApp = (props) => {
 
   return (
     <>
+      {!active && <div className={Style.cover} />}
       <iframe
         onLoad={handleLoad}
         width={width}
