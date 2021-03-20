@@ -76,6 +76,7 @@ export class CanvasApp {
   };
 
   minimize = (box) => {
+    box.boxStyle.transition = 'width, height .3s';
     box.boxStyle.height = 38;
     box.boxStyle.width = 300;
   };
@@ -126,15 +127,14 @@ export class CanvasApp {
           props.update(this.move(e.movementX, e.movementY));
         }}
         onMinimizeBtnClick={() => {
+          if (this.minimized) { return }
           this.minimized = true;
           this.originHeight = props.boxStyle.height;
           this.originWidth = props.boxStyle.width;
           props.update(this.minimize);
         }}
         onZoomBtnClick={() => {
-          if (!this.minimized) {
-            return;
-          }
+          if (!this.minimized) { return }
           this.minimized = false;
           props.update(this.zoomTo(this.originWidth, this.originHeight))
         }}
