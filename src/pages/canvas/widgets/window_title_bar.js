@@ -15,7 +15,10 @@ export const WindowOptionButton = (props) => {
     title,
   } = props;
 
-  const classnames = Cls(className, Style.windowOptionButton, {
+  const classnames = Cls(
+    className,
+    Style.hoverAbsAfterAndBefore,
+    Style.windowOptionButton, {
     [Style.disabledButton]: disabled,
   });
   return (

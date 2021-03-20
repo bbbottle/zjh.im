@@ -20,6 +20,27 @@
   cursor: default !important;
 }
 
+.hoverAbsAfterAndBefore {
+  position: relative;
+  &:hover:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .disabledButton {
   background: #f2f2f2 !important;
   pointer-events: none;
@@ -35,17 +56,43 @@
 
 .close {
   background: #FF8888;
-  //border: 1px solid #FF7979;
+  &:hover:after,
+  &:hover:before {
+    width: 7px;
+    height: 1px;
+  }
+
+  &:hover:after {
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #6a3b3b;
+  }
+  &:hover:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background: #333;
+  }
 }
 
 .minimize {
   background: #FDD587;
-  //border: 1px solid #FFCB65;
+  &:hover:after {
+    width: 7px;
+    height: 1px;
+    background: #333;
+  }
 }
 
 .zoom {
   background: #51C49F;
-  //border: 1px solid #52BA98;
+  &:hover:after,
+  &:hover:before {
+    width: 7px;
+    height: 1px;
+    background: #333;
+  }
+
+  &:hover:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
 }
 
 .windowOptionButtonGroup {
@@ -83,4 +130,5 @@
 .windowBody {
   flex: 1 1 auto;
   min-height: 0;
+  overflow: hidden;
 }
