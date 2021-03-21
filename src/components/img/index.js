@@ -17,12 +17,16 @@ class Img extends React.Component {
 
   static propTypes = {
     src: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     onLoad: PropTypes.func,
     onLoadingStatusChange: PropTypes.func,
     loadingViewRenderer: PropTypes.func,
     className: PropTypes.string.isRequired,
     style: PropTypes.shape({}),
+  }
+
+  static defaultProps = {
+    onClick: () => {},
   }
 
   componentDidUpdate(prevProps) {
