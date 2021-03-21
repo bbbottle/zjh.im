@@ -33,7 +33,7 @@ export const CANVAS_APPLICATIONS = [{
   heightRange: [300, 500],
 }, {
   id: 'fgm-design',
-  name: 'zjh design live',
+  name: 'zjh.im design live',
   icon: FigmaIcon,
   component: FigmaDesignApp,
   description: 'photo gallery',

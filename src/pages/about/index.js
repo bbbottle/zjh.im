@@ -3,31 +3,21 @@ import classnames from 'classnames';
 import {
   GithubIcon,
   MailIcon,
-  TagIcon
+  NpmIcon,
 } from '@bbbottle/bbicons';
 import { IconText } from '../../components/icon_text';
 import pkgJSON from '../../../package.json';
 import CLS from './about.scss';
 import Img from '../../components/img';
-import {coverImgSrc} from '../../constants';
+import {coverImgSrc, npmPkgSrc} from '../../constants';
 import {TVNoiseLayer} from '../../components/noise';
 import {PcOnly} from '../../components/pc_only';
 
-const EmailAddr = () => {
-  return (
-    <span>
-      <span className={CLS.kwd}>'hi#zjh.im'</span>
-      <span className={CLS.normal}>.replace(</span>
-      <span className={CLS.kwd}>'#'</span>
-      <span className={CLS.normal}>, </span>
-      <span className={CLS.kwd}>'@'</span>
-      <span className={CLS.normal}>)</span>
-    </span>
-  )
-};
+export const Link = (props) => <a href={props.href} target="_blank" tabIndex="-1">{props.children}</a>
 
 export const AboutPage = (props) => {
   const imgSize = 500;
+  const linkToPkg = `${npmPkgSrc}${pkgJSON.version}`
   return (
     <>
       <PcOnly>
@@ -54,15 +44,15 @@ export const AboutPage = (props) => {
         <IconText
           color='#333'
           icon={<GithubIcon />}
-          text="@zjhou"
+          text={<Link href="https://github.com/zjhou">@zjhou</Link>}
+        />
+        <IconText
+          icon={<NpmIcon />}
+          text={<Link href={linkToPkg}>{`@bbbottle/zjh.im@${pkgJSON.version}`}</Link>}
         />
         <IconText
           icon={<MailIcon />}
-          text={<EmailAddr />}
-        />
-        <IconText
-          icon={<TagIcon />}
-          text={`v${pkgJSON.version}`}
+          text={<Link href="mailto: hi@zjh.im">hi@zjh.im</Link>}
         />
       </div>
     </>
