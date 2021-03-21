@@ -26,13 +26,11 @@ export const TVNoiseLayer = (props) => {
     style = {}
   } = props;
   const canvasRef = useRef(null);
-  let canvas, ctx;
+  let canvas, ctx, reqId;
 
-  const requestRef = React.useRef();
-
-  const animate = time => {
+  const animate = () => {
     noise(ctx);
-    requestRef.current = requestAnimationFrame(animate);
+    reqId = requestAnimationFrame(animate);
   }
 
   useEffect(() => {
@@ -55,8 +53,8 @@ export const TVNoiseLayer = (props) => {
   }, [])
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
+    reqId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(reqId);
   }, [])
 
   return (

@@ -26,39 +26,6 @@ const EmailAddr = () => {
   )
 };
 
-const GridLine = (props) => {
-  const {
-    num = 60,
-    gap = 8,
-    vertical = true,
-    className = ''
-  } = props;
-  const size = num * gap;
-
-  const lines = new Array(num).fill(
-    <div
-      className={classnames({
-        [CLS.vertical]: vertical,
-        [CLS.horizontal]: !vertical,
-      })}
-    />
-  );
-
-  return (
-    <div
-      className={classnames(
-        className,
-        'center',
-        CLS.gridLine,
-        { [CLS.gridLineHor]: !vertical }
-      )}
-      style={{ width: size, height: size }}
-    >
-      {lines}
-    </div>
-  )
-}
-
 export const AboutPage = (props) => {
   const imgSize = 500;
   return (
@@ -67,6 +34,16 @@ export const AboutPage = (props) => {
         <Img
           className={classnames('center', props.className)}
           src={coverImgSrc}
+          loadingViewRenderer={() => {
+            return (
+              <TVNoiseLayer
+                opacity={.5}
+                className="center"
+                width={imgSize}
+                height={imgSize}
+              />
+            )
+          }}
           style={{
             width: imgSize,
             height: imgSize
