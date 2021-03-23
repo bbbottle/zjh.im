@@ -12,6 +12,14 @@ zjh.im render zjh's [personal site](https://zjh.im).
 ## Install
 
 `npm install @bbbottle/zjh.im` or `yarn add @bbbottle/zjh.im`
+## Usage
+```javascript
+import { renderZjhDotIm } from '@bbbottle/zjh.im';
+
+renderZjhDotIm(
+  document.getElementById('container')
+);
+```
 ## Javascript API
 ```javascript
 renderZjhDotIm(container)
