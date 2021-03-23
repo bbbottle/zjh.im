@@ -1,8 +1,8 @@
-import React from 'react';
-import classnames from 'classnames';
-import { BoxCanvas } from '@bbbottle/box-canvas'
-import {CanvasAppRenderer} from "./core";
-import CLS from './index.scss';
+import React from "react";
+import classnames from "classnames";
+import { BoxCanvas } from "@bbbottle/box-canvas";
+import { CanvasAppRenderer } from "./core";
+import CLS from "./index.scss";
 
 export class CanvasPage extends React.PureComponent {
   constructor(props) {
@@ -23,6 +23,6 @@ export class CanvasPage extends React.PureComponent {
           previewBoxRenderer={this.canvasAppRenderer.renderAppPreviewer}
         />
       </div>
-    )
+    );
   }
 }

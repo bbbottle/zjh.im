@@ -1,7 +1,7 @@
-import React from 'react';
-import {EMPTY_APP_ID} from "../const";
-import {AppLivableZoneEdge} from "../apps/app_livable_zone_edge";
-import {Window} from "../widgets/window";
+import React from "react";
+import { EMPTY_APP_ID } from "../const";
+import { AppLivableZoneEdge } from "../apps/app_livable_zone_edge";
+import { Window } from "../widgets/window";
 
 export class Zone {
   constructor(width, height) {
@@ -11,11 +11,11 @@ export class Zone {
 
   isLargerThan = (zone) => {
     return this.width > zone.width && this.height > zone.height;
-  }
+  };
 
   isSmallerThan = (zone) => {
     return this.width < zone.width && this.height < zone.height;
-  }
+  };
 }
 
 export class HostZone extends Zone {
@@ -67,16 +67,18 @@ export class CanvasApp {
   }
 
   canLiveIn = (hostZone) => {
-    return this.livableZone.minZone.isSmallerThan(hostZone)
-      && this.livableZone.maxZone.isLargerThan(hostZone);
-  }
+    return (
+      this.livableZone.minZone.isSmallerThan(hostZone) &&
+      this.livableZone.maxZone.isLargerThan(hostZone)
+    );
+  };
 
   isEmpty = () => {
     return this.id === EMPTY_APP_ID;
   };
 
   minimize = (box) => {
-    box.boxStyle.transition = 'width, height .3s';
+    box.boxStyle.transition = "width, height .3s";
     box.boxStyle.height = 38;
     box.boxStyle.width = 300;
   };
@@ -95,7 +97,7 @@ export class CanvasApp {
 
   renderIcon = () => {
     const Icon = this.icon;
-    return <Icon />
+    return <Icon />;
   };
 
   active = (box) => {
@@ -109,8 +111,8 @@ export class CanvasApp {
         hostInfo={hostInfo}
         cursorQuadrant={cursorQuadrant}
       />
-    )
-  }
+    );
+  };
 
   render = (props) => {
     const Component = this.Component;
@@ -127,16 +129,20 @@ export class CanvasApp {
           props.update(this.move(e.movementX, e.movementY));
         }}
         onMinimizeBtnClick={() => {
-          if (this.minimized) { return }
+          if (this.minimized) {
+            return;
+          }
           this.minimized = true;
           this.originHeight = props.boxStyle.height;
           this.originWidth = props.boxStyle.width;
           props.update(this.minimize);
         }}
         onZoomBtnClick={() => {
-          if (!this.minimized) { return }
+          if (!this.minimized) {
+            return;
+          }
           this.minimized = false;
-          props.update(this.zoomTo(this.originWidth, this.originHeight))
+          props.update(this.zoomTo(this.originWidth, this.originHeight));
         }}
         onCloseBtnClick={() => {
           props.remove();
@@ -146,11 +152,8 @@ export class CanvasApp {
         icon={this.renderIcon()}
         style={props.boxStyle}
       >
-        <Component
-          {...props}
-          active={isWinActive}
-        />
+        <Component {...props} active={isWinActive} />
       </Window>
-    )
-  }
+    );
+  };
 }

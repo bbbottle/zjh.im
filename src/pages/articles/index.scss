@@ -51,7 +51,7 @@ $gray-6: #ccc;
   z-index: 1;
 
   &:before {
-    content: '最近';
+    content: "最近";
     display: block;
     margin-bottom: 10px;
     color: #bfbfbf;
@@ -64,7 +64,7 @@ $gray-6: #ccc;
   font-size: 12px;
   cursor: pointer;
   color: #6bcba8;
-  transition: color .2s;
+  transition: color 0.2s;
 
   &:hover {
     color: #333;
@@ -73,11 +73,11 @@ $gray-6: #ccc;
 
 .blurCover {
   position: relative;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   line-height: 1.74;
   font-size: 14px;
   animation: backdropBlur 2s linear infinite;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .clickable {
@@ -92,8 +92,8 @@ $gray-6: #ccc;
   line-height: 1.74;
   font-size: 14px;
   color: #bfbfbf;
-  letter-spacing: .05em;
-  opacity: .5;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
   filter: blur(4px);
 }
 
@@ -111,19 +111,23 @@ $gray-6: #ccc;
     display: block;
 
     font-size: 36px;
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
     line-height: 1.389;
     font-weight: 700;
     color: #262626;
-    font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue,
+      Helvetica, Arial, sans-serif;
   }
 
   &:after {
     content: attr(data-time);
     font-weight: 400;
     color: #bfbfbf;
-    font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
-    letter-spacing: .05em;
+    font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue,
+      Helvetica, Arial, sans-serif;
+    letter-spacing: 0.05em;
     display: block;
     font-size: 12px;
     margin-top: 50px;
@@ -137,4 +141,3 @@ $gray-6: #ccc;
     margin: 100px 25px;
   }
 }
-

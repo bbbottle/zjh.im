@@ -1,7 +1,12 @@
-import { fromEvent } from 'rxjs';
+import { fromEvent } from "rxjs";
 import {
-  filter, map, mergeAll, skip, takeUntil, windowWhen,
-} from 'rxjs/operators';
+  filter,
+  map,
+  mergeAll,
+  skip,
+  takeUntil,
+  windowWhen,
+} from "rxjs/operators";
 
 export const getQuadrantByStartEndPos = (startPos, endPos) => {
   const [x1, y1] = startPos;
@@ -18,7 +23,7 @@ export const getQuadrantByStartEndPos = (startPos, endPos) => {
   if (x1 < x2 && y1 < y2) {
     return 4;
   }
-}
+};
 
 export const quadrantVerticalFlip = (quadrant) => {
   const target = {
@@ -26,9 +31,9 @@ export const quadrantVerticalFlip = (quadrant) => {
     2: 3,
     3: 2,
     4: 1,
-  }
+  };
   return target[quadrant];
-}
+};
 
 export const quadrantHorizontalFlip = (quadrant) => {
   const target = {
@@ -36,33 +41,32 @@ export const quadrantHorizontalFlip = (quadrant) => {
     2: 1,
     3: 4,
     4: 3,
-  }
+  };
   return target[quadrant];
-}
+};
 
 export const createDragObservable = (
   target,
   onDragStart = () => null,
   onDragDone = () => null
 ) => {
-  const move$ = fromEvent(document, 'mousemove');
-  const originDown$ = fromEvent(target, 'mousedown');
+  const move$ = fromEvent(document, "mousemove");
+  const originDown$ = fromEvent(target, "mousedown");
   const down$ = originDown$.pipe(
-    filter(e => {
+    filter((e) => {
       const leftButton = 0;
-      return e.button === leftButton
-        && e.target === target;
+      return e.button === leftButton && e.target === target;
     })
-  )
-  const up$ = fromEvent(document, 'mouseup')
+  );
+  const up$ = fromEvent(document, "mouseup");
 
   up$.subscribe(onDragDone);
-  down$.subscribe(onDragStart)
+  down$.subscribe(onDragStart);
 
   return move$.pipe(
     windowWhen(() => down$),
-    map(win => win.pipe(takeUntil((up$)))),
+    map((win) => win.pipe(takeUntil(up$))),
     skip(1),
     mergeAll()
   );
-}
+};

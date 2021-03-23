@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export class PagingStateManager extends React.PureComponent {
   constructor(props) {
@@ -11,27 +11,24 @@ export class PagingStateManager extends React.PureComponent {
     this.state = this.getStateByPropsAndCurrentPageIndex();
   }
 
-  getStateByPropsAndCurrentPageIndex = (props = this.props, currentPageIndex = props.currentPageIndex) => {
+  getStateByPropsAndCurrentPageIndex = (
+    props = this.props,
+    currentPageIndex = props.currentPageIndex
+  ) => {
     const { pageSize, data, infiniteLoopMode } = props;
     const totalPages = Math.ceil(data.length / pageSize);
     const start = (currentPageIndex - 1) * pageSize;
     const end = currentPageIndex * pageSize;
-    const currentPageData = data.slice(start,  end) || [];
+    const currentPageData = data.slice(start, end) || [];
 
     const hasNextPage = currentPageIndex < totalPages;
     let nextPageData = [];
     if (hasNextPage) {
       const nextPageStart = currentPageIndex * pageSize;
       const nextPageEnd = (currentPageIndex + 1) * pageSize;
-      nextPageData = data.slice(
-        nextPageStart,
-        nextPageEnd
-      ) || [];
+      nextPageData = data.slice(nextPageStart, nextPageEnd) || [];
     } else if (infiniteLoopMode) {
-      nextPageData = data.slice(
-        0,
-        pageSize,
-      )
+      nextPageData = data.slice(0, pageSize);
     }
     return {
       hasNextPage,
@@ -40,20 +37,19 @@ export class PagingStateManager extends React.PureComponent {
       currentPageData,
       nextPageData,
       totalPages,
-    }
+    };
   };
 
   gotoPage = (pageIndex) => {
-    const {data, pageSize } = this.props;
+    const { data, pageSize } = this.props;
     const totalPages = Math.ceil(data.length / pageSize);
     if (pageIndex > totalPages) {
       return;
     }
 
-    this.setState(() => this.getStateByPropsAndCurrentPageIndex(
-      this.props,
-      pageIndex
-    ));
+    this.setState(() =>
+      this.getStateByPropsAndCurrentPageIndex(this.props, pageIndex)
+    );
   };
 
   next = () => {
@@ -61,12 +57,10 @@ export class PagingStateManager extends React.PureComponent {
       return;
     }
 
-    this.setState(prevState =>
+    this.setState((prevState) =>
       this.getStateByPropsAndCurrentPageIndex(
         this.props,
-        prevState.hasNextPage
-          ? prevState.currentPageIndex + 1
-          : 1
+        prevState.hasNextPage ? prevState.currentPageIndex + 1 : 1
       )
     );
   };
@@ -75,7 +69,7 @@ export class PagingStateManager extends React.PureComponent {
     if (!this.state.hasPrevPage && !this.props.infiniteLoopMode) {
       return;
     }
-    this.setState(prevState =>
+    this.setState((prevState) =>
       this.getStateByPropsAndCurrentPageIndex(
         this.props,
         prevState.hasPrevPage
@@ -86,21 +80,26 @@ export class PagingStateManager extends React.PureComponent {
   };
 
   isValidProps = (props = this.props) => {
-    const {data, pageSize, currentPageIndex = 1} = props;
+    const { data, pageSize, currentPageIndex = 1 } = props;
     const totalPages = Math.ceil(data.length / pageSize);
-    return data.length
-      && pageSize > 0
-      && currentPageIndex >= 1
-      && currentPageIndex <= totalPages;
+    return (
+      data.length &&
+      pageSize > 0 &&
+      currentPageIndex >= 1 &&
+      currentPageIndex <= totalPages
+    );
   };
 
   render() {
-    return this.isValidProps(this.props) && this.props.children({
-      ...this.state,
-      next: this.next,
-      prev: this.prev,
-      gotoPage: this.gotoPage,
-    })
+    return (
+      this.isValidProps(this.props) &&
+      this.props.children({
+        ...this.state,
+        next: this.next,
+        prev: this.prev,
+        gotoPage: this.gotoPage,
+      })
+    );
   }
 }
 

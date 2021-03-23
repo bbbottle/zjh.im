@@ -1,12 +1,10 @@
-import React from 'react';
-import classname from 'classnames';
+import React from "react";
+import classname from "classnames";
 
-import CLS from './index.scss';
+import CLS from "./index.scss";
 
 export const BlinkDot = () => {
-  return (
-    <span className={CLS.blinkDot}>·</span>
-  );
+  return <span className={CLS.blinkDot}>·</span>;
 };
 
 export const TickLoader = ({ absCenter, style }) => {
@@ -14,9 +12,8 @@ export const TickLoader = ({ absCenter, style }) => {
     <div
       style={style}
       className={classname(CLS.tickLoader, {
-        [CLS.center]: absCenter
+        [CLS.center]: absCenter,
       })}
     />
-  )
+  );
 };
-

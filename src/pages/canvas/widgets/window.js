@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Cls from 'classnames';
+import React, { useEffect, useState } from "react";
+import Cls from "classnames";
 
-import {WindowTitleBar} from "./window_title_bar";
-import Style from './window.scss';
+import { WindowTitleBar } from "./window_title_bar";
+import Style from "./window.scss";
 
 export const Window = (props) => {
   const {
@@ -21,7 +21,7 @@ export const Window = (props) => {
 
   useEffect(() => {
     onDidMount();
-  }, [])
+  }, []);
 
   return (
     <div
@@ -47,11 +47,13 @@ export const Window = (props) => {
         }}
         {...rest}
       />
-      <div className={Cls(Style.windowBody, {
-        [Style.noPointerEvent]: isDragging
-      })}>
+      <div
+        className={Cls(Style.windowBody, {
+          [Style.noPointerEvent]: isDragging,
+        })}
+      >
         {children}
       </div>
     </div>
-  )
-}
+  );
+};

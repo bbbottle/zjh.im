@@ -1,12 +1,12 @@
-import React from 'react';
-import {AbsolutePositionedBox} from "./absolute_positioned_box";
-import {quadrantVerticalFlip} from "../utils";
+import React from "react";
+import { AbsolutePositionedBox } from "./absolute_positioned_box";
+import { quadrantVerticalFlip } from "../utils";
 
 const centerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
 
 export const HorizontalTick = (props) => {
   const {
@@ -17,7 +17,7 @@ export const HorizontalTick = (props) => {
     tickHeight,
     offset = 0,
     children,
-    style={},
+    style = {},
     ...rest
   } = props;
 
@@ -30,9 +30,7 @@ export const HorizontalTick = (props) => {
     ? -1 * rectWidth + tickWidth / 2
     : 1 * rectWidth - tickWidth / 2;
 
-  const yOffset = topQud.has(cursorQuadrant)
-    ? offset
-    : -1 * offset;
+  const yOffset = topQud.has(cursorQuadrant) ? offset : -1 * offset;
 
   return (
     <AbsolutePositionedBox
@@ -41,12 +39,9 @@ export const HorizontalTick = (props) => {
       quadrant={quadrantVerticalFlip(cursorQuadrant)}
       width={tickWidth}
       height={tickHeight}
-      fixedPointCoordinate={[
-        x + xOffset,
-        y + yOffset,
-      ]}
+      fixedPointCoordinate={[x + xOffset, y + yOffset]}
     >
       {children}
     </AbsolutePositionedBox>
-  )
-}
+  );
+};

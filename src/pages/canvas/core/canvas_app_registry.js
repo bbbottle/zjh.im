@@ -1,15 +1,15 @@
-import {CanvasApp, LivableZone, Zone} from "./canvas_app";
-import {CANVAS_APPLICATIONS, EMPTY_APP_ID} from "../const";
+import { CanvasApp, LivableZone, Zone } from "./canvas_app";
+import { CANVAS_APPLICATIONS, EMPTY_APP_ID } from "../const";
 
 /**
  * 画布应用注册表
  */
 export class CanvasAppRegistry {
-  constructor(apps= CANVAS_APPLICATIONS) {
+  constructor(apps = CANVAS_APPLICATIONS) {
     this._availableApps = new Map();
     this._installedApps = new Map();
     this._registerApp(apps);
-    this._activeAppSid = '';
+    this._activeAppSid = "";
   }
 
   _registerApp(apps) {
@@ -31,10 +31,10 @@ export class CanvasAppRegistry {
         },
         active: (app) => {
           this._activeAppSid = app.sid;
-        }
-      }
+        },
+      };
 
-      const app =  new CanvasApp(
+      const app = new CanvasApp(
         id,
         name,
         icon,
@@ -45,7 +45,7 @@ export class CanvasAppRegistry {
       );
 
       this._availableApps.set(id, app);
-    })
+    });
   }
 
   installApp = (symbolId, hostInfo) => {
@@ -59,7 +59,7 @@ export class CanvasAppRegistry {
   uninstallApp = (app) => {
     this._installedApps.delete(app.sid);
     this._availableApps.set(app.id, app);
-  }
+  };
 
   getInstalledApp = (id) => this._installedApps.get(id);
 
@@ -70,7 +70,9 @@ export class CanvasAppRegistry {
   availableApp(hostInfo = {}) {
     const { width, height } = hostInfo;
     const hostZone = new Zone(width, height);
-    return this.availableApps().find(app => app.canLiveIn(hostZone))
-      || this._availableApps.get(EMPTY_APP_ID);
+    return (
+      this.availableApps().find((app) => app.canLiveIn(hostZone)) ||
+      this._availableApps.get(EMPTY_APP_ID)
+    );
   }
 }

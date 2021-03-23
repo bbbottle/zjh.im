@@ -7,17 +7,15 @@ export const createArticleIntersectionObserver = (articleVisibilityUpdater) => {
 
       articleVisibilityUpdater((visibilityMap) => {
         const id = entry.target.dataset.id;
-        if (visibilityMap[id]) { return;}
+        if (visibilityMap[id]) {
+          return;
+        }
         visibilityMap[id] = true;
-      })
-    })
+      });
+    });
   };
 
   const options = { threshold: 1 };
 
-  return new IntersectionObserver(
-    handleIntersectionChange,
-    options
-  );
+  return new IntersectionObserver(handleIntersectionChange, options);
 };
-

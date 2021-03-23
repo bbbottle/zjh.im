@@ -1,36 +1,33 @@
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
-import Cls from 'classnames';
+import Cls from "classnames";
 
-import Style from './window.scss';
+import Style from "./window.scss";
 
 import { IconText } from "../../../components/icon_text";
-import {createDragObservable} from "../utils";
+import { createDragObservable } from "../utils";
 
 export const WindowOptionButton = (props) => {
-  const {
-    className,
-    onClick,
-    disabled,
-    title,
-  } = props;
+  const { className, onClick, disabled, title } = props;
 
   const classnames = Cls(
     className,
     Style.hoverAbsAfterAndBefore,
-    Style.windowOptionButton, {
-    [Style.disabledButton]: disabled,
-  });
+    Style.windowOptionButton,
+    {
+      [Style.disabledButton]: disabled,
+    }
+  );
   return (
     <button
       title={title}
       onClick={(e) => {
         e.stopPropagation();
-        onClick(e)
+        onClick(e);
       }}
       className={classnames}
     />
-  )
+  );
 };
 
 export class WindowTitleBar extends React.PureComponent {
@@ -46,12 +43,12 @@ export class WindowTitleBar extends React.PureComponent {
   handleDragStart = (e) => {
     const onDragStart = this.props.onDragStart || (() => null);
     onDragStart(e);
-  }
+  };
 
-  handleDragEnd= (e) => {
+  handleDragEnd = (e) => {
     const onDragEnd = this.props.onDragEnd || (() => null);
     onDragEnd(e);
-  }
+  };
 
   handleMove = (e) => {
     const onDrag = this.props.onDrag || (() => null);
@@ -65,14 +62,12 @@ export class WindowTitleBar extends React.PureComponent {
       onMinimizeBtnClick = noop,
       onZoomBtnClick = noop,
       icon = null,
-      title = '',
+      title = "",
       active,
     } = this.props;
 
     return (
-      <div
-        className={Style.windowTitleBar}
-      >
+      <div className={Style.windowTitleBar}>
         <div
           className={Cls(Style.windowTitle, {
             [Style.halfTransparent]: !active,
@@ -81,10 +76,7 @@ export class WindowTitleBar extends React.PureComponent {
             this.titleBar = r;
           }}
         >
-          <IconText
-            icon={icon}
-            text={title}
-          />
+          <IconText icon={icon} text={title} />
         </div>
         <div className={Style.windowOptionButtonGroup}>
           <WindowOptionButton
@@ -107,6 +99,6 @@ export class WindowTitleBar extends React.PureComponent {
           />
         </div>
       </div>
-    )
+    );
   }
 }

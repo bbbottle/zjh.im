@@ -3,7 +3,7 @@
 }
 
 .halfTransparent {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .none {
@@ -23,7 +23,7 @@
 .hoverAbsAfterAndBefore {
   position: relative;
   &:hover:before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 50%;
@@ -32,7 +32,7 @@
   }
 
   &:hover:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 50%;
@@ -55,7 +55,7 @@
 }
 
 .close {
-  background: #FF8888;
+  background: #ff8888;
   &:hover:after,
   &:hover:before {
     width: 7px;
@@ -73,7 +73,7 @@
 }
 
 .minimize {
-  background: #FDD587;
+  background: #fdd587;
   &:hover:after {
     width: 7px;
     height: 1px;
@@ -82,7 +82,7 @@
 }
 
 .zoom {
-  background: #51C49F;
+  background: #51c49f;
   &:hover:after,
   &:hover:before {
     width: 7px;
@@ -115,7 +115,7 @@
 
 .window {
   position: absolute;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 4px 50px 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   overflow: hidden;
@@ -124,7 +124,7 @@
   display: flex;
   flex-direction: column;
   cursor: default;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .windowBody {

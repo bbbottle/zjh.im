@@ -8,20 +8,20 @@
   opacity: 0;
   //box-shadow: rgba(115,202,168,0.2) -8px -8px 3px 0, #6bcba859 -20px -20px 10px 0;
   z-index: 1;
-  transition: all .3s;
+  transition: all 0.3s;
   cursor: pointer;
   pointer-events: none;
 
   &:active {
     bottom: 23px;
     right: 17px;
-    box-shadow: rgba(115,202,168,0.2) -1px -1px 0 0;
+    box-shadow: rgba(115, 202, 168, 0.2) -1px -1px 0 0;
   }
 }
 
 .show {
   pointer-events: all;
-  transition-delay: .3s;
+  transition-delay: 0.3s;
   opacity: 1;
   //box-shadow: rgba(115,202,168,0.2) -0px -0px 0 0, #6bcba859 0px 0px 0 0;
 }

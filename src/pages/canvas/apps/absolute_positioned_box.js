@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const getPositionedStyleByProps = (props) => {
   const {
@@ -9,7 +9,7 @@ const getPositionedStyleByProps = (props) => {
     height,
     offset = 0,
     originCalibrateValue = 0,
-  } = props
+  } = props;
 
   const rightQuadSet = new Set([1, 4]);
   const topQuadSet = new Set([1, 2]);
@@ -24,13 +24,13 @@ const getPositionedStyleByProps = (props) => {
   const style = {
     width,
     height,
-    position: 'absolute',
+    position: "absolute",
   };
 
   if (quadrant === 1) {
     style.top = y - height - offset;
     style.left = x + offset;
-    return style
+    return style;
   }
 
   if (quadrant === 2) {
@@ -53,21 +53,15 @@ const getPositionedStyleByProps = (props) => {
 };
 
 export const AbsolutePositionedBox = (props) => {
-  const {
-    style = {},
-    ...rest
-  } = props
+  const { style = {}, ...rest } = props;
 
   const positionedStyle = getPositionedStyleByProps(props);
   return (
-    <div
-      {...rest}
-      style={Object.assign({}, style, positionedStyle)}
-    >
+    <div {...rest} style={Object.assign({}, style, positionedStyle)}>
       {props.children}
     </div>
-  )
-}
+  );
+};
 
 AbsolutePositionedBox.propTypes = {
   width: PropTypes.number,
@@ -78,7 +72,7 @@ AbsolutePositionedBox.propTypes = {
   quadrant: PropTypes.oneOf([1, 2, 3, 4]),
   size: PropTypes.number,
   offset: PropTypes.number,
-}
+};
 
 AbsolutePositionedBox.defaultProps = {
   height: 24,
@@ -87,4 +81,4 @@ AbsolutePositionedBox.defaultProps = {
   fixedPointCoordinate: [0, 0],
   originCalibrateValue: 0,
   offset: 0,
-}
+};

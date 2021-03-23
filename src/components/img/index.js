@@ -1,10 +1,8 @@
 import React from "react";
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import classnames from "classnames";
+import PropTypes from "prop-types";
 
-import { TickLoader as Spinner } from '../spinner';
-
-import {Fade} from '../fade';
+import { TickLoader as Spinner } from "../spinner";
 
 class Img extends React.Component {
   constructor(props) {
@@ -23,22 +21,23 @@ class Img extends React.Component {
     loadingViewRenderer: PropTypes.func,
     className: PropTypes.string.isRequired,
     style: PropTypes.shape({}),
-  }
+  };
 
   static defaultProps = {
     onClick: () => {},
-  }
+  };
 
   componentDidUpdate(prevProps) {
-    const {
-      onLoadingStatusChange = (isLoading) => null,
-    } = this.props;
+    const { onLoadingStatusChange = () => null } = this.props;
     if (prevProps.src !== this.props.src) {
-      this.setState({
-        loading: true
-      }, () => {
-        onLoadingStatusChange(true);
-      })
+      this.setState(
+        {
+          loading: true,
+        },
+        () => {
+          onLoadingStatusChange();
+        }
+      );
     }
   }
 
@@ -48,8 +47,8 @@ class Img extends React.Component {
       onClick,
       onLoad = () => {},
       style = {},
-      className = '',
-      onLoadingStatusChange = (isLoading) => null,
+      className = "",
+      onLoadingStatusChange = () => null,
     } = this.props;
 
     const { loading } = this.state;
@@ -64,39 +63,39 @@ class Img extends React.Component {
         onLoad={(evt) => {
           const img = evt.target;
           if (img.complete && img.height) {
-            this.setState({
-              loading: false
-            }, () => {
-              onLoad();
-              onLoadingStatusChange(false);
-            });
+            this.setState(
+              {
+                loading: false,
+              },
+              () => {
+                onLoad();
+                onLoadingStatusChange(false);
+              }
+            );
           }
         }}
         style={style}
       />
-    )
+    );
     return (
       <>
-        {loading && (this.renderLoadingView())}
+        {loading && this.renderLoadingView()}
         {retImg}
       </>
-    )
+    );
   };
 
   renderLoadingView = () => {
-    const {
-      src,
-      loadingViewRenderer,
-    } = this.props;
+    const { src, loadingViewRenderer } = this.props;
     if (!loadingViewRenderer) {
-      return <Spinner absCenter />
+      return <Spinner absCenter />;
     }
     return loadingViewRenderer(src);
-  }
+  };
 
   render() {
     if (this.state.error) {
-      return ':('
+      return ":(";
     }
 
     return this.renderImg();

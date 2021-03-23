@@ -1,9 +1,9 @@
-import React from 'react';
-import {CanvasAppRegistry} from "./canvas_app_registry";
-import {AppPreviewer} from "../apps";
-import {SlotMachine} from "../../../components/slot_machine";
-import {getQuadrantByStartEndPos} from "../utils";
-import {AbsolutePositionedBox} from "../apps/absolute_positioned_box";
+import React from "react";
+import { CanvasAppRegistry } from "./canvas_app_registry";
+import { AppPreviewer } from "../apps";
+import { SlotMachine } from "../../../components/slot_machine";
+import { getQuadrantByStartEndPos } from "../utils";
+import { AbsolutePositionedBox } from "../apps/absolute_positioned_box";
 
 /**
  * 画布应用渲染器
@@ -23,7 +23,7 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
 
   exitPreviewMode = () => {
     this._isPreview = false;
-  }
+  };
 
   canRenderApp = (hostInfo) => {
     return !this.availableApp(hostInfo).isEmpty();
@@ -38,7 +38,7 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
       >
         {content}
       </AbsolutePositionedBox>
-    )
+    );
   };
 
   renderAvailableAppsLivableZoneEdge = (hostInfo, cursorQuadrant) => {
@@ -47,34 +47,32 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
       return null;
     }
     return apps.map((app) => {
-      return app.renderLivableZoneEdge(hostInfo, cursorQuadrant)
-    })
+      return app.renderLivableZoneEdge(hostInfo, cursorQuadrant);
+    });
   };
 
   renderClearButton = () => null;
 
   renderApp = (props) => {
     const options = {
-      isDrawingPreviewer: this.isDrawingPreviewer()
-    }
+      isDrawingPreviewer: this.isDrawingPreviewer(),
+    };
     const app = this.getInstalledApp(props.id);
-    return app
-      ? app.render(props, options)
-      : null
-  }
+    return app ? app.render(props, options) : null;
+  };
 
   renderSlotMachine = (app) => {
     const slotMachineSize = 24;
     const slotMachinePatterns = this.availableApps()
-      .filter(a => !a.installed)
-      .map(a => ({ id: a.id, renderer: a.renderIcon }));
+      .filter((a) => !a.installed)
+      .map((a) => ({ id: a.id, renderer: a.renderIcon }));
     return (
       <SlotMachine
         size={slotMachineSize}
         luckyPatternId={app.id}
         patterns={slotMachinePatterns}
       />
-    )
+    );
   };
 
   renderAppPreviewer = (hostInfo) => {
@@ -97,5 +95,5 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
         {this.renderAvailableAppsLivableZoneEdge(hostInfo, cursorQuadrant)}
       </AppPreviewer>
     );
-  }
+  };
 }

@@ -6,7 +6,7 @@
   cursor: pointer;
   position: relative;
   padding: 6px 6px 12px;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
 
   $tickWidth: 1px;
@@ -34,7 +34,7 @@
     border-bottom: solid 1px #ccc;
     position: relative;
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       width: 3px;
       height: 1px;
@@ -52,7 +52,7 @@
     position: absolute;
     right: 25px;
     top: -2px;
-    color: #6BCBA8;
+    color: #6bcba8;
     text-align: right;
     cursor: grabbing;
   }
@@ -69,7 +69,7 @@
   &:not(.isDragging) .pointer:hover {
     &:before,
     &:after {
-      content: '';
+      content: "";
     }
 
     &:before {
@@ -89,7 +89,7 @@
       width: 100%;
       height: 1px;
       position: absolute;
-      background: #6BCBA8;
+      background: #6bcba8;
     }
   }
 
@@ -97,17 +97,17 @@
     position: absolute;
     height: 6px;
     width: 12px;
-    border-bottom: solid 1px #6BCBA8;
+    border-bottom: solid 1px #6bcba8;
 
     cursor: grab;
-    transition: border, height, width .2s;
+    transition: border, height, width 0.2s;
     &:hover {
       width: 22px;
-      border-bottom: solid 6px #6BCBA8;
+      border-bottom: solid 6px #6bcba8;
     }
     &:active {
       width: 24px;
-      border-bottom: solid 1px #6BCBA8;
+      border-bottom: solid 1px #6bcba8;
       cursor: grabbing;
     }
   }
@@ -117,7 +117,7 @@
     width: 6px;
     display: inline-block;
     border-bottom: solid 1px #ccc;
-    transition: all .2s;
+    transition: all 0.2s;
 
     //&:not(:last-child) {
     //  margin-bottom: 5px;
@@ -132,7 +132,7 @@
       right: 17px;
       top: -6px;
       font-size: 10px;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     &.active {

@@ -6,17 +6,17 @@ $green-5: #f1fffa;
 
 .blinkDot {
   animation-name: blink-dot;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-iteration-count: infinite;
 }
 
 @keyframes blink-dot {
   from {
-    color: #fff
+    color: #fff;
   }
 
   to {
-    color: #6BCBA8
+    color: #6bcba8;
   }
 }
 
@@ -24,7 +24,7 @@ $green-5: #f1fffa;
   display: inline-block;
   &:before,
   &:after {
-    content: '';
+    content: "";
     display: block;
     width: 6px;
     background: $green-1;
@@ -32,10 +32,10 @@ $green-5: #f1fffa;
   }
   &:before {
     margin-bottom: 5px;
-    animation: tick .5s infinite;
+    animation: tick 0.5s infinite;
   }
   &:after {
-    animation: tick .5s infinite reverse;
+    animation: tick 0.5s infinite reverse;
   }
 }
 
@@ -50,7 +50,10 @@ $green-5: #f1fffa;
     width: 6px;
     background: $green-4;
   }
-  50% { width: 12px; background: $green-1; }
+  50% {
+    width: 12px;
+    background: $green-1;
+  }
   100% {
     width: 6px;
     background: $green-4;

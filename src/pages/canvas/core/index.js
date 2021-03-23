@@ -1,3 +1,1 @@
-export {
-  CanvasAppRenderer
-} from './canvas_app_renderer'
+export { CanvasAppRenderer } from "./canvas_app_renderer";
