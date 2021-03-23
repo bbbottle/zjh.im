@@ -28,6 +28,7 @@
     "swr": "^0.4.2"
   },
   "devDependencies": {
-    "@bbbottle/bbbundle": "0.0.9"
+    "@bbbottle/bbbundle": "0.0.9",
+    "prettier": "2.2.1"
   }
 }

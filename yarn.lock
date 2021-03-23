@@ -922,10 +922,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bbbottle/bbbundle@0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.0.7/6447bc92fbeda3fd9b24f2a952fcc2e1b592695fdd57c9000371096320082410#2820afb9d0a4ea7974c51dd783d7e5b402356ba8"
-  integrity sha512-M2ZAkBisM3cD6mLNtrNeXWPCCi1/JUOjwRMK7VAMdcbcgD8PxKXjfrjM/yI/iZj7/y54D99+/UQ+FansA578xw==
+"@bbbottle/bbbundle@0.0.9":
+  version "0.0.9"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.0.9/3a20182ac56103231285df908c5e16eb4ad8e584bd75e230aa424e03b565d7bd#fc595ac3b2433913a0250f3a31ad3c96831c7ae3"
+  integrity sha512-kVNlucVmR1of1asjAKESMd8FYIpb/UOe1FrZVFq9o+VgLEEWG7RKWnhAB3calftYYEMgdVeQaVp/tyos7nldjQ==
   dependencies:
     "@babel/core" "^7.12.3"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
@@ -944,20 +944,20 @@
     rollup-plugin-postcss "^3.1.8"
     rollup-plugin-terser "^7.0.2"
 
-"@bbbottle/bbicons@0.0.6":
-  version "0.0.6"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.0.6/1e06b453ef932d2cbcb1ec0fa17fb01d6f71bef753a24bdb10f8ab0e6e21d5d4#d743b1977a3ca6507290f762f90cb0352eb4a4d5"
-  integrity sha1-10Oxl3o8plBykPdi+QywNS60pNU=
+"@bbbottle/bbicons@0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.1.2/9d3bd6842d0177f461d0ac5dd31630409ee109398f4051856b19f7c22c49071d#c10b7c0492f74cf98d5464ccacbdaa2421aad99f"
+  integrity sha512-fSCXuGkemt0eLwULtOkujbL8M/AnsZaO7EgSgKcBRgMqRWkzNzQ/KukDXbUmUtnfnqTFxNbxF306wiOEoiyC0w==
 
-"@bbbottle/box-canvas@0.2.13":
-  version "0.2.13"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/box-canvas/0.2.13/39d5ff2433f7e75585cac166bbfd3fb552a0369b6e87e936471ac062b12ca3b6#658acb58867d1253136d7fb0c94bfe84329a15da"
-  integrity sha512-oWHPWhRMNpuAYw/V5yiXeVczI/Ki2C7aRvrL0eDUm7fxxdq5EfrN3Z6/W9q87P0OZebi6/8VkzZo3vAOSdDIkQ==
+"@bbbottle/box-canvas@0.3.0":
+  version "0.3.0"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/box-canvas/0.3.0/995924171cd9c304bda26559a80b6f2136061e6bdcde72690f1d2f6d526a092c#3d78be87c86b9a1a1724a029ea573dfd76c114fc"
+  integrity sha512-SZ1iMA/mh8+C/qDNFUSWeHuSXz8YFAAeP2yJ0wCflVExYfUqaBgiQAxM4bVsUfqys353pbWpdnidV3pVxXmm/g==
 
-"@bbbottle/page-menu@0.2.3":
-  version "0.2.3"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.3/f2b6b87dc18201250a3bdecd34d8b4690119f42960f693724a7ff4c684a69dbb#a4bacede107e8133ae3343202c41589bb5fecf28"
-  integrity sha512-RKO8334uirgMgZmRViQojLjZjnS9qLArRpFBIVHL8LhXYGTKvJDMa4DuPU0i1aAikAIuA+Nsk8Rz+hW0Rp/+2w==
+"@bbbottle/page-menu@0.2.5":
+  version "0.2.5"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.5/fcff888b6cdcab02dbe7bf45986cc5ba49c34eab034d41681d7067fe69fcf936#e87df23d815f46d61297ff3e79d24ac51e8d2865"
+  integrity sha512-xfWCmSWwen1MkS7otgQi8RZf4Ye0PIy7gykAPZxp8b8Y/1ELD6ad6RJOm7I3S4cxOGH4MskMWKgJOezTPBl+Nw==
 
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
@@ -3263,6 +3263,11 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.27:
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+prettier@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
