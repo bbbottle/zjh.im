@@ -2,7 +2,7 @@
 <br/>
 <p>
   <img src="https://img.shields.io/github/package-json/v/bbbottle/zjh.im?color=rgb%2881%2C%20196%2C%20159%29" />
-  <img src="https://img.shields.io/github/last-commit/bbbottle/zjh.im?color=%23ff8888" />
+  <img src="https://img.shields.io/github/issues/bbbottle/zjh.im?color=%23ff8888" />
 </p>
 
 ## Overview
