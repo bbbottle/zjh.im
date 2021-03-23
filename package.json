@@ -12,6 +12,11 @@
     "dev": "bbbundle dev",
     "prepare": "bbbundle"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "repository": "https://github.com/bbbottle/zjh.im.git",
   "author": "bbbottle <z@zjh.im>",
   "license": "MIT",
@@ -29,6 +34,8 @@
   },
   "devDependencies": {
     "@bbbottle/bbbundle": "0.0.9",
-    "prettier": "2.2.1"
+    "husky": "^5.2.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0"
   }
 }
