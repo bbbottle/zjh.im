@@ -10,6 +10,7 @@
 zjh.im render zjh's [personal site](https://zjh.im).
 
 ## Install
+zjh.im use [Github Packages](https://docs.github.com/en/packages/learn-github-packages/about-github-packages) as package hosting service.
 
 `npm install @bbbottle/zjh.im` or `yarn add @bbbottle/zjh.im`
 ## Usage
