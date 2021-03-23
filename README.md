@@ -1,6 +1,6 @@
-<p align="center"><img src="docs/images/logo.png?raw=true" alt="zjh.im logo" width="100" ></p>
+<img src="docs/images/logo.png?raw=true" alt="zjh.im logo" width="50" >
 <br/>
-<p align="center">
+<p>
   <img src="https://img.shields.io/github/package-json/v/bbbottle/zjh.im?color=rgb%2881%2C%20196%2C%20159%29" />
   <img src="https://img.shields.io/github/last-commit/bbbottle/zjh.im?color=%23ff8888" />
 </p>
