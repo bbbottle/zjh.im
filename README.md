@@ -14,8 +14,9 @@ zjh.im render zjh's [personal site](https://zjh.im).
 `npm install @bbbottle/zjh.im` or `yarn add @bbbottle/zjh.im`
 ## Javascript API
 ```javascript
-renderZjhDotIm(element)
+renderZjhDotIm(container)
 ```
+Render zjh.im into the DOM in the supplied `container`.
 ## Contribution
 submit your issue [here](https://github.com/bbbottle/zjh.im/issues)
 
