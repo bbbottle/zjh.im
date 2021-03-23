@@ -16,5 +16,8 @@ zjh.im render zjh's [personal site](https://zjh.im).
 ```javascript
 renderZjhDotIm($dom)
 ```
+## Contribution
+submit your issue [here](https://github.com/bbbottle/zjh.im/issues)
+
 ## License
 [MIT](https://github.com/bbbottle/zjh.im/blob/main/LICENSE)
