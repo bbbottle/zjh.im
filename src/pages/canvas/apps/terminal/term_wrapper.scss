@@ -1,0 +1,8 @@
+.termWrapper {
+  width: 100%;
+  height: 100%;
+  &:not(:empty) {
+    padding: 10px;
+    background: #000;
+  }
+}
