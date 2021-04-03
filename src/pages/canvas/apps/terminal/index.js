@@ -11,6 +11,12 @@ export const TerminalApp = (props) => {
         handler: async (shell) => {
           return shell.printLine('coming soon...')
         }
+      }, {
+        name: 'exit',
+        handler: async () => {
+          props.destroy();
+          return Promise.resolve();
+        }
       }]);
     }
   }, [])
