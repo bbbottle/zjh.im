@@ -1,29 +1,23 @@
-import React, { useRef, useEffect } from 'react';
-import { startShell } from '@bbbottle/bbterm';
-import Style from './term_wrapper.scss';
+import React, { Suspense } from 'react';
+import {TVNoiseLayer} from "../../../../components/noise";
+
+const Terminal = React.lazy(() => import('./terminal'));
 
 export const TerminalApp = (props) => {
-  const termWrapper = useRef(null)
-  useEffect(() => {
-    if (termWrapper.current) {
-      startShell(termWrapper.current, [{
-        name: 'hello',
-        handler: async (shell) => {
-          return shell.printLine('coming soon...')
-        }
-      }, {
-        name: 'exit',
-        handler: async () => {
-          props.destroy();
-          return Promise.resolve();
-        }
-      }]);
-    }
-  }, [])
-  return (
-    <div
-      className={Style.termWrapper}
-      ref={termWrapper}
+  const { boxStyle } = props;
+  const fb = (
+    <TVNoiseLayer
+      width={boxStyle.width}
+      height={boxStyle.height - 38}
+      opacity={.5}
     />
-  );
+  )
+
+  return (
+    <Suspense
+      fallback={fb}
+    >
+      <Terminal {...props} />
+    </Suspense>
+  )
 }

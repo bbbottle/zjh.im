@@ -3,6 +3,7 @@
   "description": "This package render content of zjh.im",
   "version": "0.7.5",
   "main": "dist/index.js",
+  "files": ["dist/*"],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
     "access": "public"
@@ -34,7 +35,7 @@
     "swr": "^0.4.2"
   },
   "devDependencies": {
-    "@bbbottle/bbbundle": "0.0.9",
+    "@bbbottle/bbbundle": "0.1.5",
     "husky": "^5.2.0",
     "prettier": "2.2.1",
     "pretty-quick": "^3.1.0"

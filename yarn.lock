@@ -1070,14 +1070,15 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bbbottle/bbbundle@0.0.9":
-  version "0.0.9"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.0.9/3a20182ac56103231285df908c5e16eb4ad8e584bd75e230aa424e03b565d7bd#fc595ac3b2433913a0250f3a31ad3c96831c7ae3"
-  integrity sha512-kVNlucVmR1of1asjAKESMd8FYIpb/UOe1FrZVFq9o+VgLEEWG7RKWnhAB3calftYYEMgdVeQaVp/tyos7nldjQ==
+"@bbbottle/bbbundle@0.1.4":
+  version "0.1.4"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.1.4/dbfbc2865e16c66a0e73fae57ed78941808ef11b79bc706a32d1502f0e1a58b2#f07789da1e98455ff328152b0a92b1f3e302ba07"
+  integrity sha512-lRnDXe/equp+HaBiX9vaUGDEsv/9DH0QBpM9ORrX0m7BannDuUr1776Ivfgu40pHwHyqESl20oAx2UdkaRhLxA==
   dependencies:
     "@babel/core" "^7.12.3"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
     "@babel/plugin-proposal-export-default-from" "^7.12.1"
+    "@babel/plugin-transform-runtime" "^7.13.10"
     "@babel/preset-env" "^7.12.1"
     "@babel/preset-react" "^7.12.5"
     "@rollup/plugin-json" "^4.1.0"
