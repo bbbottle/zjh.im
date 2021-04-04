@@ -1070,10 +1070,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bbbottle/bbbundle@0.1.4":
-  version "0.1.4"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.1.4/dbfbc2865e16c66a0e73fae57ed78941808ef11b79bc706a32d1502f0e1a58b2#f07789da1e98455ff328152b0a92b1f3e302ba07"
-  integrity sha512-lRnDXe/equp+HaBiX9vaUGDEsv/9DH0QBpM9ORrX0m7BannDuUr1776Ivfgu40pHwHyqESl20oAx2UdkaRhLxA==
+"@bbbottle/bbbundle@0.1.7":
+  version "0.1.7"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbbundle/0.1.7/07dbbe8cf4b0ce5f3f60fc751eda07f5b51a6eea8503409eb894b6990be89331#94cf1b5240a901324eacebe3be095dcacd4f437c"
+  integrity sha512-PXcr+m0BLd9d3jUriEdz8MjuYWsRG7nqbDcT3YEa0VURp2aNpl+k66tkvx+DABjrliAag2ZZzAkkkpD/UDa09g==
   dependencies:
     "@babel/core" "^7.12.3"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
@@ -1121,10 +1121,10 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.1.3/f026ba9ebca2b963c36f424f4888df144afef2d8fe0da4584db224f6126463b1#1cf59e129f3f53a95d728f6d0875083a12dfc6a3"
   integrity sha512-Ed+s4RUjWmylET84Yd7qH53+9irDs9IEwBb8BIvjKfeDjAk9clOI/xvzEV6L1PN0PaacXNzYNWdrFAoUHxKNyA==
 
-"@bbbottle/bbterm@0.2.0":
-  version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.2.0/0b51bc74fc5a578da559b6f2d9046a32ccbad2ccc4737b38dc2ddd52ca7b3283#2a525fa08975c51a61166af3b970188986d45f29"
-  integrity sha512-odKmB0z6qchk9//fBQU0ouAoCpd7HQ361afJqWw2VsRPys+u9ksKn1ZXIwDZlU4N58gyHgtCL1YN687ufxZ1sA==
+"@bbbottle/bbterm@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.2.1/dcdb12eb3819b38b9fb68c17e3c1efd0aa72e8100244cfa8f3edc074352d1922#59bf594eaffb9dcf2d4f4b9e517240f4fe9d0c54"
+  integrity sha512-TbEGzvH8IcqWMr5Y/AYdUT0wuol4ZnJuHlxAFuGSScTPcgDIBG45G9eTZn1FaCDJnDCbWNPsG4u43l/aDMlyvQ==
   dependencies:
     "@bbbottle/bbbundle" "^0.1.2"
     "@bbbottle/xterm" "4.12.0"
