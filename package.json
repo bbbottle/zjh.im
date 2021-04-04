@@ -1,9 +1,11 @@
 {
   "name": "@bbbottle/zjh.im",
   "description": "This package render content of zjh.im",
-  "version": "0.7.5",
+  "version": "0.8.1",
   "main": "dist/index.js",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
     "access": "public"
