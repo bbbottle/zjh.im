@@ -152,7 +152,14 @@ export class CanvasApp {
         icon={this.renderIcon()}
         style={props.boxStyle}
       >
-        <Component {...props} active={isWinActive} />
+        <Component
+          {...props}
+          active={isWinActive}
+          destroy={() => {
+            props.remove();
+            this.extras.uninstall(this);
+          }}
+        />
       </Window>
     );
   };

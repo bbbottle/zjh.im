@@ -3,6 +3,7 @@
   "description": "This package render content of zjh.im",
   "version": "0.7.5",
   "main": "dist/index.js",
+  "files": ["dist/*"],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
     "access": "public"
@@ -27,13 +28,14 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@bbbottle/bbicons": "0.1.2",
+    "@bbbottle/bbicons": "^0.1.2",
+    "@bbbottle/bbterm": "0.2.0",
     "@bbbottle/box-canvas": "0.3.0",
     "@bbbottle/page-menu": "0.2.5",
     "swr": "^0.4.2"
   },
   "devDependencies": {
-    "@bbbottle/bbbundle": "0.0.9",
+    "@bbbottle/bbbundle": "0.1.5",
     "husky": "^5.2.0",
     "prettier": "2.2.1",
     "pretty-quick": "^3.1.0"

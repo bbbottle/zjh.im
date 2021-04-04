@@ -1,6 +1,6 @@
-import { FigmaIcon, PhotoIcon, InvalidIcon } from "@bbbottle/bbicons";
+import { FigmaIcon, PhotoIcon, InvalidIcon, TerminalIcon } from "@bbbottle/bbicons";
 
-import { PhotosApp, EmptyApp, FigmaDesignApp } from "../apps";
+import { PhotosApp, EmptyApp, FigmaDesignApp, TerminalApp } from "../apps";
 
 export const EMPTY_APP_ID = "empty";
 
@@ -19,7 +19,7 @@ export const CANVAS_APPLICATIONS = [
   },
   {
     id: "photo",
-    name: "Photo",
+    name: "photo",
     icon: PhotoIcon,
     component: PhotosApp,
     description: "photo gallery",
@@ -34,5 +34,14 @@ export const CANVAS_APPLICATIONS = [
     description: "photo gallery",
     widthRange: [500, 800],
     heightRange: [500, 600],
+  },
+  {
+    id: "terminal",
+    name: "terminal",
+    icon: TerminalIcon,
+    component: TerminalApp,
+    description: "terminal",
+    widthRange: [600, 700],
+    heightRange: [200, 300],
   },
 ];
