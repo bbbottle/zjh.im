@@ -1107,14 +1107,14 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.1.3/f026ba9ebca2b963c36f424f4888df144afef2d8fe0da4584db224f6126463b1#1cf59e129f3f53a95d728f6d0875083a12dfc6a3"
   integrity sha512-Ed+s4RUjWmylET84Yd7qH53+9irDs9IEwBb8BIvjKfeDjAk9clOI/xvzEV6L1PN0PaacXNzYNWdrFAoUHxKNyA==
 
-"@bbbottle/bbterm@0.2.16":
-  version "0.2.16"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.2.16/897bc6307ad5cadefff724343b9cba6f991b414c44aba9f9b4eb3915b97ce8bd#5221e7301f08314f5f9dd1a10dfeaa6b3bb1a089"
-  integrity sha512-BSFzf62qZQiWx73tQBQk4PKCv8aPRgqE7uWuFKhWT+B2QKaO9aXIEKIg+ZKswS+PsLlDsa/ju3tiBKK8i3DLBw==
+"@bbbottle/bbterm@0.2.17":
+  version "0.2.17"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.2.17/9d3c7e605272fd257ae87ff25492c351260544f78acc8579f0dc2fcc15ef8231#fd4ffa94305966a774e68185d0433032507eb599"
+  integrity sha512-wikFULBeuvPJYCfAOdutvK3+DwKFmK9utnCn63tPIK72NbUA0Rm8oaJbOeQufYhf9LAxGQa/SeVf9sZ+PVS/LQ==
   dependencies:
     "@bbbottle/bbbundle" "^0.1.26"
     "@bbbottle/xterm" "4.12.0"
-    "@bbbottle/xterm-js-shell" "1.2.14"
+    "@bbbottle/xterm-js-shell" "1.1.15"
 
 "@bbbottle/box-canvas@0.3.0":
   version "0.3.0"
@@ -1126,10 +1126,10 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/page-menu/0.2.5/fcff888b6cdcab02dbe7bf45986cc5ba49c34eab034d41681d7067fe69fcf936#e87df23d815f46d61297ff3e79d24ac51e8d2865"
   integrity sha512-xfWCmSWwen1MkS7otgQi8RZf4Ye0PIy7gykAPZxp8b8Y/1ELD6ad6RJOm7I3S4cxOGH4MskMWKgJOezTPBl+Nw==
 
-"@bbbottle/xterm-js-shell@1.2.14":
-  version "1.2.14"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/xterm-js-shell/1.2.14/2597c999a03642cc4b8ffc849db7f164c9d10c72702674ddefe8940506e00832#bad6d140fe3be2e36b7a85eed3d5c6e465db79ec"
-  integrity sha512-fHngECzib7etsxsAM75skYZVw/WaorvJNvuegM/cW/+jOhhC6x9nhdFNJ51h6nPy1Ra0AOsfAXGYmhU8Fh45VA==
+"@bbbottle/xterm-js-shell@1.1.15":
+  version "1.1.15"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/xterm-js-shell/1.1.15/bdb8969ac6ff3a7098879a05408f30b6baad7357d93aff2936e9e44b7c755190#740b396a23d329dd4a9bb880ea0dd7b7dd9c8b4e"
+  integrity sha512-JEP6tQ7YPY9MzxDiC/tfKF7WytSpvcMBPzerV2WKuLfrRXefQIn02KeIuO23xxaZmNLb+knVZLrlzn0Ffe9zqQ==
   dependencies:
     "@fikrikarim/local-echo" "^0.4.1"
     ansi-styles "^3.2.1"
