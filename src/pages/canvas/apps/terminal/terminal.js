@@ -1,29 +1,24 @@
-import React, { useRef, useEffect } from 'react';
-import { startShell } from '@bbbottle/bbterm';
-import Style from './term_wrapper.scss';
+import React, { useRef, useEffect, useState } from "react";
+import { startShell } from "@bbbottle/bbterm";
+
+import { buildCommandsByProps } from "./commands";
 
 export default (props) => {
-  const termWrapper = useRef(null)
+  const termWrapper = useRef(null);
+
   useEffect(() => {
     if (termWrapper.current) {
-      startShell(termWrapper.current, [{
-        name: 'hello',
-        handler: async (shell) => {
-          return shell.printLine('coming soon...')
-        }
-      }, {
-        name: 'exit',
-        handler: async () => {
-          props.destroy();
-          return Promise.resolve();
-        }
-      }]);
+      startShell(termWrapper.current, buildCommandsByProps(props));
     }
-  }, [])
+  }, []);
+
   return (
     <div
-      className={Style.termWrapper}
+      style={{
+        width: props.windowBodyWidth,
+        height: props.windowBodyHeight,
+      }}
       ref={termWrapper}
     />
   );
-}
+};

@@ -154,6 +154,8 @@ export class CanvasApp {
       >
         <Component
           {...props}
+          windowBodyHeight={props.boxStyle.height - Window.TITLE_BAR_HEIGHT}
+          windowBodyWidth={props.boxStyle.width}
           active={isWinActive}
           destroy={() => {
             props.remove();

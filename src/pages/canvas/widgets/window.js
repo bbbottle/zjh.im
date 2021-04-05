@@ -57,3 +57,5 @@ export const Window = (props) => {
     </div>
   );
 };
+
+Window.TITLE_BAR_HEIGHT = 38;
