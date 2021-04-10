@@ -1,7 +1,7 @@
 {
   "name": "@bbbottle/zjh.im",
   "description": "This package render content of zjh.im",
-  "version": "0.8.16",
+  "version": "0.8.18-pre-0",
   "main": "dist/index.js",
   "files": [
     "dist/*"
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@bbbottle/bbicons": "^0.1.2",
-    "@bbbottle/bbterm": "0.2.16",
+    "@bbbottle/bbterm": "0.3.3",
     "@bbbottle/box-canvas": "0.3.0",
     "@bbbottle/page-menu": "0.2.5",
     "swr": "^0.4.2"
