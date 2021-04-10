@@ -75,8 +75,16 @@ export const install = {
       );
     }
 
-    const storeVersion = await getStoreVersion();
-    const appsMeta = await getMetaInfo(storeVersion);
+    const err = shell.shell.chalk.red;
+    let storeVersion, appsMeta;
+    try {
+      storeVersion = await getStoreVersion();
+      appsMeta = await getMetaInfo(storeVersion);
+    } catch (e) {
+      return shell.printLine(
+        err("App Store is unavailable. Please try again later.")
+      );
+    }
 
     const options = {
       storeVersion,
