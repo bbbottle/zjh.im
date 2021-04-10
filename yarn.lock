@@ -1107,14 +1107,15 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.1.3/f026ba9ebca2b963c36f424f4888df144afef2d8fe0da4584db224f6126463b1#1cf59e129f3f53a95d728f6d0875083a12dfc6a3"
   integrity sha512-Ed+s4RUjWmylET84Yd7qH53+9irDs9IEwBb8BIvjKfeDjAk9clOI/xvzEV6L1PN0PaacXNzYNWdrFAoUHxKNyA==
 
-"@bbbottle/bbterm@0.2.17":
-  version "0.2.17"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.2.17/9d3c7e605272fd257ae87ff25492c351260544f78acc8579f0dc2fcc15ef8231#fd4ffa94305966a774e68185d0433032507eb599"
-  integrity sha512-wikFULBeuvPJYCfAOdutvK3+DwKFmK9utnCn63tPIK72NbUA0Rm8oaJbOeQufYhf9LAxGQa/SeVf9sZ+PVS/LQ==
+"@bbbottle/bbterm@0.3.3":
+  version "0.3.3"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.3.3/447c5db19e9443c315d87d24ef8f0e51be7e8e99f6341a08abe57bb3b95761ac#b41d5a97972d35e058b2e4d104f3792e33b0116d"
+  integrity sha512-DNqXjVOrpGkk/9Q2aKi8xyQHVab68OMrJZjzgU+YRPnBGUAAbof9nVfmUiPbwLONTEnNn4DcPF4XjJbqOYHRWg==
   dependencies:
     "@bbbottle/bbbundle" "^0.1.26"
     "@bbbottle/xterm" "4.12.0"
     "@bbbottle/xterm-js-shell" "1.1.15"
+    ansi-colors "^4.1.1"
 
 "@bbbottle/box-canvas@0.3.0":
   version "0.3.0"
@@ -1337,6 +1338,11 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
+
+ansi-colors@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
+  integrity sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==
 
 ansi-regex@^2.0.0:
   version "2.1.1"

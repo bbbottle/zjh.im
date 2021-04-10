@@ -1,3 +1,5 @@
+import { install } from "./install";
+
 export const buildCommandsByProps = (props) => [
   {
     name: "hello",
@@ -12,4 +14,5 @@ export const buildCommandsByProps = (props) => [
       return Promise.resolve();
     },
   },
+  install,
 ];

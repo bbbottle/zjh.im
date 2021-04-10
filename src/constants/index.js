@@ -7,7 +7,11 @@ export const apiURL = {
   articles: `${apiEndPoint}/blog/articles`,
   article: `${apiEndPoint}/blog/article`,
   photos: `${apiEndPoint}/gallery/photos`,
+  store: `${apiEndPoint}/store_version`,
 };
+
+export const STORE_CDN_BASE_URL =
+  "https://cdn.jsdelivr.net/gh/bbbottle/bbapp-store";
 
 export const npmPkgSrc =
   "https://github.com/bbbottle/zjh.im/packages/524773?version=";
