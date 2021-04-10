@@ -53,12 +53,12 @@ const loadApp = async (appName, shell, options) => {
   }
 
   const { default: appEntry } = await System.import(app.url);
-  const successMsg = shell.shell.chalk.green("DONE.");
+  const success = (msg) => shell.shell.chalk.green(msg);
   switch (app.type) {
     case "command":
       shell.shell.command(appEntry.name, appEntry.handler);
-      shell.printLine(successMsg);
       InstalledAppMap.set(appName, true);
+      await shell.printLine(success("New command added."));
       break;
     default:
       throw new Error("Unsupported App Type.");
@@ -71,7 +71,7 @@ export const install = {
     const appName = args && args[0];
     if (InstalledAppMap.has(appName)) {
       return shell.printLine(
-        shell.shell.chalk.yellow("App has been installed.")
+        shell.shell.chalk.yellow("App has been installed already.")
       );
     }
 
