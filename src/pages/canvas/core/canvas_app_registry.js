@@ -8,44 +8,47 @@ export class CanvasAppRegistry {
   constructor(apps = CANVAS_APPLICATIONS) {
     this._availableApps = new Map();
     this._installedApps = new Map();
-    this._registerApp(apps);
+    this._registerApp = this._registerApp.bind(this);
+    this._registerApps(apps);
     this._activeAppSid = "";
   }
 
-  _registerApp(apps) {
-    apps.forEach((appInfo) => {
-      const {
-        id,
-        name,
-        icon,
-        component,
-        description,
-        widthRange,
-        heightRange,
-      } = appInfo;
+  _registerApp(appInfo) {
+    const {
+      id,
+      name,
+      icon,
+      component,
+      description,
+      widthRange,
+      heightRange,
+    } = appInfo;
 
-      const appExtras = {
-        uninstall: this.uninstallApp,
-        isActive: (app) => {
-          return this._activeAppSid === app.sid;
-        },
-        active: (app) => {
-          this._activeAppSid = app.sid;
-        },
-      };
+    const appExtras = {
+      uninstall: this.uninstallApp,
+      isActive: (app) => {
+        return this._activeAppSid === app.sid;
+      },
+      active: (app) => {
+        this._activeAppSid = app.sid;
+      },
+    };
 
-      const app = new CanvasApp(
-        id,
-        name,
-        icon,
-        component,
-        description,
-        LivableZone.create(widthRange, heightRange),
-        appExtras
-      );
+    const app = new CanvasApp(
+      id,
+      name,
+      icon,
+      component,
+      description,
+      LivableZone.create(widthRange, heightRange),
+      appExtras
+    );
 
-      this._availableApps.set(id, app);
-    });
+    this._availableApps.set(id, app);
+  }
+
+  _registerApps(apps) {
+    apps.forEach(this._registerApp);
   }
 
   installApp = (symbolId, hostInfo) => {

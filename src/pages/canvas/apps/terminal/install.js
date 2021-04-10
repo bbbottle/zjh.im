@@ -53,15 +53,24 @@ const loadApp = async (appName, shell, options) => {
   }
 
   const { default: appEntry } = await System.import(app.url);
-  const success = (msg) => shell.shell.chalk.green(msg);
+
+  const success = shell.shell.chalk.green;
+  const err = shell.shell.chalk.red;
+
   switch (app.type) {
     case "command":
       shell.shell.command(appEntry.name, appEntry.handler);
-      InstalledAppMap.set(appName, true);
       await shell.printLine(success("New command added."));
       break;
+    case "page":
+      if (window.addSitePage) {
+        InstalledAppMap.set(appName, true);
+        window.addSitePage(appEntry);
+        await shell.printLine(success("New page added."));
+        break;
+      }
     default:
-      throw new Error("Unsupported App Type.");
+      await shell.printLine(err("Unsupported App Type."));
   }
 };
 

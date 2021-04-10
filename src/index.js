@@ -9,6 +9,7 @@ import { pages } from "./pages";
 import { Fade } from "./components/fade";
 import { IS_PC } from "./utils/device_detect";
 import useScrollDirection from "./hooks/use_scroll_dir";
+import { useSafeState } from "./hooks/use_safe_state";
 
 export const PageTitle = (props) => {
   const { icon, title } = props;
@@ -33,7 +34,13 @@ export const Logo = (props) => {
 };
 
 const App = () => {
-  const [activePageIndex, setActivePage] = useState(pages.length - 1);
+  const [sitePages, updatePages] = useSafeState(pages);
+  const [activePageIndex, setActivePage] = useState(sitePages.length - 1);
+  window.addSitePage = (page) => {
+    updatePages((currentPages) => {
+      currentPages.push(page);
+    });
+  };
   return (
     <PageMenu
       defaultOpen={false}
@@ -42,16 +49,19 @@ const App = () => {
         return <Logo onClick={open} visible={!isOpen} />;
       }}
     >
-      {pages.map(({ title, component: PageComp, icon: PageIcon }, index) => {
-        const visible = index === activePageIndex || index === pages.length - 1;
-        return (
-          <Page title={<PageTitle title={title} icon={<PageIcon />} />}>
-            <Fade visible={visible} unMountAfterFadeOut>
-              {(cls) => <PageComp className={cls} />}
-            </Fade>
-          </Page>
-        );
-      })}
+      {sitePages.map(
+        ({ title, component: PageComp, icon: PageIcon }, index) => {
+          const visible =
+            index === activePageIndex || index === sitePages.length - 1;
+          return (
+            <Page title={<PageTitle title={title} icon={<PageIcon />} />}>
+              <Fade visible={visible} unMountAfterFadeOut>
+                {(cls) => <PageComp className={cls} />}
+              </Fade>
+            </Page>
+          );
+        }
+      )}
     </PageMenu>
   );
 };
