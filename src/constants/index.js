@@ -10,6 +10,12 @@ export const apiURL = {
   store: `${apiEndPoint}/store_version`,
 };
 
+export const XTERM_THEME = {
+  red: "#ff8888",
+  yellow: "#fdd587",
+  green: "#51c49f",
+};
+
 export const STORE_CDN_BASE_URL =
   "https://cdn.jsdelivr.net/gh/bbbottle/bbapp-store";
 

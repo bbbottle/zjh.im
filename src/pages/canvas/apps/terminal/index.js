@@ -1,23 +1,29 @@
-import React, { Suspense } from 'react';
-import {TVNoiseLayer} from "../../../../components/noise";
+import React, { Suspense } from "react";
+import { TVNoiseLayer } from "../../../../components/noise";
+import { XTERM_THEME } from "../../../../constants";
 
-const Terminal = React.lazy(() => import('./terminal'));
+const Terminal = React.lazy(() => import("./terminal"));
 
 export const TerminalApp = (props) => {
-  const { boxStyle } = props;
+  const {
+    boxStyle,
+    termWidth,
+    termHeight,
+    className,
+    xtermConfig = { theme: XTERM_THEME },
+  } = props;
   const fb = (
     <TVNoiseLayer
-      width={boxStyle.width}
-      height={boxStyle.height - 38}
-      opacity={.5}
+      className={className}
+      width={termWidth || boxStyle.width}
+      height={termHeight || boxStyle.height - 38}
+      opacity={0.5}
     />
-  )
+  );
 
   return (
-    <Suspense
-      fallback={fb}
-    >
-      <Terminal {...props} />
+    <Suspense fallback={fb}>
+      <Terminal {...props} xtermConfig={xtermConfig} />
     </Suspense>
-  )
-}
+  );
+};

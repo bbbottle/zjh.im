@@ -8,15 +8,18 @@ export default (props) => {
 
   useEffect(() => {
     if (termWrapper.current) {
-      startShell(termWrapper.current, buildCommandsByProps(props));
+      startShell(termWrapper.current, buildCommandsByProps(props), {
+        xtermConfig: props.xtermConfig || {},
+      });
     }
   }, []);
 
   return (
     <div
+      className={props.className || ""}
       style={{
-        width: props.windowBodyWidth,
-        height: props.windowBodyHeight,
+        width: props.termWidth || props.windowBodyWidth,
+        height: props.termHeight || props.windowBodyHeight,
       }}
       ref={termWrapper}
     />

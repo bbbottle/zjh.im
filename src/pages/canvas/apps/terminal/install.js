@@ -63,17 +63,19 @@ const loadApp = async (appName, shell, options) => {
       await shell.printLine(success("New command added."));
       break;
     case "page":
-      if (addSitePage) {
+      if (typeof addSitePage === "function") {
         InstalledAppMap.set(appName, true);
         addSitePage(appEntry);
         await shell.printLine(success("New page added."));
         break;
       }
     case "window":
-      InstalledAppMap.set(appName, true);
-      addCanvasApp(appEntry);
-      await shell.printLine(success("New canvas app added."));
-      break;
+      if (typeof addCanvasApp === "function") {
+        InstalledAppMap.set(appName, true);
+        addCanvasApp(appEntry);
+        await shell.printLine(success("New canvas app added."));
+        break;
+      }
     default:
       await shell.printLine(err("Unsupported App Type."));
   }

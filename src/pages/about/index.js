@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { GithubIcon, MailIcon, NpmIcon } from "@bbbottle/bbicons";
 import { IconText } from "../../components/icon_text";
@@ -8,6 +8,8 @@ import Img from "../../components/img";
 import { coverImgSrc, npmPkgSrc } from "../../constants";
 import { TVNoiseLayer } from "../../components/noise";
 import { PcOnly } from "../../components/pc_only";
+import { TerminalApp } from "../canvas/apps";
+import { XTERM_THEME } from "../../constants";
 
 export const Link = (props) => (
   <a href={props.href} target="_blank" tabIndex="-1">
@@ -17,7 +19,11 @@ export const Link = (props) => (
 
 export const AboutPage = (props) => {
   const imgSize = 500;
+  const [showTerm, setTermVisibility] = useState(true);
   const linkToPkg = `${npmPkgSrc}${pkgJSON.version}`;
+  const destroyTerm = () => {
+    setTermVisibility(false);
+  };
   return (
     <>
       <PcOnly>
@@ -39,6 +45,22 @@ export const AboutPage = (props) => {
             height: imgSize,
           }}
         />
+        {showTerm && (
+          <TerminalApp
+            termHeight={imgSize}
+            termWidth={imgSize}
+            addSitePage={props.addSitePage}
+            destroy={destroyTerm}
+            className="center"
+            xtermConfig={{
+              allowTransparency: true,
+              theme: {
+                background: "rgba(0, 0, 0, 0)",
+                ...XTERM_THEME,
+              },
+            }}
+          />
+        )}
       </PcOnly>
       <div className={CLS.about}>
         <IconText
