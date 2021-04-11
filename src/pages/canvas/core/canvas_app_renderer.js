@@ -9,8 +9,9 @@ import { AbsolutePositionedBox } from "../apps/absolute_positioned_box";
  * 画布应用渲染器
  */
 export class CanvasAppRenderer extends CanvasAppRegistry {
-  constructor() {
+  constructor(external) {
     super();
+    this.addSitePage = external.addSitePage;
   }
 
   isDrawingPreviewer = () => {
@@ -58,7 +59,17 @@ export class CanvasAppRenderer extends CanvasAppRegistry {
       isDrawingPreviewer: this.isDrawingPreviewer(),
     };
     const app = this.getInstalledApp(props.id);
-    return app ? app.render(props, options) : null;
+    if (!app) {
+      return null;
+    }
+    return app.render(
+      {
+        ...props,
+        addSitePage: this.addSitePage,
+        addCanvasApp: this._registerApp,
+      },
+      options
+    );
   };
 
   renderSlotMachine = (app) => {

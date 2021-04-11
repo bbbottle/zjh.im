@@ -36,7 +36,7 @@ export const Logo = (props) => {
 const App = () => {
   const [sitePages, updatePages] = useSafeState(pages);
   const [activePageIndex, setActivePage] = useState(sitePages.length - 1);
-  window.addSitePage = (page) => {
+  const addSitePage = (page) => {
     updatePages((currentPages) => {
       currentPages.push(page);
     });
@@ -56,7 +56,9 @@ const App = () => {
           return (
             <Page title={<PageTitle title={title} icon={<PageIcon />} />}>
               <Fade visible={visible} unMountAfterFadeOut>
-                {(cls) => <PageComp className={cls} />}
+                {(cls) => (
+                  <PageComp className={cls} addSitePage={addSitePage} />
+                )}
               </Fade>
             </Page>
           );

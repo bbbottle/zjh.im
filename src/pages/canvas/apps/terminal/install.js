@@ -45,7 +45,7 @@ const printHelpInfo = async (shell, options = {}) => {
 };
 
 const loadApp = async (appName, shell, options) => {
-  const { appsMeta } = options;
+  const { appsMeta, addSitePage, addCanvasApp } = options;
   const app = appsMeta.find((a) => a.name === appName);
   if (!app) {
     await shell.printLine(shell.shell.chalk.red(`App not found: ${appName}`));
@@ -63,18 +63,23 @@ const loadApp = async (appName, shell, options) => {
       await shell.printLine(success("New command added."));
       break;
     case "page":
-      if (window.addSitePage) {
+      if (addSitePage) {
         InstalledAppMap.set(appName, true);
-        window.addSitePage(appEntry);
+        addSitePage(appEntry);
         await shell.printLine(success("New page added."));
         break;
       }
+    case "window":
+      InstalledAppMap.set(appName, true);
+      addCanvasApp(appEntry);
+      await shell.printLine(success("New canvas app added."));
+      break;
     default:
       await shell.printLine(err("Unsupported App Type."));
   }
 };
 
-export const install = {
+export const getInstaller = ({ addSitePage, addCanvasApp }) => ({
   name: "install",
   handler: async (shell, args, parsed) => {
     const appName = args && args[0];
@@ -96,6 +101,8 @@ export const install = {
     }
 
     const options = {
+      addSitePage,
+      addCanvasApp,
       storeVersion,
       appsMeta,
     };
@@ -105,4 +112,4 @@ export const install = {
       await printHelpInfo(shell, options);
     }
   },
-};
+});

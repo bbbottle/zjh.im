@@ -1,4 +1,4 @@
-import { install } from "./install";
+import { getInstaller } from "./install";
 
 export const buildCommandsByProps = (props) => [
   {
@@ -14,5 +14,8 @@ export const buildCommandsByProps = (props) => [
       return Promise.resolve();
     },
   },
-  install,
+  getInstaller({
+    addSitePage: props.addSitePage,
+    addCanvasApp: props.addCanvasApp,
+  }),
 ];

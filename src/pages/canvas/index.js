@@ -7,7 +7,14 @@ import CLS from "./index.scss";
 export class CanvasPage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.canvasAppRenderer = new CanvasAppRenderer();
+    const { addSitePage } = props;
+    this.canvasAppRenderer = new CanvasAppRenderer({
+      addSitePage,
+    });
+  }
+
+  componentDidMount() {
+    console.log("mount", this.context);
   }
 
   render() {
