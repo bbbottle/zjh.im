@@ -1,15 +1,31 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { startShell } from "@bbbottle/bbterm";
-
-import { buildCommandsByProps } from "./commands";
+import { connectShellToStore } from "./connect_to_store";
 
 export default (props) => {
   const termWrapper = useRef(null);
+  const { addCanvasApp, addSitePage } = props;
 
   useEffect(() => {
+    const commands = [
+      {
+        name: "exit",
+        handler: async () => {
+          props.destroy();
+          return Promise.resolve();
+        },
+      },
+    ];
+
     if (termWrapper.current) {
-      startShell(termWrapper.current, buildCommandsByProps(props), {
+      startShell(termWrapper.current, commands, {
         xtermConfig: props.xtermConfig || {},
+        onBeforeRepl: async (shell) => {
+          await connectShellToStore(shell, {
+            addCanvasApp,
+            addSitePage,
+          });
+        },
       });
     }
   }, []);

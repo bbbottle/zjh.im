@@ -7,7 +7,8 @@ export const apiURL = {
   articles: `${apiEndPoint}/blog/articles`,
   article: `${apiEndPoint}/blog/article`,
   photos: `${apiEndPoint}/gallery/photos`,
-  store: `${apiEndPoint}/store_version`,
+  storeVersion: `${apiEndPoint}/store/version`,
+  storeApps: `${apiEndPoint}/store/apps`,
 };
 
 export const XTERM_THEME = {
