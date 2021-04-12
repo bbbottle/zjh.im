@@ -38,19 +38,28 @@ const fetchMeta = async () => {
 };
 
 export class AppStore {
-  constructor({ installer, uninstaller, appsMeta, version }) {
+  constructor({ appsMeta, version }) {
     this.version = version;
     this.appsMeta = appsMeta;
-    this.installer = installer || (() => null);
-    this.uninstaller = uninstaller || (() => null);
     this.availableAppsMap = new Map();
     appsMeta.forEach((appMeta) => {
       this.availableAppsMap.set(appMeta.name, appMeta);
     });
-    this.installedAppsMap = new Map();
+    this.installedAppsSet = new Set();
+    this._installedAppTypeMap = new Map();
   }
 
-  static async create({ installer, uninstaller }) {
+  static getInstance = () => this.instance;
+
+  static getInstalledCommands = () => {
+    const inst = AppStore.getInstance();
+    if (!inst) {
+      return [];
+    }
+    return inst.getInstalledAppByType("command");
+  };
+
+  static async create() {
     if (!window.System) {
       throw new Error(
         "Can not create app store. Some important globals are missing"
@@ -65,8 +74,6 @@ export class AppStore {
       const { appsMeta, version } = await fetchMeta();
 
       this.instance = new AppStore({
-        installer,
-        uninstaller,
         version,
         appsMeta,
       });
@@ -77,26 +84,46 @@ export class AppStore {
     }
   }
 
+  initInstaller = ({ installer, uninstaller }) => {
+    this.installer = installer || (() => null);
+    this.uninstaller = uninstaller || (() => null);
+  };
+
   async install(appName) {
     const appMeta = this.availableAppsMap.get(appName);
     if (!appMeta) {
       throw new Error(`App not found: ${appName}`);
     }
+    if (this.installedAppsSet.has(appName)) {
+      throw new Error(`App has been installed already.`);
+    }
     const { default: app } = await window.System.import(appMeta.url);
     try {
       await this.installer(appMeta, app);
-      this.installedAppsMap.set(appName, app);
+      this.installedAppsSet.add(appName);
+
+      const typedAppSet =
+        this._installedAppTypeMap.get(appMeta.type) || new Set();
+      typedAppSet.add(app);
+      this._installedAppTypeMap.set(appMeta.type, typedAppSet);
     } catch (e) {
       throw e;
     }
   }
 
+  getInstalledAppByType = (type) => {
+    const appSet = this._installedAppTypeMap.get(type);
+    if (!appSet) {
+      return [];
+    }
+    return Array.from(appSet.values());
+  };
+
   uninstall(appName) {
-    const app = this.installedAppsMap.get(appName);
-    if (!app) {
+    if (!this.installedAppsSet.has(appName)) {
       return;
     }
 
-    this.uninstaller(appName, app);
+    this.uninstaller(appName);
   }
 }

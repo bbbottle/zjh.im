@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { startShell } from "@bbbottle/bbterm";
-import { connectShellToStore } from "./connect_to_store";
+import { connectInstallToStore } from "./connect_to_store";
+import { AppStore } from "../../../../store/app_store";
 
 export default (props) => {
   const termWrapper = useRef(null);
   const { addCanvasApp, addSitePage } = props;
 
-  useEffect(() => {
+  useEffect(async () => {
     const commands = [
       {
         name: "exit",
@@ -15,17 +16,16 @@ export default (props) => {
           return Promise.resolve();
         },
       },
+      connectInstallToStore({
+        addCanvasApp,
+        addSitePage,
+      }),
+      ...AppStore.getInstalledCommands(),
     ];
 
     if (termWrapper.current) {
       startShell(termWrapper.current, commands, {
         xtermConfig: props.xtermConfig || {},
-        onBeforeRepl: async (shell) => {
-          await connectShellToStore(shell, {
-            addCanvasApp,
-            addSitePage,
-          });
-        },
       });
     }
   }, []);

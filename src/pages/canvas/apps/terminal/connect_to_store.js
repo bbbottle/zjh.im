@@ -28,21 +28,21 @@ const createInstaller = (subShell, options) => async (appMeta, app) => {
   }
 };
 
-export const connectShellToStore = async (shell, options) => {
-  shell.command(
-    "install",
-    async (subShell, args) => {
+export const connectInstallToStore = (options) => {
+  return {
+    name: "install",
+    handler: async (subShell, args) => {
       const makePrinter = (colorFn) => (msg) =>
         subShell.printLine(colorFn(msg));
 
       const g = subShell.shell.chalk.green;
       const error = makePrinter(subShell.shell.chalk.red);
       const warning = makePrinter(subShell.shell.chalk.yellow);
-      const success = makePrinter(g);
 
       let store;
       try {
-        store = await AppStore.create({
+        store = await AppStore.create();
+        store.initInstaller({
           installer: createInstaller(subShell, options),
         });
       } catch (e) {
@@ -64,11 +64,11 @@ export const connectShellToStore = async (shell, options) => {
         return;
       }
 
-      if (store.installedAppsMap.has(appName)) {
+      if (store.installedAppsSet.has(appName)) {
         return await warning("App has been installed already.");
       }
 
-      if (!store.availableAppsMap.has(appName)) {
+      if (!store.availableAppsMap.get(appName)) {
         return error(`App not found: ${appName}`);
       }
 
@@ -78,6 +78,5 @@ export const connectShellToStore = async (shell, options) => {
         error(e.message);
       }
     },
-    true
-  );
+  };
 };
