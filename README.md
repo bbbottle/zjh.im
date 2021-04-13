@@ -9,6 +9,9 @@
 
 zjh.im render zjh's [personal site](https://zjh.im).
 
+<img src="docs/images/screen-shot.png?raw=true" alt="zjh.im screen shot" />
+
+
 ## Install
 
 zjh.im use [Github Packages](https://docs.github.com/en/packages/learn-github-packages/about-github-packages) as package hosting service.
