@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@bbbottle/bbicons": "^0.1.2",
-    "@bbbottle/bbterm": "0.3.5",
+    "@bbbottle/bbterm": "0.3.6",
     "@bbbottle/box-canvas": "0.3.0",
     "@bbbottle/page-menu": "0.2.6",
     "swr": "^0.4.2"

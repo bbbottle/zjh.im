@@ -28,6 +28,20 @@ const createInstaller = (subShell, options) => async (appMeta, app) => {
   }
 };
 
+const printCommandManual = async (subShell, store) => {
+  const g = subShell.shell.chalk.green;
+  await subShell.printLine(`STORE VERSION: ${g(store.version)}`);
+  await subShell.printLine("Available apps:");
+
+  for (let appMeta of store.appsMeta) {
+    const appName = g(appMeta.name);
+    await subShell.printLine(`- ${appName}`);
+  }
+
+  await subShell.printLine("");
+  await subShell.printLine("Usage: install <App Name>");
+};
+
 export const connectInstallToStore = (options) => {
   return {
     name: "install",
@@ -35,48 +49,29 @@ export const connectInstallToStore = (options) => {
       const makePrinter = (colorFn) => (msg) =>
         subShell.printLine(colorFn(msg));
 
-      const g = subShell.shell.chalk.green;
       const error = makePrinter(subShell.shell.chalk.red);
       const warning = makePrinter(subShell.shell.chalk.yellow);
+      const installer = createInstaller(subShell, options);
 
       let store;
       try {
         store = await AppStore.create();
-        store.initInstaller({
-          installer: createInstaller(subShell, options),
-        });
+        store.initInstaller({ installer });
       } catch (e) {
         return await error(e.message);
       }
 
       const appName = args && args[0];
+
       if (!appName) {
-        await subShell.printLine(`STORE VERSION: ${g(store.version)}`);
-        await subShell.printLine("Available apps:");
-
-        for (let appMeta of store.appsMeta) {
-          const appName = g(appMeta.name);
-          await subShell.printLine(`- ${appName}`);
-        }
-
-        await subShell.printLine("");
-        await subShell.printLine("Usage: install <App Name>");
-        return;
+        return await printCommandManual(subShell, store);
       }
 
-      if (store.installedAppsSet.has(appName)) {
+      if (store.isAppInstalled(appName)) {
         return await warning("App has been installed already.");
       }
 
-      if (!store.availableAppsMap.get(appName)) {
-        return error(`App not found: ${appName}`);
-      }
-
-      try {
-        await store.install(appName);
-      } catch (e) {
-        error(e.message);
-      }
+      await store.install(appName);
     },
   };
 };

@@ -1107,10 +1107,10 @@
   resolved "https://npm.pkg.github.com/download/@bbbottle/bbicons/0.1.3/f026ba9ebca2b963c36f424f4888df144afef2d8fe0da4584db224f6126463b1#1cf59e129f3f53a95d728f6d0875083a12dfc6a3"
   integrity sha512-Ed+s4RUjWmylET84Yd7qH53+9irDs9IEwBb8BIvjKfeDjAk9clOI/xvzEV6L1PN0PaacXNzYNWdrFAoUHxKNyA==
 
-"@bbbottle/bbterm@0.3.5":
-  version "0.3.5"
-  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.3.5/9a8d2292a96d1b76b6548470f6990e141152aba20ea8b1d4e21e340d3f905390#1c9dd7b96d0ea10e2b0de5b713612caa97945092"
-  integrity sha512-VPhmDzYQiFFC4yBcklob9E55n4uxLB+tqbh3A1MEVakDp+2ptcgK6FiqqcmAKl0+NpjI1djMN48gjW6QVXQhXQ==
+"@bbbottle/bbterm@0.3.6":
+  version "0.3.6"
+  resolved "https://npm.pkg.github.com/download/@bbbottle/bbterm/0.3.6/7f33ccac35e3a26e0e86017f0787bc43401f36a9e25457051bec17d6c2b94e1b#d701bd9230615bce0a1a076f035d89775104fea7"
+  integrity sha512-Bm/yXFKdTHHFRXwH0Bs7rgf/SDTBIe0CiQTiz32XFjuT1oRcWSU/UWQ9PpSzgZrNprPIy7KhavjJqiI2ym4YyQ==
   dependencies:
     "@bbbottle/bbbundle" "^0.1.26"
     "@bbbottle/xterm" "4.12.0"

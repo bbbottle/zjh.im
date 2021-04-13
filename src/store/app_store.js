@@ -30,9 +30,9 @@ const fetchMetaInfoFromGithub = async () => {
 const fetchMeta = async () => {
   let res;
   try {
-    res = await fetchMetaInfoFromGithub();
-  } catch (e) {
     res = await fetchMetaInfoFromCDN();
+  } catch (e) {
+    res = await fetchMetaInfoFromGithub();
   }
   return res;
 };
@@ -89,6 +89,14 @@ export class AppStore {
     this.uninstaller = uninstaller || (() => null);
   };
 
+  isAppInstalled = (appName) => {
+    return this.installedAppsSet.has(appName);
+  };
+
+  isAppAvailable = (appName) => {
+    return this.availableAppsMap.has(appName);
+  };
+
   async install(appName) {
     const appMeta = this.availableAppsMap.get(appName);
     if (!appMeta) {
@@ -104,8 +112,8 @@ export class AppStore {
 
       const typedAppSet =
         this._installedAppTypeMap.get(appMeta.type) || new Set();
-      typedAppSet.add(app);
-      this._installedAppTypeMap.set(appMeta.type, typedAppSet);
+
+      this._installedAppTypeMap.set(appMeta.type, typedAppSet.add(app));
     } catch (e) {
       throw e;
     }
