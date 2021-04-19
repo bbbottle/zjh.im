@@ -1,3 +1,4 @@
+import { Subject } from "rxjs";
 import { apiURL, STORE_CDN_BASE_URL } from "../constants";
 
 const fetchLatestVersion = async () => {
@@ -27,11 +28,13 @@ const fetchMetaInfoFromGithub = async () => {
   };
 };
 
-const fetchMeta = async () => {
+const fetchMeta = async ({ onBeforeTryCDN, onBeforeTryGithub }) => {
   let res;
   try {
+    onBeforeTryCDN();
     res = await fetchMetaInfoFromCDN();
   } catch (e) {
+    onBeforeTryGithub();
     res = await fetchMetaInfoFromGithub();
   }
   return res;
@@ -49,6 +52,8 @@ export class AppStore {
     this._installedAppTypeMap = new Map();
   }
 
+  static logger = new Subject();
+
   static getInstance = () => this.instance;
 
   static getInstalledCommands = () => {
@@ -59,7 +64,7 @@ export class AppStore {
     return inst.getInstalledAppByType("command");
   };
 
-  static async create() {
+  static async create({ logger }) {
     if (!window.System) {
       throw new Error(
         "Can not create app store. Some important globals are missing"
@@ -70,8 +75,21 @@ export class AppStore {
       return this.instance;
     }
 
+    if (logger) {
+      AppStore.logger.subscribe({
+        next: logger,
+      });
+    }
+
     try {
-      const { appsMeta, version } = await fetchMeta();
+      const { appsMeta, version } = await fetchMeta({
+        onBeforeTryCDN: () => {
+          AppStore.logger.next("Connecting to store...");
+        },
+        onBeforeTryGithub: () => {
+          AppStore.logger.next("Connecting to store...");
+        },
+      });
 
       this.instance = new AppStore({
         version,
@@ -80,6 +98,7 @@ export class AppStore {
 
       return this.instance;
     } catch (e) {
+      console.log(e);
       throw new Error("Store is not available, please try again later");
     }
   }

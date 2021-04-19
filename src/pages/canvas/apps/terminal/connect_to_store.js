@@ -55,7 +55,11 @@ export const connectInstallToStore = (options) => {
 
       let store;
       try {
-        store = await AppStore.create();
+        store = await AppStore.create({
+          logger: async (e) => {
+            await subShell.printLine(e);
+          },
+        });
         store.initInstaller({ installer });
       } catch (e) {
         return await error(e.message);
