@@ -6,6 +6,7 @@ import { Pager } from "./pager";
 import { preloadImg } from "../../utils/req";
 import { Nav } from "../../components/nav";
 import { tmpWebpUrlSuffix } from "../../constants";
+import { apiURL } from "../../constants";
 
 const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
