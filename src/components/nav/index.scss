@@ -1,0 +1,25 @@
+.nav {
+  list-style: none;
+  z-index: 1;
+
+  &:before {
+    content: attr(data-title);
+    display: block;
+    margin-bottom: 10px;
+    color: #bfbfbf;
+    font-size: 12px;
+  }
+
+}
+
+.navItem {
+  padding-bottom: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #6bcba8;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #333;
+  }
+}

@@ -1,29 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
-import classnames from "classnames";
 
-import { preloadImg } from "../../utils/req";
-import { createClickHandler } from "../../utils/evt";
-
-import { PagingStateManager as PagingManager } from "../../components/paging";
 import { TickLoader } from "../../components/spinner";
-import { TickIndicator } from "../../components/draggable_tick_indicator";
-import Img from "../../components/img";
-
-import { tmpWebpUrlSuffix, apiURL } from "../../constants";
-
-import cls from "./index.scss";
-import COMMON_STYLE from "../../style/common.scss";
-import { IS_PC } from "../../utils/device_detect";
+import { Pager } from "./pager";
+import { preloadImg } from "../../utils/req";
+import { Nav } from "../../components/nav";
+import { tmpWebpUrlSuffix } from "../../constants";
 
 const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
-let cachedImg = null;
-
 export const Photos = (props) => {
-  const { hideProgressIndicator } = props;
-
-  const { data, error } = useSWR(apiURL.photos, {
+  const { data = [], error } = useSWR(apiURL.photos, {
     revalidateOnFocus: false,
   });
 
@@ -31,49 +18,36 @@ export const Photos = (props) => {
     return null;
   }
 
-  if (!data) {
+  const [photos, setPhotos] = useState(null);
+
+  if (!data.length) {
     return <TickLoader absCenter />;
   }
+
+  const navItems = [];
+  data.forEach((d) => {
+    navItems.push({
+      id: d.name,
+      text: d.name,
+      photos: d.photos,
+    });
+    const src = d.photos[0].url;
+    return preloadImg(toWebpUrl(src));
+  });
+
+  const photosList = photos || data[0].photos;
+
   return (
-    <PagingManager data={data} pageSize={1} infiniteLoopMode>
-      {({
-        currentPageData,
-        currentPageIndex,
-        nextPageData,
-        gotoPage,
-        next,
-        prev,
-      }) => {
-        const photo = currentPageData[0];
-        const nextImgSrc = toWebpUrl(nextPageData[0].url);
-        preloadImg(nextImgSrc).then((next) => {
-          cachedImg = next;
-        });
-        return (
-          <div className={classnames(cls.photoGallery)}>
-            <div className={COMMON_STYLE.fixedWidgetsUnderLogo}>
-              {IS_PC && !hideProgressIndicator && (
-                <TickIndicator
-                  total={data.length}
-                  current={currentPageIndex}
-                  onDrop={gotoPage}
-                  onClick={(e, i) => {
-                    gotoPage(i);
-                  }}
-                />
-              )}
-            </div>
-            <Img
-              className={cls.img}
-              src={toWebpUrl(photo.url)}
-              onClick={createClickHandler({
-                onRightClick: next,
-                onLeftClick: prev,
-              })}
-            />
-          </div>
-        );
-      }}
-    </PagingManager>
+    <>
+      <Nav
+        title="分类"
+        items={navItems}
+        onItemClick={(id, item) => {
+          console.log(item.photos);
+          setPhotos(item.photos);
+        }}
+      />
+      <Pager photos={photosList} hideProgressIndicator />
+    </>
   );
 };

@@ -1,7 +1,4 @@
-const productionApiEndPoint = "https://api.zjh.im";
-// const developmentApiEndPoint = 'https://api-grocery.zjh-im.vercel.app';
-
-export const apiEndPoint = productionApiEndPoint; // developmentApiEndPoint;
+export const apiEndPoint = browser.env.API_URL; // developmentApiEndPoint;
 
 export const apiURL = {
   articles: `${apiEndPoint}/blog/articles`,

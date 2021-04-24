@@ -11,6 +11,14 @@ export class PagingStateManager extends React.PureComponent {
     this.state = this.getStateByPropsAndCurrentPageIndex();
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.data !== prevProps.data) {
+      this.setState({
+        ...this.getStateByPropsAndCurrentPageIndex(this.props),
+      });
+    }
+  }
+
   getStateByPropsAndCurrentPageIndex = (
     props = this.props,
     currentPageIndex = props.currentPageIndex
