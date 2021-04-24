@@ -3,6 +3,7 @@ import useSWR from "swr";
 
 import { TickLoader } from "../../components/spinner";
 import { Pager } from "./pager";
+import { IS_PC } from "../../utils/device_detect";
 import { preloadImg } from "../../utils/req";
 import { Nav } from "../../components/nav";
 import { tmpWebpUrlSuffix } from "../../constants";
@@ -40,14 +41,16 @@ export const Photos = (props) => {
 
   return (
     <>
-      <Nav
-        title="分类"
-        items={navItems}
-        onItemClick={(id, item) => {
-          console.log(item.photos);
-          setPhotos(item.photos);
-        }}
-      />
+      {IS_PC && (
+        <Nav
+          title="分类"
+          items={navItems}
+          onItemClick={(id, item) => {
+            console.log(item.photos);
+            setPhotos(item.photos);
+          }}
+        />
+      )}
       <Pager photos={photosList} hideProgressIndicator />
     </>
   );
