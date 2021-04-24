@@ -28,7 +28,19 @@ const fetchMetaInfoFromGithub = async () => {
   };
 };
 
+const fetchMetaFromLocal = async () => {
+  const version = "v?.?.?";
+  const res = await fetch(browser.env.LOCAL_APP_META_URL);
+  return {
+    version,
+    appsMeta: [await res.json()],
+  };
+};
+
 const fetchMeta = async ({ onBeforeTryCDN, onBeforeTryGithub }) => {
+  if (browser.env.MODE === "development") {
+    return fetchMetaFromLocal();
+  }
   let res;
   try {
     onBeforeTryCDN();
