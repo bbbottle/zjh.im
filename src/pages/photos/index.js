@@ -43,7 +43,7 @@ export const Photos = (props) => {
     <>
       {IS_PC && (
         <Nav
-          title="分类"
+          title="系列"
           items={navItems}
           onItemClick={(id, item) => {
             console.log(item.photos);

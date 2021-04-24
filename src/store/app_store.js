@@ -3,9 +3,8 @@ import { apiURL, STORE_CDN_BASE_URL } from "../constants";
 
 const fetchLatestVersion = async () => {
   const res = await window.fetch(apiURL.storeVersion);
-  const release = (await res.json()) || { data: {} };
-  const { tag_name } = release.data;
-  return tag_name;
+  const release = await res.json();
+  return release.version;
 };
 
 const fetchMetaInfoFromCDN = async () => {
