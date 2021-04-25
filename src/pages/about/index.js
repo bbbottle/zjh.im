@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
-import { GithubIcon, MailIcon, NpmIcon } from "@bbbottle/bbicons";
+import { GithubIcon, MailIcon, NpmIcon, AboutIcon } from "@bbbottle/bbicons";
 import { IconText } from "../../components/icon_text";
 import pkgJSON from "../../../package.json";
 import CLS from "./about.scss";
@@ -10,6 +10,7 @@ import { TVNoiseLayer } from "../../components/noise";
 import { PcOnly } from "../../components/pc_only";
 import { TerminalApp } from "../canvas/apps";
 import { XTERM_THEME } from "../../constants";
+import { Nav } from "../../components/nav";
 
 export const Link = (props) => (
   <a href={props.href} target="_blank" tabIndex="-1">
@@ -62,25 +63,46 @@ export const AboutPage = (props) => {
           />
         )}
       </PcOnly>
-      <div className={CLS.about}>
-        <IconText
-          color="#333"
-          icon={<GithubIcon />}
-          text={<Link href="https://github.com/zjhou">@zjhou</Link>}
-        />
-        <IconText
-          icon={<NpmIcon />}
-          text={
-            <Link
-              href={linkToPkg}
-            >{`@bbbottle/zjh.im@${pkgJSON.version}`}</Link>
-          }
-        />
-        <IconText
-          icon={<MailIcon />}
-          text={<Link href="mailto: hi@zjh.im">hi@zjh.im</Link>}
-        />
-      </div>
+      <Nav
+        title="链接"
+        items={[
+          {
+            id: "github",
+            content: (
+              <IconText
+                color="#333"
+                icon={<GithubIcon />}
+                text={<Link href="https://github.com/zjhou">@zjhou</Link>}
+              />
+            ),
+          },
+          {
+            id: "work",
+            content: (
+              <IconText
+                icon={<AboutIcon />}
+                text={
+                  <>
+                    <Link href="https://ones.ai">
+                      <b>@ONES</b>
+                    </Link>{" "}
+                    &nbsp; Front End Developer
+                  </>
+                }
+              />
+            ),
+          },
+          {
+            id: "mail",
+            content: (
+              <IconText
+                icon={<MailIcon />}
+                text={<Link href="mailto: hi@zjh.im">hi@zjh.im</Link>}
+              />
+            ),
+          },
+        ]}
+      />
     </>
   );
 };

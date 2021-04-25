@@ -15,7 +15,7 @@ export const Nav = (props) => {
         COMMON_STYLE.fixedWidgetsUnderLogo
       )}
     >
-      {items.map(({ id, text }, index) => {
+      {items.map(({ id, content }, index) => {
         return (
           <li
             className={style.navItem}
@@ -24,7 +24,7 @@ export const Nav = (props) => {
               onItemClick(id, items[index]);
             }}
           >
-            {text}
+            {content}
           </li>
         );
       })}

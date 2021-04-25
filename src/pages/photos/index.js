@@ -30,7 +30,7 @@ export const Photos = (props) => {
   data.forEach((d) => {
     navItems.push({
       id: d.name,
-      text: d.name,
+      content: d.name,
       photos: d.photos,
     });
     const src = d.photos[0].url;
@@ -46,7 +46,6 @@ export const Photos = (props) => {
           title="系列"
           items={navItems}
           onItemClick={(id, item) => {
-            console.log(item.photos);
             setPhotos(item.photos);
           }}
         />

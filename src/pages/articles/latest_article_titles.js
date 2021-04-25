@@ -16,7 +16,7 @@ export const LatestArticleTitles = (props) => {
 
   const list = articles.slice(0, count);
   const navItems = list.map((l) => ({
-    text: l.title,
+    content: l.title,
     id: l.id,
   }));
 
