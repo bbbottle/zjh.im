@@ -3,7 +3,6 @@ import classnames from "classnames";
 import { GithubIcon, MailIcon, NpmIcon, AboutIcon } from "@bbbottle/bbicons";
 import { IconText } from "../../components/icon_text";
 import pkgJSON from "../../../package.json";
-import CLS from "./about.scss";
 import Img from "../../components/img";
 import { coverImgSrc, npmPkgSrc } from "../../constants";
 import { TVNoiseLayer } from "../../components/noise";
@@ -21,7 +20,6 @@ export const Link = (props) => (
 export const AboutPage = (props) => {
   const imgSize = 500;
   const [showTerm, setTermVisibility] = useState(true);
-  const linkToPkg = `${npmPkgSrc}${pkgJSON.version}`;
   const destroyTerm = () => {
     setTermVisibility(false);
   };
@@ -64,7 +62,7 @@ export const AboutPage = (props) => {
         )}
       </PcOnly>
       <Nav
-        title="链接"
+        title="根据地"
         items={[
           {
             id: "github",
@@ -72,32 +70,7 @@ export const AboutPage = (props) => {
               <IconText
                 color="#333"
                 icon={<GithubIcon />}
-                text={<Link href="https://github.com/zjhou">@zjhou</Link>}
-              />
-            ),
-          },
-          {
-            id: "work",
-            content: (
-              <IconText
-                icon={<AboutIcon />}
-                text={
-                  <>
-                    <Link href="https://ones.ai">
-                      <b>@ONES</b>
-                    </Link>{" "}
-                    &nbsp; Front End Developer
-                  </>
-                }
-              />
-            ),
-          },
-          {
-            id: "mail",
-            content: (
-              <IconText
-                icon={<MailIcon />}
-                text={<Link href="mailto: hi@zjh.im">hi@zjh.im</Link>}
+                text={<Link href="https://github.com/bbbottle">@bbbottle</Link>}
               />
             ),
           },
