@@ -10,6 +10,7 @@ import { Fade } from "./components/fade";
 import { IS_PC } from "./utils/device_detect";
 import useScrollDirection from "./hooks/use_scroll_dir";
 import { useSafeState } from "./hooks/use_safe_state";
+import { PanelContextLayer } from "./components/panel/panel_context";
 
 export const PageTitle = (props) => {
   const { icon, title } = props;
@@ -42,29 +43,31 @@ const App = () => {
     });
   };
   return (
-    <PageMenu
-      defaultOpen={false}
-      onSelect={setActivePage}
-      menuIconRenderer={({ open, isOpen }) => {
-        return <Logo onClick={open} visible={!isOpen} />;
-      }}
-    >
-      {sitePages.map(
-        ({ title, component: PageComp, icon: PageIcon }, index) => {
-          const visible =
-            index === activePageIndex || index === sitePages.length - 1;
-          return (
-            <Page title={<PageTitle title={title} icon={<PageIcon />} />}>
-              <Fade visible={visible} unMountAfterFadeOut>
-                {(cls) => (
-                  <PageComp className={cls} addSitePage={addSitePage} />
-                )}
-              </Fade>
-            </Page>
-          );
-        }
-      )}
-    </PageMenu>
+    <PanelContextLayer>
+      <PageMenu
+        defaultOpen={false}
+        onSelect={setActivePage}
+        menuIconRenderer={({ open, isOpen }) => {
+          return <Logo onClick={open} visible={!isOpen} />;
+        }}
+      >
+        {sitePages.map(
+          ({ title, component: PageComp, icon: PageIcon }, index) => {
+            const visible =
+              index === activePageIndex || index === sitePages.length - 1;
+            return (
+              <Page title={<PageTitle title={title} icon={<PageIcon />} />}>
+                <Fade visible={visible} unMountAfterFadeOut>
+                  {(cls) => (
+                    <PageComp className={cls} addSitePage={addSitePage} />
+                  )}
+                </Fade>
+              </Page>
+            );
+          }
+        )}
+      </PageMenu>
+    </PanelContextLayer>
   );
 };
 

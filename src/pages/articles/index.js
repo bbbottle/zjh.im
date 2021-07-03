@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import useSWR from "swr";
 
 import { TickLoader } from "../../components/spinner";
@@ -10,6 +10,9 @@ import { LatestArticleTitles } from "./latest_article_titles";
 import { Article } from "./article";
 
 import CLS from "./index.scss";
+import { CommentSDKLayer } from "./comment_sdk";
+import { PanelContext } from "../../components/panel/panel_context";
+import { Panel } from "../../components/panel/panel";
 
 export const Articles = () => {
   const { data, error } = useSWR(apiURL.articles, {
@@ -22,6 +25,8 @@ export const Articles = () => {
     articleDetailVisibilityMap,
     articleDetailVisibilityUpdater,
   ] = useSafeState({});
+
+  const { setPanelVisible } = useContext(PanelContext);
 
   useEffect(() => {
     initObserver(
@@ -37,9 +42,14 @@ export const Articles = () => {
   }
 
   return (
-    <>
+    <CommentSDKLayer>
       <LatestArticleTitles articles={data.articles} />
-      <div className={cn(CLS.articles)}>
+      <div
+        className={cn(CLS.articles)}
+        onClick={() => {
+          setPanelVisible(false);
+        }}
+      >
         {data.articles.map((article) => (
           <Article
             showDetail={articleDetailVisibilityMap[article.id]}
@@ -48,6 +58,7 @@ export const Articles = () => {
           />
         ))}
       </div>
-    </>
+      <Panel />
+    </CommentSDKLayer>
   );
 };

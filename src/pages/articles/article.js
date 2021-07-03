@@ -4,6 +4,7 @@ import cn from "classnames";
 
 import { apiURL } from "../../constants";
 import CLS from "./index.scss";
+import { CommentEntry } from "./comment_entry";
 
 export const Article = (props) => {
   const {
@@ -64,15 +65,15 @@ export const Article = (props) => {
     return null;
   }
 
+  const date = new Date(updateTime).toLocaleDateString();
   return (
     <>
-      <div
-        className={CLS.article}
-        data-id={id}
-        data-time={new Date(updateTime).toLocaleDateString()}
-        data-title={title}
-      >
+      <div className={CLS.article} data-id={id} data-title={title}>
         {content}
+        <div className={CLS.info}>
+          <span className={CLS.date}>{date}</span>
+          <CommentEntry id={id} title={title} />
+        </div>
       </div>
     </>
   );

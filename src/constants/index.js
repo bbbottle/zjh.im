@@ -22,3 +22,8 @@ export const npmPkgSrc =
 export const coverImgSrc =
   "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/5e3ffe8bdcaaca180c846aa2-%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200209204106.jpg?x-oss-process=style/webp";
 export const tmpWebpUrlSuffix = "?x-oss-process=style/webp";
+
+export const cuzDisSDKUrl = "https://bbcusdis.vercel.app/js/cusdis.es.js";
+export const cuzDisHostURL = "https://bbcusdis-tsexyycvt-zjh-im.vercel.app";
+export const cuzDisAppID = "4b45567d-add2-4533-9f4a-66f53c7617d3";
+export const cuzDisWidgetDomID = "cusdis_thread";

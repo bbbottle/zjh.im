@@ -120,19 +120,32 @@ $gray-6: #ccc;
       Helvetica, Arial, sans-serif;
   }
 
-  &:after {
-    content: attr(data-time);
-    font-weight: 400;
-    color: #bfbfbf;
-    font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI,
-      Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue,
-      Helvetica, Arial, sans-serif;
-    letter-spacing: 0.05em;
-    display: block;
-    font-size: 12px;
-    margin-top: 50px;
-  }
   padding-top: 200px;
+}
+
+.info {
+  font-weight: 400;
+  color: #bfbfbf;
+  font-family: Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI,
+  Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue,
+  Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.commentEntry {
+  cursor: pointer;
+  transition: .2s color ease-in-out;
+  &:hover {
+    color: #4f4f4f;
+  }
+}
+
+.date {
+  margin-right: 15px;
 }
 
 @media (max-width: 500px) {
