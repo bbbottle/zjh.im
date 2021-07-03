@@ -72,7 +72,7 @@ export const Article = (props) => {
         {content}
         <div className={CLS.info}>
           <span className={CLS.date}>{date}</span>
-          <CommentEntry id={id} title={title} />
+          {detailInfo && <CommentEntry id={id} title={title} />}
         </div>
       </div>
     </>

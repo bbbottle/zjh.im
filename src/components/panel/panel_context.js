@@ -12,6 +12,11 @@ export const PanelContextLayer = (props) => {
 
     panelContent,
     setPanelContent,
+
+    resetPanel: () => {
+      setPanelContent(null);
+      setPanelVisible(false);
+    },
   };
   return (
     <PanelContext.Provider value={PanelContextValue}>
