@@ -14,8 +14,8 @@ export const Comment = (props) => {
       id={cuzDisWidgetDomID}
       data-host={cuzDisHostURL}
       data-app-id={cuzDisAppID}
-      data-page-id={`{{ ${articleId} }}`}
-      data-page-title={`{{ ${articleTitle} }`}
+      data-page-id={articleId}
+      data-page-title={articleTitle}
     />
   );
 };

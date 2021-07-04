@@ -14,7 +14,7 @@ export const CommentEntry = (props) => {
         showPanel(<Comment articleId={id} articleTitle={title} />);
       }}
     >
-      “…”
+      <span className={Style.count} data-cusdis-count-page-id={id} />: “…”
     </div>
   );
 };
