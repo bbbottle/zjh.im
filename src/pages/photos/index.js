@@ -6,10 +6,16 @@ import { Pager } from "./pager";
 import { IS_PC } from "../../utils/device_detect";
 import { preloadImg } from "../../utils/req";
 import { Nav } from "../../components/nav";
-import { tmpWebpUrlSuffix } from "../../constants";
+import { ossProcessParam, tmpWebpUrlSuffix } from "../../constants";
 import { apiURL } from "../../constants";
 
-const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
+const toWebpUrl = (src) => {
+  // has been processed already
+  if (src.includes(ossProcessParam)) {
+    return src;
+  }
+  return `${src}${tmpWebpUrlSuffix}`;
+};
 
 export const Photos = (props) => {
   const { data = [], error } = useSWR(apiURL.photos, {
