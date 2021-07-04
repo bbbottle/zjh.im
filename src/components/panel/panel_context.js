@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const PanelContext = React.createContext(null);
+export const PanelContext = React.createContext({});
 
 export const PanelContextLayer = (props) => {
   const { children } = props;
@@ -12,11 +12,6 @@ export const PanelContextLayer = (props) => {
 
     panelContent,
     setPanelContent,
-
-    resetPanel: () => {
-      setPanelContent(null);
-      setPanelVisible(false);
-    },
   };
   return (
     <PanelContext.Provider value={PanelContextValue}>

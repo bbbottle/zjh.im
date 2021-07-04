@@ -1,18 +1,17 @@
-import React, { useContext } from "react";
-import { PanelContext } from "../../components/panel/panel_context";
+import React from "react";
 import { Comment } from "./comment";
 import Style from "./index.scss";
+import { usePanel } from "../../components/panel";
 
 export const CommentEntry = (props) => {
   const { title, id } = props;
-  const { setPanelVisible, setPanelContent } = useContext(PanelContext);
+  const { showPanel } = usePanel();
   return (
     <div
       className={Style.commentEntry}
       onClick={(e) => {
         e.stopPropagation();
-        setPanelContent(<Comment articleId={id} articleTitle={title} />);
-        setPanelVisible(true);
+        showPanel(<Comment articleId={id} articleTitle={title} />);
       }}
     >
       “…”

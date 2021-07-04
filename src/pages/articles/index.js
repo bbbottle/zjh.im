@@ -9,10 +9,10 @@ import { createArticleIntersectionObserver } from "./article_intersection_observ
 import { LatestArticleTitles } from "./latest_article_titles";
 import { Article } from "./article";
 
-import CLS from "./index.scss";
 import { CommentSDKLayer } from "./comment_sdk";
-import { PanelContext } from "../../components/panel/panel_context";
-import { Panel } from "../../components/panel/panel";
+import { Panel, usePanel } from "../../components/panel";
+
+import CLS from "./index.scss";
 
 export const Articles = () => {
   const { data, error } = useSWR(apiURL.articles, {
@@ -26,7 +26,7 @@ export const Articles = () => {
     articleDetailVisibilityUpdater,
   ] = useSafeState({});
 
-  const { setPanelVisible } = useContext(PanelContext);
+  const { hidePanel } = usePanel();
 
   useEffect(() => {
     initObserver(
@@ -44,12 +44,7 @@ export const Articles = () => {
   return (
     <CommentSDKLayer>
       <LatestArticleTitles articles={data.articles} />
-      <div
-        className={cn(CLS.articles)}
-        onClick={() => {
-          setPanelVisible(false);
-        }}
-      >
+      <div className={cn(CLS.articles)} onClick={hidePanel}>
         {data.articles.map((article) => (
           <Article
             showDetail={articleDetailVisibilityMap[article.id]}
