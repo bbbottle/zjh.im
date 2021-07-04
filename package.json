@@ -1,7 +1,7 @@
 {
   "name": "@bbbottle/zjh.im",
   "description": "This package render content of zjh.im",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/index.js",
   "files": [
     "dist/*"
