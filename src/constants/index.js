@@ -23,8 +23,7 @@ export const coverImgSrc =
   "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/5e3ffe8bdcaaca180c846aa2-%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200209204106.jpg?x-oss-process=style/webp";
 export const tmpWebpUrlSuffix = "?x-oss-process=style/webp";
 
-const cuzDisDeploymentId = "a1nyjycya";
-export const cuzDisHostURL = `https://bbcusdis-${cuzDisDeploymentId}-zjh-im.vercel.app`;
+export const cuzDisHostURL = `https://bbcusdis.vercel.app`;
 export const cuzDisSDKUrl = `${cuzDisHostURL}/js/cusdis.es.js`;
 export const cuzDisSDKCountUrl = `${cuzDisHostURL}/js/cusdis-count.umd.js`;
 export const cuzDisAppID = "4b45567d-add2-4533-9f4a-66f53c7617d3";
