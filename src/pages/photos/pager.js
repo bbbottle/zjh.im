@@ -9,11 +9,9 @@ import { TickIndicator } from "../../components/draggable_tick_indicator";
 import cls from "./index.scss";
 import Img from "../../components/img";
 import { createClickHandler } from "../../utils/evt";
-import { tmpWebpUrlSuffix } from "../../constants";
+import { toWebpUrl } from "../../utils/oss_url";
 
 let cachedImg = null;
-
-const toWebpUrl = (src) => `${src}${tmpWebpUrlSuffix}`;
 
 export const Pager = (props) => {
   const { photos: data, hideProgressIndicator } = props;
