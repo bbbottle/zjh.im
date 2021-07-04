@@ -24,6 +24,6 @@ export const coverImgSrc =
 export const tmpWebpUrlSuffix = "?x-oss-process=style/webp";
 
 export const cuzDisSDKUrl = "https://bbcusdis.vercel.app/js/cusdis.es.js";
-export const cuzDisHostURL = "https://bbcusdis-tsexyycvt-zjh-im.vercel.app";
+export const cuzDisHostURL = "https://bbcusdis.vercel.app";
 export const cuzDisAppID = "4b45567d-add2-4533-9f4a-66f53c7617d3";
 export const cuzDisWidgetDomID = "cusdis_thread";
