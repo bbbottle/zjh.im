@@ -27,7 +27,7 @@ export const Article = (props) => {
   // did mount
   useEffect(() => {
     const ellipsisSign = "...";
-    const isArticleEllipsis = description.endsWith(ellipsisSign);
+    const isArticleEllipsis = description && description.endsWith(ellipsisSign);
     if (!isArticleEllipsis) {
       showDetail(true);
     }
