@@ -12,7 +12,7 @@ import { XTERM_THEME } from "../../constants";
 import { Nav } from "../../components/nav";
 
 export const Link = (props) => (
-  <a href={props.href} target="_blank" tabIndex="-1">
+  <a href={props.href} target="_blank" tabIndex="-1" rel="noreferrer">
     {props.children}
   </a>
 );
