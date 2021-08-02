@@ -15,7 +15,7 @@ export const Photos = (props) => {
   });
 
   if (error) {
-    return null;
+    throw error;
   }
 
   const [photos, setPhotos] = useState(null);

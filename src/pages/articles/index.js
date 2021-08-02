@@ -35,8 +35,9 @@ export const Articles = () => {
   }, []);
 
   if (error) {
-    return null;
+    throw error;
   }
+
   if (!data) {
     return <TickLoader absCenter />;
   }
