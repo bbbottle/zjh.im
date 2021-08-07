@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
-import { GithubIcon, MailIcon, NpmIcon, AboutIcon } from "@bbbottle/bbicons";
+import { GithubIcon, EditIcon } from "@bbbottle/bbicons";
 import { IconText } from "../../components/icon_text";
 import pkgJSON from "../../../package.json";
 import Img from "../../components/img";
@@ -70,7 +70,17 @@ export const AboutPage = (props) => {
               <IconText
                 color="#333"
                 icon={<GithubIcon />}
-                text={<Link href="https://github.com/bbbottle">@bbbottle</Link>}
+                text={<Link href="https://github.com/bbbottle">bbbottle</Link>}
+              />
+            ),
+          },
+          {
+            id: "tech",
+            content: (
+              <IconText
+                color="#333"
+                icon={<EditIcon />}
+                text={<Link href="https://tech.zjh.im/">notes</Link>}
               />
             ),
           },
