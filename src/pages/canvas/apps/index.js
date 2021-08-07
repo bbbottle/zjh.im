@@ -10,5 +10,3 @@ export { FigmaDesignApp } from "./figma_design";
 export const EmptyApp = () => null;
 
 export { AppPreviewer } from "./app_previewer";
-
-export { TerminalApp } from './terminal/'

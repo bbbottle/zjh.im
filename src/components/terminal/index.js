@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import { TVNoiseLayer } from "../../../../components/noise";
-import { XTERM_THEME } from "../../../../constants";
+import { TVNoiseLayer } from "../noise";
+import { XTERM_THEME } from "../../constants";
 
 const Terminal = React.lazy(() => import("./terminal"));
 

@@ -1,4 +1,4 @@
-import { AppStore } from "../../../../store/app_store";
+import { AppStore } from "../../store/app_store";
 import "./handle_externals";
 
 const createInstaller = (subShell, options) => async (appMeta, app) => {

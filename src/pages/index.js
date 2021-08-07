@@ -37,11 +37,11 @@ const pagesConfig = {
     icon: AboutIcon,
     component: AboutPage,
   },
-  canvas: {
-    title: "画布",
-    icon: BoxIcon,
-    component: withErrorCatcher(CanvasPage),
-  },
+  // canvas: {
+  //   title: "画布",
+  //   icon: BoxIcon,
+  //   component: withErrorCatcher(CanvasPage),
+  // },
   articles: {
     title: "文章",
     icon: TextIcon,
@@ -61,7 +61,7 @@ const MOBILE_PAGES = [
 ];
 
 const PC_PAGES = [
-  pagesConfig.canvas,
+  // pagesConfig.canvas,
   pagesConfig.photos,
   pagesConfig.articles,
   pagesConfig.about,

@@ -7,7 +7,7 @@ import Img from "../../components/img";
 import { coverImgSrc, npmPkgSrc } from "../../constants";
 import { TVNoiseLayer } from "../../components/noise";
 import { PcOnly } from "../../components/pc_only";
-import { TerminalApp } from "../canvas/apps";
+import { TerminalApp } from "../../components/terminal";
 import { XTERM_THEME } from "../../constants";
 import { Nav } from "../../components/nav";
 

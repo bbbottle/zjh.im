@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { startShell } from "@bbbottle/bbterm";
 import { connectInstallToStore } from "./connect_to_store";
-import { AppStore } from "../../../../store/app_store";
+import { AppStore } from "../../store/app_store";
 
 export default (props) => {
   const termWrapper = useRef(null);

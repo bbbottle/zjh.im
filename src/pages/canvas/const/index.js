@@ -1,6 +1,12 @@
-import { FigmaIcon, PhotoIcon, InvalidIcon, TerminalIcon } from "@bbbottle/bbicons";
+import {
+  FigmaIcon,
+  PhotoIcon,
+  InvalidIcon,
+  TerminalIcon,
+} from "@bbbottle/bbicons";
 
-import { PhotosApp, EmptyApp, FigmaDesignApp, TerminalApp } from "../apps";
+import { PhotosApp, EmptyApp, FigmaDesignApp } from "../apps";
+import { TerminalApp } from "../../../components/terminal";
 
 export const EMPTY_APP_ID = "empty";
 
