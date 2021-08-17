@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import style from "./index.scss";
 import COMMON_STYLE from "../../style/common.scss";
 
+const NAV_ITEM_TYPE = {
+  BUTTON: "button",
+  LINK: "link",
+  UNKNOWN: "unknown",
+};
+
 export const Nav = (props) => {
   const { className, title, items, onItemClick = () => null } = props;
+  const [activeId, setActiveId] = useState(null);
 
   return (
     <ul
@@ -15,12 +22,18 @@ export const Nav = (props) => {
         COMMON_STYLE.fixedWidgetsUnderLogo
       )}
     >
-      {items.map(({ id, content }, index) => {
+      {items.map(({ id, type, content }, index) => {
+        const isButtonItem = type === NAV_ITEM_TYPE.BUTTON;
         return (
           <li
-            className={style.navItem}
+            className={classnames(style.navItem, {
+              [style.activeNavItem]: isButtonItem && id === activeId,
+            })}
             onClick={(e) => {
               e.stopPropagation();
+              if (isButtonItem) {
+                setActiveId(id);
+              }
               onItemClick(id, items[index]);
             }}
           >

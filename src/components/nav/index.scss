@@ -12,6 +12,12 @@
 
 }
 
+.activeNavItem {
+  color: #bfbfbf !important;
+  font-size: 12px;
+  pointer-events: none;
+}
+
 .navItem {
   padding-bottom: 5px;
   font-size: 12px;

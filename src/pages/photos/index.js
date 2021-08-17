@@ -27,6 +27,7 @@ export const Photos = (props) => {
   const navItems = [];
   data.forEach((d) => {
     navItems.push({
+      type: "button",
       id: d.name,
       content: d.name,
       photos: d.photos,
